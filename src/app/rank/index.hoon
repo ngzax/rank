@@ -5,7 +5,7 @@
 :: 2) it must produce a complete document with html, head, and body tags.
 :: 3) all root-level sail components need to have the same sample (the sample can be any noun).
 /-  rank
-|=  app-state=app.state.rank
+|=  app-state=app.display-state.rank
 ^-  manx
 ;html
   ;head

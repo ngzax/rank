@@ -1,14 +1,16 @@
 /-  *rank
-/+  default-agent, dbug, agentio, mast
+::
+:::: Library dependencies
+  ::
+/+  default-agent, dbug, agentio, mast, verb
 ::
 /=  index       /app/rank/index
 /=  list        /app/rank/list
 /=  stylesheet  /app/rank/stylesheet
 ::
+::::  types core
+  ::
 |%
-+$  state-0  [%0 state:rank]
-+$  versioned-state  $%(state-0)
-::
 +$  card  card:agent:gall
 --
 ::
