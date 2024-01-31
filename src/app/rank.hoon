@@ -1,20 +1,32 @@
-/-  rank
+/-  *rank
 /+  default-agent, dbug, agentio, mast
 ::
 /=  index       /app/rank/index
 /=  list        /app/rank/list
 /=  stylesheet  /app/rank/stylesheet
+::
 |%
 +$  state-0  [%0 state:rank]
 +$  versioned-state  $%(state-0)
 ::
 +$  card  card:agent:gall
 --
+::
+::  debugging tools
+::
+%+  verb  |
 %-  agent:dbug
+::
+::  state
+::
 =|  state-0
 =*  state  -
+::
+::  agent core
+::
 ^-  agent:gall
 |_  =bowl:gall
+::
 +*  this  .
     def   ~(. (default-agent this %.n) bowl)
     io    ~(. agentio bowl)
@@ -31,9 +43,11 @@
   :_  this
   :: binding the base url:
   [(~(arvo pass:io /bind) %e %connect `/'rank' %rank) ~]
+:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 ++  on-save
   ^-  vase
   !>  state
+:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 ++  on-load
   |=  saved-state=vase
   ^-  (quip card _this)
