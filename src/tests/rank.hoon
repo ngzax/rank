@@ -1,4 +1,4 @@
-/+  *test, rank, regex
+/+  *test, *rank, *regex
 |%
 ::
 :::: sub:regex - Replace the first match of a regular expression.
@@ -32,8 +32,8 @@
 ++  test-making-an-opinion
   ;:  weld
   %+  expect-eq
-    !>  ["Best Books"]
-    !>  (new-opinion:rank "Best" "Books" 10)
+    !>  "10 Best Books"
+    !>  (new-opinion ["Best" "Books" 10])
   ==
 ::
 :::: split-on:rank - Replace the all matches of a regular expression.

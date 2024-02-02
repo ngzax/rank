@@ -7,8 +7,8 @@
   :: The 10 Best Books
   ::
 +$  lim  @ud
-+$  adj  @t
-+$  sub  @t
++$  adj  tape
++$  sub  tape
 +$  opinion  [=adj =sub =lim]
 ::
 :::: A Ranking is a Ordered Set of [ordinal, value] tuples.
