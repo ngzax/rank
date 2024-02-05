@@ -3,19 +3,37 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An Opinion is an [Limit Adjective Subject].
-  :: The 10 Best Books
+:::: An Category is a tupe of [Limit Adjective Subject Period].
+  :: The 10 Best Novels of The Twentieth Century
   ::
-+$  lim  @ud
-+$  adj  tape
-+$  sub  tape
-+$  opinion  [=adj =sub =lim]
 ::
-:::: A Ranking is a Ordered Set of [ordinal, value] tuples.
++$  cate
+  $:  lim=@ud
+      adj=tape
+      sub=tape
+      per=tape
+  ==
+::
+:::: A Work is a [title, artist] tuple
+::
++$  work
+  $:  tit=tape
+      art=tape
+  ==
+::
+:::: A Rank is an [Ordinal, Work] tuple.
   ::
-+$  ord  @ud
-+$  val  @ud
-+$  ranking  [=opinion ranks=(set [=ord =val])]
++$  rank
+  $:  ord=@ud
+      wrk=work
+  ==
+::
+:::: A Ranking is a an Ordered Set of Ranks for a Category.
+  ::
++$  ranking
+  $:  cat=cate
+      rks=(set rank)
+  ==
 ::
 :::: Display State (mast)
   ::
@@ -27,8 +45,10 @@
   ::
 +$  state-0
   $:  %0
-    display-state
-    rankings=(map @p ranking)
+      display-state
+      categories=(set cate)
+      pals=(list @p)
+      rankings=(list ranking)
   ==
 ::
 +$  versioned-state

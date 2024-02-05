@@ -1,22 +1,19 @@
 /+  *test
 /+  rank
-/+  opinion=rank-opinion
+/+  category=rank-category
 |%
 ::
-:::: new-opinion - Make a new Opinion
-  ::
-++  test-making-an-opinion
+++  test-making-a-category
   ;:  weld
   %+  expect-eq
-    !>  "10 Best Books"
-    !>  (new-opinion:rank ["Best" "Books" 10])
+    !>  [lim=10 adj="Best" sub="Books" per="All-time"]
+    !>  (new:category [10 "Best" "Books" "All-time"])
+  ==
 ::
-:::: Display an Opinion as a tape
-  ::
-++  test-opinion-to-tape
+++  test-category-to-tape
   ;:  weld
   %+  expect-eq
-    !>  "10 Best Books"
-    !>  (to-tape:opinion ["Best" "Books" 10])
+    !>  "The 10 Best Books of All-time"
+    !>  (to-tape:category [10 "Best" "Books" "All-time"])
   ==
 --
