@@ -1,6 +1,7 @@
 /+  *test
 /+  rank
 /+  category=rank-category
+/+  work=rank-work
 |%
 ::
 ++  test-making-a-category

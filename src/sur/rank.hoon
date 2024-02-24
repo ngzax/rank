@@ -3,7 +3,7 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An Category is a tupe of [Limit Adjective Subject Period].
+:::: An Category (`cate`) is a tupe of [Limit Adjective Subject Period].
   :: The 10 Best Novels of The Twentieth Century
   ::
 ::
