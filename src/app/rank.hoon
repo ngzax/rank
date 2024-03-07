@@ -1,8 +1,15 @@
 /-  *rank
 ::
-:::: Library dependencies
+:::: External Library dependencies
   ::
-/+  default-agent, dbug, agentio, mast, verb
+/+  agentio, dbug, default-agent
+/+  mast
+/+  verb
+::
+/+  *rank
+/+  category=rank-category
+:: /~  libs  *  /lib/rank                            :: build all helper cores
+:: /~  mars  *  /mar
 ::
 /=  index       /app/rank/index
 /=  list        /app/rank/list
@@ -24,6 +31,8 @@
 =|  state-0
 =*  state  -
 ::
+=<  :: compose helper core into agent core
+::
 ::  agent core
 ::
 ^-  agent:gall
@@ -32,6 +41,7 @@
 +*  this  .
     def   ~(. (default-agent this %.n) bowl)
     io    ~(. agentio bowl)
+    main  ~(. +> bowl)
     :: a list of cells of url paths to gates (your sail components), are required for rig:mast.
     :: see the example sail component for more information.
     :: these define all of the different pages for your app.
@@ -61,17 +71,23 @@
   ?>  =(our.bowl src.bowl)
   =^  cards  state
     ?+  mark  (on-poke:def mark vase)
-      :: mast uses a combination of direct http and the channel system.
-      :: pokes will be received under these two marks:
+      ::
+      :: %rank-action          (handle-action !<(action vase))
+      ::
       :: %handle-http-request is for when the app is accessed via the url,
+      %handle-http-request  (handle-http-request !<([@ta inbound-request:eyre] vase))
+      ::
       :: %json is for the client event pokes that the mast script will send.
-      %handle-http-request
-        (handle-http-request !<([@ta inbound-request:eyre] vase))
-      %json
-        (handle-json-request !<(json vase))
+      %json                 (handle-json-request !<(json vase))
     ==
   [cards this]
   ::
+  :: ++  handle-action
+  ::   |=  act=action
+  ::   ^-  (quip card _state)
+  ::   ?-  -.act
+  ::     %new-category  (new-category:main act)
+  ::   ==
   ++  handle-http-request
     |=  [eyre-id=@ta req=inbound-request:eyre]
     ^-  (quip card _state)
@@ -191,4 +207,32 @@
   `this
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 ++  on-fail   on-fail:def
+--
+::
+::  helper core (main)
+::
+|_  =bowl:gall
+::
+++  new-category
+  |=  [limit=@ud adjective=tape subject=tape period=tape]
+  :: =/  =cat  (new:category [limit adjective subject period])
+  :: :_  %=  state
+  ::       categories  (~(put in categories) cat)
+  ::     ==
+    :: :~  (fact:io rank-update+!>(`upd`[%init gid club acl ppl]) ~[/local/all])
+    :: ==
+  [~ state]
+:: ++  new-book
+::   |=  [%new-book id=@ta title=@t rules=access]
+::   ?.  =(src.bowl our.bowl)
+::     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %new-book"  !!
+::   ?:  |(=(~.~ id) !((sane %ta) id))
+::     ~|("Invalid wiki ID" !!)
+::   ?:  (~(has by books) id)  ~|("Wiki '{(trip id)}' already exists!" !!)
+::   ?:  (is-space:string (trip title))  ~|("Wiki title must not be blank" !!)
+::   ?:  &(!public-read.rules public.edit.rules)
+::     ~|("Cannot enable public edits on private wiki." !!)
+::   =.  books  (~(put by books) [id [title ~ rules]])
+::   [~ state]
+::
 --

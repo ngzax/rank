@@ -19,7 +19,7 @@
       ;p
         ;+  ?:  =(color-two.app-state "red")
           ;/  "Click The Squares"
-        ;/  "conditionally rendered text!"
+        ;/  "Click the Left box."
       ==
       ;div.container
         ;*  %+  turn  color-one.app-state

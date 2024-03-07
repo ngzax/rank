@@ -4,7 +4,26 @@
 /-  *rank
 /+  regex
 /+  string
+::
 |%
+::
+:::: This is the primary entry function for interacting with
+  :: your rank's state.
+  ::
+:: ++  handle-action
+::   |=  =act
+::   ^-  (quip card _state)
+::   ::
+::   :: Switch on the head of the passed action structure...
+::   ?-  -.act
+::     ::
+::       %new-category
+::     =/  =cat  (new:category [lim.act adj.act sum.act per.act])
+::     :_  %=  state
+::           categories  (~(put in categories) cat)
+::         ==
+::     :: :~  (fact:io rank-update+!>(`upd`[%init gid club acl ppl]) ~[/local/all])
+::     ==
 ::
 :: same idea as partition:string but safer and maybe more efficient
 ::

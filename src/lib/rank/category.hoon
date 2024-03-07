@@ -1,8 +1,9 @@
 ::
 :::: Core for working with Categories
   ::
-/+  *rank
+/-  *rank
 /+  *string
+::
 |%
 ::
 :::: new
@@ -11,7 +12,7 @@
   ::
 ++  new
   |=  [limit=@ud adjective=tape subject=tape period=tape]
-  ^-  cate
+  ^-  cate:rank
   [lim=limit adj=adjective sub=subject per=period]
 ::
 :::: to-tape
@@ -19,7 +20,7 @@
   :: Represent a Category as a tape.
   ::
 ++  to-tape
-  |=  cat=cate
+  |=  cat=cate:rank
   ^-  tape
   (link " " (limo ["The" ~(rud at lim:cat) adj:cat sub:cat "of" per:cat ~]))
 --
