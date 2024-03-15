@@ -1,18 +1,18 @@
 /-  *rank
 ::
-|_  u=upd
-::
-++  grow
+|_  upd=update
+++  grab
   |%
   ::
-  ++  noun  u
+  ++  noun  update
   --
 ::
-++  grab
+++  grad  %noun
+::
+++  grow
   |%
   ::
   ++  noun  upd
   --
 ::
-++  grad  %noun
 --

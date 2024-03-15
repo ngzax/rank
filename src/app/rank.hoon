@@ -72,7 +72,8 @@
   =^  cards  state
     ?+  mark  (on-poke:def mark vase)
       ::
-      :: %rank-action          (handle-action !<(action vase))
+      :: Application-specific Actions
+      %rank-action          (handle-action !<(action vase))
       ::
       :: %handle-http-request is for when the app is accessed via the url,
       %handle-http-request  (handle-http-request !<([@ta inbound-request:eyre] vase))
@@ -82,12 +83,13 @@
     ==
   [cards this]
   ::
-  :: ++  handle-action
-  ::   |=  act=action
-  ::   ^-  (quip card _state)
-  ::   ?-  -.act
-  ::     %new-category  (new-category:main act)
-  ::   ==
+  ++  handle-action
+    |=  =action
+    ^-  (quip card _state)
+    ?-  -.action
+      %new-category  (new-category:main action)
+    ==
+::
   ++  handle-http-request
     |=  [eyre-id=@ta req=inbound-request:eyre]
     ^-  (quip card _state)
@@ -214,13 +216,8 @@
 |_  =bowl:gall
 ::
 ++  new-category
-  |=  [limit=@ud adjective=tape subject=tape period=tape]
-  :: =/  =cat  (new:category [limit adjective subject period])
-  :: :_  %=  state
-  ::       categories  (~(put in categories) cat)
-  ::     ==
-    :: :~  (fact:io rank-update+!>(`upd`[%init gid club acl ppl]) ~[/local/all])
-    :: ==
+  |=  [%new-category limit=@ud adjective=tape subject=tape period=tape]
+  =.  categories  (~(put in categories) (new:category [limit adjective subject period]))
   [~ state]
 :: ++  new-book
 ::   |=  [%new-book id=@ta title=@t rules=access]
