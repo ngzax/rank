@@ -3,7 +3,16 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An Category (`cate`) is a tupe of [Limit Adjective Subject Period].
+:::: An UrbID (`ubid`) is a [@p tape] tuple containing a Ship name and a unique string.
+  :: This is what we use to tag all our distributed structures so that they
+  ::   can be properly sourced and synced.
+  ::
++$  ubid
+  $:  ship=@p
+      uuid=tape
+  ==
+::
+:::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
   :: The 10 Best Novels of The Twentieth Century
   ::
 ::
