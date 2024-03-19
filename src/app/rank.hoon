@@ -8,7 +8,6 @@
 ::
 /+  *rank
 /+  category=rank-category
-/+  urbid=rank-urbid
 :: /~  libs  *  /lib/rank                            :: build all helper cores
 :: /~  mars  *  /mar
 ::
@@ -214,13 +213,12 @@
 ::
 ::  helper core (main)
 ::
-|_  =bowl:gall
+|_  bol=bowl:gall
 ::
 ++  new-category
   |=  [%new-category limit=@ud adjective=tape subject=tape period=tape]
-  =/  ubid  (new:urbid our.bowl)
-  ~&  >>  ubid
-  =.  categories  (~(put in categories) (new:category [limit adjective subject period]))
+  =.  categories  (~(put in categories) (new:category [bol limit adjective subject period]))
+  :: ~&  >>  eny.bol
   [~ state]
 :: ++  new-book
 ::   |=  [%new-book id=@ta title=@t rules=access]

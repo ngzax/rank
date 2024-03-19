@@ -1,13 +1,14 @@
 /+  *test
 /+  rank
 /+  urbid=rank-urbid
-|%
+::
+|_  =bowl:gall
 ::
 ++  test-making-an-urbid
   ;:  weld
   %+  expect-eq
-    !>  [ship=~zod uuid="hfgjhg"]
-    !>  (new:urbid ~zod)
+    !>  [ship=our.bowl uuid=eny.bowl]
+    !>  (new:urbid [our.bowl eny.bowl])
   ==
 ::
 :: ++  test-category-to-tape

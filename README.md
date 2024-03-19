@@ -8,9 +8,9 @@ Install instructions:
 - `cp -RL rank/dep/* {dev-ship}/rank/`
 - `cp -RL rank/src/* {dev-ship}/rank/`
 - `|commit %rank`
-- `-test /=rank=/tests ~`
 - `|install our %rank`
 - `:treaty|publish %rank`
+- `-test /=rank=/tests ~`
 
 
 ### Data Model

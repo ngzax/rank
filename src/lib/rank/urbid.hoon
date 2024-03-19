@@ -4,15 +4,18 @@
 /-  *rank
 ::
 |%
+:: |_  =bowl:gall
 ::
 :::: new
   ::
   :: Create a new unique UrbID
   ::
 ++  new
-  |=  [who=@p]
-  ^-  ubid:rank
-  :-  who  "hfgjhg"
+  |=  bol=bowl:gall
+  ^-  ubid
+  =/  uuid  (trim 10 (scow %uv eny.bol))
+  :: :-  who  p.uuid
+  :-  our.bol  p.uuid
 ::
 :::: to-tape
   ::
