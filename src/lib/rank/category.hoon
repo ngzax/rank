@@ -1,10 +1,11 @@
 ::
 :::: Core for working with Categories
   ::
-/-  *rank
+/-  rank
+/+  urbid=rank-urbid
 /+  *string
 ::
-|%
+|_  =bowl:gall
 ::
 :::: new
   ::
@@ -13,7 +14,8 @@
 ++  new
   |=  [limit=@ud adjective=tape subject=tape period=tape]
   ^-  cate:rank
-  [lim=limit adj=adjective sub=subject per=period]
+  =/  ubid  (new:urbid our.bowl)
+  [uid=ubid lim=limit adj=adjective sub=subject per=period]
 ::
 :::: to-tape
   ::

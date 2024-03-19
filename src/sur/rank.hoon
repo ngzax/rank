@@ -17,7 +17,8 @@
   ::
 ::
 +$  cate
-  $:  lim=@ud
+  $:  uid=ubid
+      lim=@ud
       adj=tape
       sub=tape
       per=tape

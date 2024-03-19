@@ -1,12 +1,13 @@
 /+  *test
 /+  rank
 /+  category=rank-category
-|%
+::
+|_  =bowl:gall
 ::
 ++  test-making-a-category
   ;:  weld
   %+  expect-eq
-    !>  [lim=10 adj="Best" sub="Books" per="All-time"]
+    !>  [uid=[ship=~zod uuid="hfgjhg"] lim=10 adj="Best" sub="Books" per="All-time"]
     !>  (new:category [10 "Best" "Books" "All-time"])
   ==
 ::
@@ -14,6 +15,9 @@
   ;:  weld
   %+  expect-eq
     !>  "The 10 Best Books of All-time"
-    !>  (to-tape:category [10 "Best" "Books" "All-time"])
+    !>
+      ^-  tape
+      =/  cat  (new:category [10 "Best" "Books" "All-time"])
+      (to-tape:category cat)
   ==
 --
