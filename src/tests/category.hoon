@@ -1,23 +1,35 @@
+::
+:::: Unit test Core for Category
+  ::
 /+  *test
 /+  rank
 /+  category=rank-category
 ::
-|_  =bowl:gall
+:::: Provide a faked bowl for testing
+  ::
+:: |_  fake-bowl=bowl:gall
+|%
 ::
 ++  test-making-a-category
   ;:  weld
   %+  expect-eq
-    !>  [uid=[ship=~zod uuid="hfgjhg"] lim=10 adj="Best" sub="Books" per="All-time"]
-    !>  (new:category [bowl 10 "Best" "Books" "All-time"])
+    !>  [uid=[ship=~zod uuid="0v0"] lim=10 adj="Best" sub="Books" per="All-time"]
+    !>
+      ^-  cate:rank
+      :: =.  fake-bowl  [our=~zod src=~zod dap=%ranl sap=/gall/dojo]
+      (new:category [10 "Best" "Books" "All-time"])
+      :: (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
   ==
 ::
 ++  test-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [ship=~zod uuid="hfgjhg"]
+    !>  [ship=~zod uuid="0v0"]
     !>
       ^-  ubid:rank
-      =/  cat  (new:category [bowl 10 "Best" "Books" "All-time"])
+      :: =.  fake-bowl  [our=~zod src=~zod dap=%ranl sap=/gall/dojo]
+      =/  cat  (new:category [10 "Best" "Books" "All-time"])
+      :: =/  cat  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
       (get-urbid:category cat)
   ==
 ::
@@ -27,7 +39,9 @@
     !>  "The 10 Best Books of All-time"
     !>
       ^-  tape
-      =/  cat  (new:category [bowl 10 "Best" "Books" "All-time"])
+      :: =.  fake-bowl  [our=~zod src=~zod dap=%ranl sap=/gall/dojo]
+      =/  cat  (new:category [10 "Best" "Books" "All-time"])
+      :: =/  cat  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
       (to-tape:category cat)
   ==
 --

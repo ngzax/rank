@@ -1,22 +1,22 @@
 ::
-:::: Core for working with Categories
+:::: a Door for working with Categories
   ::
 /-  rank
 /+  urbid=rank-urbid
 /+  *string
 ::
-|%
-:: |_  =bowl:gall
+:::: Needs a bowl as its sample
+  ::
+|_  bowl=bowl:gall
 ::
 :::: new
   ::
   :: Add a new Category to the state
   ::
 ++  new
-  |=  [bol=bowl:gall limit=@ud adjective=tape subject=tape period=tape]
+  |=  [limit=@ud adjective=tape subject=tape period=tape]
   ^-  cate:rank
-  =/  ubid  (new:urbid bol)
-  ~&  >>  eny.bol
+  =/  ubid  ~(new urbid bowl)
   [uid=ubid lim=limit adj=adjective sub=subject per=period]
 ::
 :::: get-uid

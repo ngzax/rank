@@ -1,28 +1,28 @@
 ::
-:::: Core for working with UrbIDs
+:::: Door for working with UrbIDs
   ::
-/-  *rank
+/-  rank
+/+  *string
 ::
-|%
-:: |_  =bowl:gall
+:::: Needs a bowl as its sample
+  ::
+|_  bowl=bowl:gall
 ::
 :::: new
   ::
   :: Create a new unique UrbID
   ::
 ++  new
-  |=  bol=bowl:gall
-  ^-  ubid
-  =/  uuid  (trim 10 (scow %uv eny.bol))
-  :: :-  who  p.uuid
-  :-  our.bol  p.uuid
+  ^-  ubid:rank
+  =/  uuid  (trim 10 (scow %uv eny.bowl))
+  :-  our.bowl  p.uuid
 ::
 :::: to-tape
   ::
-  :: Represent a Category as a tape.
+  :: Represent an UrbID as a tape.
   ::
-:: ++  to-tape
-::   |=  cat=cate:rank
-::   ^-  tape
-::   (link " " (limo ["The" ~(rud at lim:cat) adj:cat sub:cat "of" per:cat ~]))
+++  to-tape
+  |=  uid=ubid:rank
+  ^-  tape
+  (link " " (limo [uuid:uid "on" (scow %p ship:uid) ~]))
 --

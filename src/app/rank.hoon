@@ -211,15 +211,15 @@
 ++  on-fail   on-fail:def
 --
 ::
-::  helper core (main)
+::  Helper door (main)
 ::
-|_  bol=bowl:gall
+|_  bowl=bowl:gall
 ::
 ++  new-category
   |=  [%new-category limit=@ud adjective=tape subject=tape period=tape]
-  =.  categories  (~(put in categories) (new:category [bol limit adjective subject period]))
-  :: ~&  >>  eny.bol
+  =.  categories  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
   [~ state]
+::
 :: ++  new-book
 ::   |=  [%new-book id=@ta title=@t rules=access]
 ::   ?.  =(src.bowl our.bowl)
