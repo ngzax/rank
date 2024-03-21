@@ -7,7 +7,7 @@
 /+  verb
 ::
 /+  *rank
-/+  category=rank-category
+/+  *rank-category
 :: /~  libs  *  /lib/rank                            :: build all helper cores
 :: /~  mars  *  /mar
 ::

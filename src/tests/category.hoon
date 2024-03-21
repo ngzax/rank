@@ -3,7 +3,7 @@
   ::
 /+  *test
 /+  rank
-/+  category=rank-category
+/+  *rank-category
 ::
 :::: Provide a faked bowl for testing
   ::

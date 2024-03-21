@@ -3,7 +3,7 @@
   ::
 /+  *test
 /+  rank
-/+  urbid=rank-urbid
+/+  *rank-urbid
 ::
 :::: Provide a faked bowl for testing
   ::
