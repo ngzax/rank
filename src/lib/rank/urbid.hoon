@@ -27,6 +27,6 @@
   ++  to-tape
     |=  uid=ubid:rank
     ^-  tape
-    (link " " (limo [uuid:uid "on" (scow %p ship:uid) ~]))
+    (link "" (limo [(scow %p ship:uid) ":" uuid:uid ~]))
   --
 --
