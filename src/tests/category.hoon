@@ -12,13 +12,10 @@
 ++  test-making-a-category
   ;:  weld
   %+  expect-eq
-    !>  [uid=[ship=~zod uuid="0v1c4.jbl0"] lim=10 adj="Best" sub="Books" per="All-time"]
+    !>  [uid=[ship=~zod uuid="jbl03.q1tnj"] lim=10 adj="Best" sub="Books" per="All-time"]
     !>
       ^-  cate:rank
       =:  our.fake-bowl  ~zod
-          :: src.fake-bowl  ~zod
-          :: dap.fake-bowl  %rank
-          :: sap.fake-bowl  /gall/dojo
           eny.fake-bowl  0v1c4.jbl03.q1tnj.d89mc.p5s54.v076j.anu8s.5a12n.nb165.ln285.a7o3u.r9pe3.mpufp.3l9h0.mpugk.ahg2p.olnmm.5spkq.rsoa2.vou6m.e0kvv
       ==
       (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
@@ -27,12 +24,13 @@
 ++  test-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [ship=~zod uuid="0v0"]
+    !>  [ship=~zod uuid="62qg2.p57rt"]
     !>
       ^-  ubid:rank
-      :: =.  fake-bowl  [our=~zod src=~zod dap=%ranl sap=/gall/dojo]
-      =/  cat  (new:category [10 "Best" "Books" "All-time"])
-      :: =/  cat  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  cat  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
       (get-urbid:category cat)
   ==
 ::
@@ -42,9 +40,7 @@
     !>  "The 10 Best Books of All-time"
     !>
       ^-  tape
-      :: =.  fake-bowl  [our=~zod src=~zod dap=%ranl sap=/gall/dojo]
       =/  cat  (new:category [10 "Best" "Books" "All-time"])
-      :: =/  cat  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
       (to-tape:category cat)
   ==
 --

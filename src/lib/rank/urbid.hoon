@@ -17,8 +17,8 @@
   ::
   ++  new
     ^-  ubid:rank
-    =/  uuid  (trim 10 (scow %uv eny.bowl))
-    :-  our.bowl  p.uuid
+    =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
+    :-  our.bowl  uuid
 ::
 :::: to-tape
   ::

@@ -12,14 +12,19 @@
 ++  test-making-an-urbid
   ;:  weld
   %+  expect-eq
-    !>  [ship=~zod uuid="0v0"]
-    !>  new:urbid
+    !>  [ship=~zod uuid="62qg2.p57rt"]
+    !>
+      ^-  ubid:rank
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      ~(new urbid fake-bowl)
   ==
 ::
 ++  test-urbid-to-tape
   ;:  weld
   %+  expect-eq
-    !>  "~zod:0v1c4.jbl0"
+    !>  "~zod:jbl03.q1tnj"
     !>
       ^-  tape
       =:  our.fake-bowl  ~zod
