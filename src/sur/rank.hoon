@@ -3,13 +3,13 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An UrbID (`ubid`) is a [@p tape] tuple containing a Ship name and a unique string.
+:::: An UrbID (`urid`) is a [@p tape] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
   ::
-+$  ubid
-  $:  ship=@p
-      uuid=tape
++$  urid
+  $:  sh=@p
+      uu=tape
   ==
 ::
 :::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
@@ -17,32 +17,32 @@
   ::
 ::
 +$  cate
-  $:  uid=ubid
-      lim=@ud
-      adj=tape
-      sub=tape
-      per=tape
+  $:  id=urid
+      li=@ud
+      ad=tape
+      su=tape
+      pe=tape
   ==
 ::
 :::: A Work is a [title, artist] tuple
 ::
 +$  work
-  $:  tit=tape
-      art=tape
+  $:  ti=tape
+      ar=tape
   ==
 ::
 :::: A Rank is an [Ordinal, Work] tuple.
   ::
 +$  rank
-  $:  ord=@ud
-      wrk=work
+  $:  od=@ud
+      wr=work
   ==
 ::
 :::: A Ranking is a an Ordered Set of Ranks for a Category.
   ::
 +$  ranking
-  $:  cat=cate
-      rks=(set rank)
+  $:  ca=cate
+      rk=(set rank)
   ==
 ::
 :::: Display State (mast)
@@ -69,18 +69,7 @@
   ::
 +$  action
   $%
+    :: [%find-category urbid=urid]
     [%new-category limit=@ud adjective=tape subject=tape period=tape]
-      :: [%del-book id=@ta]
-      :: [%mod-book-name id=@ta title=@t]
-      :: [%mod-rule-read id=@ta public-read=?]
-      :: [%mod-rule-edit id=@ta =rule-edit]
-      :: [%new-page book-id=@ta =path title=@t content=wain]
-      :: [%del-page book-id=@ta =path]
-      :: [%mod-page book-id=@ta =path title=(unit @t) content=(unit wain)]
-      :: [%imp-file book-id=@ta files=(map @t wain) =title-source del-missing=?]
-      :: [%knight book-id=@ta =ship]
-      :: [%demote book-id=@ta =ship]
-      :: [%banish book-id=@ta =ship]
-      :: [%pardon book-id=@ta =ship]
   ==
 --

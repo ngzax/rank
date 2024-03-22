@@ -12,7 +12,7 @@
 ++  test-making-a-category
   ;:  weld
   %+  expect-eq
-    !>  [uid=[ship=~zod uuid="jbl03.q1tnj"] lim=10 adj="Best" sub="Books" per="All-time"]
+    !>  [id=[sh=~zod uu="jbl03.q1tnj"] li=10 ad="Best" su="Books" pe="All-time"]
     !>
       ^-  cate:rank
       =:  our.fake-bowl  ~zod
@@ -24,9 +24,9 @@
 ++  test-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [ship=~zod uuid="62qg2.p57rt"]
+    !>  [sh=~zod uu="62qg2.p57rt"]
     !>
-      ^-  ubid:rank
+      ^-  urid:rank
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
       ==

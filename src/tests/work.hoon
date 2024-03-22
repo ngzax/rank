@@ -5,8 +5,18 @@
 ++  test-making-a-work
   ;:  weld
   %+  expect-eq
-    !>  [tit="The Possessed" art="Fyodor Dostoyevsky"]
+    !>  [ti="The Possessed" ar="Fyodor Dostoyevsky"]
     !>  (new:work ["The Possessed" "Fyodor Dostoyevsky"])
+  ==
+::
+++  test-work-to-tape
+  ;:  weld
+  %+  expect-eq
+    !>  "'The Possessed' by Fyodor Dostoyevsky"
+    !>
+      ^-  tape
+      =/  w  (new:work ["The Possessed" "Fyodor Dostoyevsky"])
+      (to-tape:work w)
   ==
 ::
 ++  test-getting-a-works-artist

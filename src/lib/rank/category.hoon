@@ -1,7 +1,7 @@
 ::
 :::: a Door for working with Categories
   ::
-/-  rank
+/-  *rank
 /+  *rank-urbid
 /+  *string
 ::
@@ -18,26 +18,26 @@
   ::
   ++  new
     |=  [limit=@ud adjective=tape subject=tape period=tape]
-    ^-  cate:rank
-    =/  ubid  ~(new urbid bowl)
-    [uid=ubid lim=limit adj=adjective sub=subject per=period]
+    ^-  cate
+    =/  urid  ~(new urbid bowl)
+    [id=urid li=limit ad=adjective su=subject pe=period]
 ::
 :::: get-uid
   ::
   :: Answers the Category's unique identifier
   ::
   ++  get-urbid
-    |=  cat=cate:rank
-    ^-  ubid:rank
-    uid.cat
+    |=  c=cate
+    ^-  urid:rank
+    id.c
 ::
 :::: to-tape
   ::
   :: Represent a Category as a tape.
   ::
   ++  to-tape
-    |=  cat=cate:rank
+    |=  c=cate
     ^-  tape
-    (link " " (limo ["The" ~(rud at lim:cat) adj:cat sub:cat "of" per:cat ~]))
+    (link " " (limo ["The" ~(rud at li:c) ad:c su:c "of" pe:c ~]))
   --
 --

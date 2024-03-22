@@ -12,28 +12,30 @@
 ++  new
   |=  [t=tape a=tape]
   ^-  work
-  [tit=t art=a]
+  [ti=t ar=a]
 ::
 :::: Answer the work's Artist
   ::
 ++  get-artist
   |=  w=work
   ^-  tape
-  art.w
+  ar.w
 ::
 :::: Answer the work's Title
   ::
 ++  get-title
   |=  w=work
   ^-  tape
-  tit.w
+  ti.w
 ::
 :::: to-tape
   ::
-  :: Represent a Category as a tape.
+  :: Represent a Work as a tape.
+  ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
   ::
 ++  to-tape
-  |=  cat=cate
+  |=  w=work
   ^-  tape
-  (link " " (limo ["The" ~(rud at lim:cat) adj:cat sub:cat "of" per:cat ~]))
+  =/  qt  (link "" (limo "'" ti.w "'" ~))
+  (link " " (limo [qt "by" ar.w ~]))
 --

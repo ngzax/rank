@@ -16,17 +16,18 @@
   :: Create a new unique UrbID
   ::
   ++  new
-    ^-  ubid:rank
+    ^-  urid:rank
     =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
     :-  our.bowl  uuid
 ::
 :::: to-tape
   ::
   :: Represent an UrbID as a tape.
+  ::   e.g. "~zod:jbl03.q1tnj"
   ::
   ++  to-tape
-    |=  uid=ubid:rank
+    |=  urid=urid:rank
     ^-  tape
-    (link "" (limo [(scow %p ship:uid) ":" uuid:uid ~]))
+    (link "" (limo [(scow %p sh:urid) ":" uu:urid ~]))
   --
 --

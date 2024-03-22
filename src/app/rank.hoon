@@ -87,7 +87,8 @@
     |=  =action
     ^-  (quip card _state)
     ?-  -.action
-      %new-category  (new-category:main action)
+      :: %find-category  (find-category:main +.action)
+      %new-category   (new-category:main action)
     ==
 ::
   ++  handle-http-request
@@ -215,22 +216,15 @@
 ::
 |_  bowl=bowl:gall
 ::
+:: ++  find-category
+::   |=  [key=tape]
+::   :: =.  categories  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
+::   [~ state]
+::
+::
 ++  new-category
   |=  [%new-category limit=@ud adjective=tape subject=tape period=tape]
   =.  categories  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
   [~ state]
-::
-:: ++  new-book
-::   |=  [%new-book id=@ta title=@t rules=access]
-::   ?.  =(src.bowl our.bowl)
-::     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %new-book"  !!
-::   ?:  |(=(~.~ id) !((sane %ta) id))
-::     ~|("Invalid wiki ID" !!)
-::   ?:  (~(has by books) id)  ~|("Wiki '{(trip id)}' already exists!" !!)
-::   ?:  (is-space:string (trip title))  ~|("Wiki title must not be blank" !!)
-::   ?:  &(!public-read.rules public.edit.rules)
-::     ~|("Cannot enable public edits on private wiki." !!)
-::   =.  books  (~(put by books) [id [title ~ rules]])
-::   [~ state]
 ::
 --
