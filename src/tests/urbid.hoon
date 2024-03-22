@@ -36,5 +36,44 @@
       =/  urid  ~(new urbid fake-bowl)
       (to-tape:urbid urid)
   ==
+::
+++  test-comparing-urbids
+  ;:  weld
+  %+  expect-eq
+    !>  %.y
+    !>
+      ^-  @
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  u1  ~(new urbid fake-bowl)
+      =/  u2  ~(new urbid fake-bowl)
+      (same:urbid u1 u2)
+  ::
+  :: 2 UrbitIDs with different values of `uu` are not the same...
+  %+  expect-eq
+    !>  %.n
+    !>
+      ^-  @
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  u1  ~(new urbid fake-bowl)
+      =/  u2  new:urbid
+      (same:urbid u1 u2)
+  ::
+  :: This shows that kequality is only determined by `uu` and ignores the ship.
+  %+  expect-eq
+    !>  %.y
+    !>
+      ^-  @
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  u1  ~(new urbid fake-bowl)
+      =.  our.fake-bowl  ~nec
+      =/  u2  ~(new urbid fake-bowl)
+      (same:urbid u1 u2)
+  ==
 --
 

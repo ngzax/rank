@@ -88,7 +88,7 @@
     ^-  (quip card _state)
     ?-  -.action
       :: %find-category  (find-category:main +.action)
-      %new-category   (new-category:main action)
+      %new-category   (new-category:main +.action)
     ==
 ::
   ++  handle-http-request
@@ -223,7 +223,7 @@
 ::
 ::
 ++  new-category
-  |=  [%new-category limit=@ud adjective=tape subject=tape period=tape]
+  |=  [limit=@ud adjective=tape subject=tape period=tape]
   =.  categories  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
   [~ state]
 ::

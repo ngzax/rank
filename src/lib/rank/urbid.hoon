@@ -20,6 +20,15 @@
     =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
     :-  our.bowl  uuid
 ::
+:::: same
+  ::
+  :: Compare two UrbIDs to see if they are the same.
+  ::
+  ++  same
+    |=  [u1=urid:rank u2=urid:rank]
+    ^-  @
+    =(uu:u1 uu:u2)
+::
 :::: to-tape
   ::
   :: Represent an UrbID as a tape.
