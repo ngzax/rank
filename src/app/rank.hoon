@@ -218,7 +218,7 @@
 ::
 ++  add-category
   |=  [limit=@ud adjective=tape subject=tape period=tape]
-  =.  categories  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
+  =.  categories  (snoc categories (~(new category bowl) [limit adjective subject period]))
   [~ state]
 ::
 ++  purge-category

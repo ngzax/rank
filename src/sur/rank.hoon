@@ -56,7 +56,7 @@
 +$  state-0
   $:  %0
       display-state
-      categories=(set cate)
+      categories=(list cate)
       pals=(list @p)
       rankings=(list ranking)
   ==
