@@ -69,7 +69,7 @@
   ::
 +$  action
   $%
-    :: [%find-category urbid=urid]
-    [%new-category limit=@ud adjective=tape subject=tape period=tape]
+    [%add-category limit=@ud adjective=tape subject=tape period=tape]
+    [%purge-category key=tape]
   ==
 --
