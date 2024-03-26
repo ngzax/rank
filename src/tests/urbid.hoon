@@ -21,6 +21,18 @@
       ~(new urbid fake-bowl)
   ==
 ::
+++  test-getting-an-urbids-key
+  ;:  weld
+  %+  expect-eq
+    !>  "62qg2.p57rt"
+    !>
+      ^-  tape
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      (get-key:urbid ~(new urbid fake-bowl))
+  ==
+::
 ++  test-urbid-to-tape
   ;:  weld
   %+  expect-eq

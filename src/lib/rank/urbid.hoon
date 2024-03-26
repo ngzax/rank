@@ -20,6 +20,15 @@
     =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
     :-  our.bowl  uuid
 ::
+:::: get-key
+  ::
+  :: Answer the unique key string of an UrbID
+  ::
+  ++  get-key
+    |=  urid=urid:rank
+    ^-  tape
+    uu.urid
+::
 :::: same
   ::
   :: Compare two UrbIDs to see if they are the same.

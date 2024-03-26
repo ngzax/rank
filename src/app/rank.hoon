@@ -88,7 +88,7 @@
     ^-  (quip card _state)
     ?-  -.action
       %add-category    (add-category:main +.action)
-      %purge-category  (purge-category:main +.action)
+      %purge-category  %-  purge-category:main  +.action
     ==
 ::
   ++  handle-http-request
@@ -223,7 +223,17 @@
 ::
 ++  purge-category
   |=  [key=tape]
-  :: =/  cat  (~(put in categories) (~(new category bowl) [limit adjective subject period]))
+  =/  fil  |=(c=cate =(key (get-key:urbid (get-urbid:category c))))
+  =/  cat  (skim categories fil)
+  ?~  cat
+    :: Category was not found, just return...
+    [~ state]
+  =/  idx  (find ~[(head cat)] categories)
+  =.  categories  (oust [(need idx) 1] categories)
   [~ state]
 ::
+  :: ~&  >  our.bowl
+  :: ~&  >  key
+  :: ~&  >  cat
+  :: ~&  >  idx
 --
