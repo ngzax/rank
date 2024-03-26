@@ -29,6 +29,19 @@
     ^-  tape
     uu.urid
 ::
+:::: get-key-restricted
+  ::
+  :: Answer the unique key string of an UrbID, RESTRICTED
+  :: If this UrbitID was not created on the same ship as
+  ::   the requester, return ~.
+  ::
+  ++  get-key-restricted
+    |=  urid=urid:rank
+    ^-  tape
+    ?.  =(sh.urid our.bowl)
+      ~
+    uu.urid
+::
 :::: same
   ::
   :: Compare two UrbIDs to see if they are the same.

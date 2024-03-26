@@ -223,7 +223,7 @@
 ::
 ++  purge-category
   |=  [key=tape]
-  =/  fil  |=(c=cate =(key (get-key:urbid (get-urbid:category c))))
+  =/  fil  |=(c=cate =(key (~(get-key-restricted urbid bowl) (get-urbid:category c))))
   =/  cat  (skim categories fil)
   ?~  cat
     :: Category was not found, just return...
