@@ -12,6 +12,17 @@
       uu=tape
   ==
 ::
+:::: A Timestamp (`tstp`) is a [@da @da @da] containing three times representing
+  ::   the CReation, Last UPdate, and DEletion times for an Entity.
+  ::
+  ::   NOTE: this is not called `time` to avoid conflicting with the urbit stdlib.
+  ::
++$  tstp
+ $:  cr=time
+      up=(unit time)
+      de=(unit time)
+  ==
+::
 :::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
   :: The 10 Best Novels of The Twentieth Century
   ::
