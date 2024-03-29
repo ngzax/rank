@@ -33,20 +33,6 @@
       (get-key:urbid ~(new urbid fake-bowl))
   ==
 ::
-++  test-getting-an-urbids-key-restricted
-  ;:  weld
-  %+  expect-eq
-    !>  ~
-    !>
-      ^-  tape
-      =:  our.fake-bowl  ~zod
-          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6
-      ==
-      =/  urid  ~(new urbid fake-bowl)
-      =.  our.fake-bowl  ~nec
-      (~(get-key-restricted urbid fake-bowl) urid)
-  ==
-::
 ++  test-urbid-to-tape
   ;:  weld
   %+  expect-eq

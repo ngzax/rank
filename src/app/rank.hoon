@@ -223,7 +223,9 @@
 ::
 ++  purge-category
   |=  [key=tape]
-  =/  fil  |=(c=cate =(key (~(get-key-restricted urbid bowl) (get-urbid:category c))))
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
   =/  cat  (skim categories fil)
   ?~  cat
     :: Category was not found, just return...
