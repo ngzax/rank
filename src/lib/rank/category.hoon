@@ -24,6 +24,17 @@
     =/  tstp  ~(new timestamp bowl)
     [id=urid li=limit ad=adjective su=subject pe=period ts=tstp]
 ::
+:::: del
+  ::
+  :: Logically (soft) delete a new Category from the state.
+  ::   We can't hard delete because someone might still be referencing it.
+  ::
+  ++  del
+    |=  c=cate
+    ^-  cate
+    =.  ts.c  (~(del timestamp bowl) ts.c)
+    c
+::
 :::: get-timestamp
   ::
   :: Answers the Category's Timestamp structure.

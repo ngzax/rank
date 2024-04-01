@@ -87,7 +87,9 @@
     |=  =action
     ^-  (quip card _state)
     ?-  -.action
-      %add-category    (add-category:main +.action)
+      %add-category     %-  add-category:main     +.action
+      %remove-category  %-  remove-category:main  +.action
+      :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
       %purge-category  %-  purge-category:main  +.action
     ==
 ::
@@ -221,6 +223,21 @@
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-category"  !!
   =.  categories  (snoc categories (~(new category bowl) [limit adjective subject period]))
+  [~ state]
+::
+++  remove-category
+  |=  key=tape
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  cat  (skim categories fil)
+  ?~  cat
+    :: Category was not found, just return...
+    [~ state]
+  =/  idx  (find ~[(head cat)] categories)
+  =/  c  (snag (need idx) categories)
+  =.  c  (~(del category bowl) c)
+  =.  categories  (snap categories (need idx) c)
   [~ state]
 ::
 ++  purge-category

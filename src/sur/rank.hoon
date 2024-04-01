@@ -82,6 +82,12 @@
 +$  action
   $%
     [%add-category limit=@ud adjective=tape subject=tape period=tape]
+    [%remove-category key=tape]
+    :: :-  %remove-category
+    ::   $=  key  tape
+::
+:::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
+  ::
     [%purge-category key=tape]
   ==
 --
