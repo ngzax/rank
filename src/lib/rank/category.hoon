@@ -2,6 +2,7 @@
 :::: a Door for working with Categories
   ::
 /-  *rank
+/+  *rank-timestamp
 /+  *rank-urbid
 /+  *string
 ::
@@ -20,7 +21,17 @@
     |=  [limit=@ud adjective=tape subject=tape period=tape]
     ^-  cate
     =/  urid  ~(new urbid bowl)
-    [id=urid li=limit ad=adjective su=subject pe=period]
+    =/  tstp  ~(new timestamp bowl)
+    [id=urid li=limit ad=adjective su=subject pe=period ts=tstp]
+::
+:::: get-timestamp
+  ::
+  :: Answers the Category's Timestamp structure.
+  ::
+  ++  get-timestamp
+    |=  c=cate
+    ^-  tstp:rank
+    ts.c
 ::
 :::: get-uid
   ::

@@ -19,8 +19,8 @@
   ::
 +$  tstp
  $:  cr=time
-      up=(unit time)
-      de=(unit time)
+     up=(unit time)
+     de=(unit time)
   ==
 ::
 :::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
@@ -33,6 +33,7 @@
       ad=tape
       su=tape
       pe=tape
+      ts=tstp
   ==
 ::
 :::: A Work is a [title, artist] tuple

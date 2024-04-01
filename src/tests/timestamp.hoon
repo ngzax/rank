@@ -3,7 +3,7 @@
   ::
 /+  *test
 /+  rank
-/+  *rank-tstp
+/+  *rank-timestamp
 ::
 :::: Provide a faked bowl for testing
   ::
@@ -11,17 +11,17 @@
 ::
 :::: By default, a time takes `now` from the bowl as it's "creation" time
   ::   and initially sets 'updated' and 'deleted' to ~.
-++  test-tstp-creation
+++  test-timestamp-creation
   ;:  weld
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=~]
     !>
       ^-  tstp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
-      ~(new tstp fake-bowl)
+      ~(new timestamp fake-bowl)
   ==
 
-++  test-tstp-update
+++  test-timestamp-update
   ;:  weld
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=[~ ~2024.3.29..17.50.15..6adf] de=~]
@@ -29,13 +29,13 @@
       ^-  tstp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       :: Initial creation...
-      =/  t  ~(new tstp fake-bowl)
+      =/  t  ~(new timestamp fake-bowl)
       :: Now some time later...
       =.  now.fake-bowl  ~2024.3.29..17.50.15..6adf
-      (~(upd tstp fake-bowl) t)
+      (~(upd timestamp fake-bowl) t)
   ==
 ::
-++  test-tstp-delete-no-update
+++  test-timestamp-delete-no-update
   ;:  weld
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=[~ ~2024.3.29..17.50.15..6adf]]
@@ -43,9 +43,9 @@
       ^-  tstp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       :: Initial creation...
-      =/  t  ~(new tstp fake-bowl)
+      =/  t  ~(new timestamp fake-bowl)
       :: Now some time later...
       =.  now.fake-bowl  ~2024.3.29..17.50.15..6adf
-      (~(del tstp fake-bowl) t)
+      (~(del timestamp fake-bowl) t)
   ==
 --

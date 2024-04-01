@@ -5,7 +5,7 @@
 /+  *string
 ::
 |%
-++  tstp
+++  timestamp
 ::
   :::: Needs a bowl as its sample
     ::
