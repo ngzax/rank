@@ -2,7 +2,7 @@
 /+  rank
 /+  work=rank-work
 |%
-++  test-making-a-work
+++  test-work-creation
   ;:  weld
   %+  expect-eq
     !>  [ti="The Possessed" ar="Fyodor Dostoyevsky"]
@@ -19,14 +19,14 @@
       (to-tape:work w)
   ==
 ::
-++  test-getting-a-works-artist
+++  test-work-getting-the-artist
   ;:  weld
   %+  expect-eq
     !>  "Fyodor Dostoyevsky"
     !>  (get-artist:work (new:work ["The Possessed" "Fyodor Dostoyevsky"]))
   ==
 ::
-++  test-getting-a-works-title
+++  test-work-getting-the-title
   ;:  weld
   %+  expect-eq
     !>  "The Possessed"

@@ -9,7 +9,7 @@
   ::
 |_  fake-bowl=bowl:gall
 ::
-++  test-making-an-urbid
+++  test-urbid-creation
   ;:  weld
   %+  expect-eq
     !>  [sh=~zod uu="62qg2.p57rt"]
@@ -21,7 +21,7 @@
       ~(new urbid fake-bowl)
   ==
 ::
-++  test-getting-an-urbids-key
+++  test-urbid-getting-the-key
   ;:  weld
   %+  expect-eq
     !>  "62qg2.p57rt"
@@ -49,7 +49,7 @@
       (to-tape:urbid urid)
   ==
 ::
-++  test-comparing-urbids
+++  test-urbid-comparing
   ;:  weld
   %+  expect-eq
     !>  %.y
