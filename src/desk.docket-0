@@ -1,0 +1,10 @@
+:~
+  title+'rank'
+  info+'Create and share your faves with friends.'
+  color+0xf9.f5ec
+  version+[0 0 1]
+  website+'https://www.darlur.net'
+  license+'BSD 3-Clause License'
+  base+'rank'
+  site+/rank
+==
