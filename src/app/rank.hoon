@@ -8,6 +8,7 @@
 ::
 /+  *rank
 /+  *rank-category
+/+  *rank-subject
 :: /~  libs  *  /lib/rank                            :: build all helper cores
 :: /~  mars  *  /mar
 ::
@@ -89,6 +90,8 @@
     ?-  -.action
       %add-category     %-  add-category:main     +.action
       %remove-category  %-  remove-category:main  +.action
+      ::
+      %add-subject  %-  add-subject:main  +.action
       :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
       %purge-category  %-  purge-category:main  +.action
     ==
@@ -251,6 +254,13 @@
     [~ state]
   =/  idx  (find ~[(head cat)] categories)
   =.  categories  (oust [(need idx) 1] categories)
+  [~ state]
+::
+++  add-subject
+  |=  [title=tape artist=tape]
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-subject"  !!
+  =.  subjects  (snoc subjects (~(new subject bowl) [title artist]))
   [~ state]
 ::
   :: ~&  >  our.bowl

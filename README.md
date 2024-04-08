@@ -15,9 +15,9 @@ Install instructions:
 
 ### Data Model
 
-#### category = [=id =li =ad =su =pe =ts]
+#### category, aka `cate` = [=id =li =ad =su =pe =ts]
 
-#### categories (list category)
+#### categories (list cate)
 
 | Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -26,9 +26,9 @@ Install instructions:
 | ex1 | [sh=~zod uu="4uc3.2llor."] | 5 | Best | Books | All-time | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
 | ex2 | [sh=~zod uu="okett.oca0t"] | 10 | Best | American Novels | 20th Century |[cr=~2024.4.1..21.11.16..055e up=~ de=[~ ~2024.4.1..22.08.03..c86e] |
 
-#### work = [=id =ti =ar =ts]
+#### subject, aka `subj` = [=id =ti =ar =ts]
 
-#### works (list work)
+#### subjects (list subj)
 
 | Meta | Urbit Id | Title | Artist | Timestamp |
 | --- | --- | --- | --- | --- |
