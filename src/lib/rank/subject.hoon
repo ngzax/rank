@@ -1,34 +1,30 @@
-::
-:::: a Door for working with Subjects
-  ::
 /-  *rank
 /+  *rank-timestamp
 /+  *rank-urbid
 /+  *string
 ::
 |%
+::
+:::: a Door for working with Subjects
+  ::
 ++  subject
-::
-:::: Needs a bowl as its sample
   ::
+  :::: Needs a bowl as its sample
+    ::
   |_  bowl=bowl:gall
-::
-:::: new
   ::
-  :: Add a new Subject to the state
-  ::
+  :::: Add a new Subject to the state
+    ::
   ++  new
     |=  [title=tape artist=tape]
     ^-  subj
     =/  urid  ~(new urbid bowl)
     =/  tstp  ~(new timestamp bowl)
     [id=urid ti=title ar=artist ts=tstp]
-::
-:::: del
   ::
-  :: Logically (soft) delete a new Subject from the state.
-  ::   We can't hard delete because someone might still be referencing it.
-  ::
+  :::: Logically (soft) delete a new Subject from the state.
+    ::   We can't hard delete because someone might still be referencing it.
+    ::
   ++  del
     |=  sub=subj
     ^-  subj
@@ -41,11 +37,9 @@
     |=  sub=subj
     ^-  tape
     ar.sub
-::
-:::: get-timestamp
   ::
-  :: Answers the Subject's Timestamp structure.
-  ::
+  :::: Answers the Subject's Timestamp structure.
+    ::
   ++  get-timestamp
     |=  sub=subj
     ^-  tstp:rank
@@ -57,19 +51,15 @@
     |=  sub=subj
     ^-  tape
     ti.sub
-::
-:::: get-urbid
   ::
-  :: Answers the Subject's unique identifier
-  ::
+  :::: Answers the Subject's unique identifier
+    ::
   ++  get-urbid
     |=  sub=subj
     ^-  urid:rank
     id.sub
   ::
-  :::: to-tape
-    ::
-    :: Represent a Subject as a tape.
+  :::: Represent a Subject as a tape.
     ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
     ::
   ++  to-tape
