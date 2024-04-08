@@ -91,7 +91,8 @@
       %add-category     %-  add-category:main     +.action
       %remove-category  %-  remove-category:main  +.action
       ::
-      %add-subject  %-  add-subject:main  +.action
+      %add-subject     %-  add-subject:main     +.action
+      %remove-subject  %-  remove-subject:main  +.action
       :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
       %purge-category  %-  purge-category:main  +.action
     ==
@@ -261,6 +262,21 @@
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-subject"  !!
   =.  subjects  (snoc subjects (~(new subject bowl) [title artist]))
+  [~ state]
+::
+++  remove-subject
+  |=  key=tape
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
+  =/  fil  |=(s=subj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+  =/  sub  (skim subjects fil)
+  ?~  sub
+    :: Category was not found, just return...
+    [~ state]
+  =/  idx  (find ~[(head sub)] subjects)
+  =/  s  (snag (need idx) subjects)
+  =.  s  (~(del subject bowl) s)
+  =.  subjects  (snap subjects (need idx) s)
   [~ state]
 ::
   :: ~&  >  our.bowl

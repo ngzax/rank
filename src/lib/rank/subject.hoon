@@ -23,6 +23,17 @@
     =/  urid  ~(new urbid bowl)
     =/  tstp  ~(new timestamp bowl)
     [id=urid ti=title ar=artist ts=tstp]
+::
+:::: del
+  ::
+  :: Logically (soft) delete a new Subject from the state.
+  ::   We can't hard delete because someone might still be referencing it.
+  ::
+  ++  del
+    |=  sub=subj
+    ^-  subj
+    =.  ts.sub  (~(del timestamp bowl) ts.sub)
+    sub
   ::
   :::: Answer the Subject's Artist
     ::
@@ -30,6 +41,15 @@
     |=  sub=subj
     ^-  tape
     ar.sub
+::
+:::: get-timestamp
+  ::
+  :: Answers the Subject's Timestamp structure.
+  ::
+  ++  get-timestamp
+    |=  sub=subj
+    ^-  tstp:rank
+    ts.sub
   ::
   :::: Answer the Subject's Title
     ::
@@ -37,6 +57,15 @@
     |=  sub=subj
     ^-  tape
     ti.sub
+::
+:::: get-urbid
+  ::
+  :: Answers the Subject's unique identifier
+  ::
+  ++  get-urbid
+    |=  sub=subj
+    ^-  urid:rank
+    id.sub
   ::
   :::: to-tape
     ::

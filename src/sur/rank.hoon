@@ -90,6 +90,7 @@
     :: :-  %remove-category
     ::   $=  key  tape
     [%add-subject title=tape artist=tape]
+    [%remove-subject key=tape]
 ::
 :::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
   ::

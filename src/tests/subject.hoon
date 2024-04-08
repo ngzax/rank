@@ -49,4 +49,47 @@
     !>  "The Possessed"
     !>  (get-title:subject (new:subject ["The Possessed" "Fyodor Dostoyevsky"]))
   ==
+::
+++  test-subject-has-a-unique-urbit-id
+  ;:  weld
+  %+  expect-eq
+    !>  [sh=~zod uu="84a8v.p2opa"]
+    !>
+      ^-  urid:rank
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
+      ==
+      =/  sub  (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"])
+      (get-urbid:subject sub)
+  ==
+::
+++  test-subject-creation-sets-timestamp
+  ;:  weld
+  %+  expect-eq
+    !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=~]
+    !>
+      ^-  tstp:rank
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
+          now.fake-bowl  ~2024.4.8..22.46.10..8a01
+      ==
+      =/  sub  (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"])
+      (get-timestamp:subject sub)
+  ==
+::
+++  test-subject-deletion-sets-timestamp
+  ;:  weld
+  %+  expect-eq
+    !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=[~ ~2024.4.8..22.51.47..3127]]
+    !>
+      ^-  tstp:rank
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
+          now.fake-bowl  ~2024.4.8..22.46.10..8a01
+      ==
+      =/  sub  (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"])
+      =.  now.fake-bowl  ~2024.4.8..22.51.47..3127
+      =.  sub  (~(del subject fake-bowl) sub)
+      (get-timestamp:subject sub)
+  ==
 --
