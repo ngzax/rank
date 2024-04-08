@@ -1,41 +1,52 @@
 ::
-:::: Core for working with Works
+:::: a Door for working with Works
   ::
-/+  *rank
+/-  rank
+/+  *rank-timestamp
+/+  *rank-urbid
 /+  *string
+::
 |%
+++  work
+::
+:::: Needs a bowl as its sample
+  ::
+  |_  bowl=bowl:gall
 ::
 :::: new
   ::
-  :: Add a new Category to the state
+  :: Add a new Work to the state
   ::
-++  new
-  |=  [t=tape a=tape]
-  ^-  work
-  [ti=t ar=a]
-::
-:::: Answer the work's Artist
+  ++  new
+    |=  [title=tape artist=tape]
+    ^-  work:rank
+    =/  urid  ~(new urbid bowl)
+    =/  tstp  ~(new timestamp bowl)
+    [id=urid ti=title ar=artist ts=tstp]
   ::
-++  get-artist
-  |=  w=work
-  ^-  tape
-  ar.w
-::
-:::: Answer the work's Title
+  :::: Answer the work's Artist
+    ::
+  ++  get-artist
+    |=  w=work:rank
+    ^-  tape
+    ar.w
   ::
-++  get-title
-  |=  w=work
-  ^-  tape
-  ti.w
-::
-:::: to-tape
+  :::: Answer the work's Title
+    ::
+  ++  get-title
+    |=  w=work:rank
+    ^-  tape
+    ti.w
   ::
-  :: Represent a Work as a tape.
-  ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
-  ::
-++  to-tape
-  |=  w=work
-  ^-  tape
-  =/  qt  (link "" (limo "'" ti.w "'" ~))
-  (link " " (limo [qt "by" ar.w ~]))
+  :::: to-tape
+    ::
+    :: Represent a Work as a tape.
+    ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
+    ::
+  ++  to-tape
+    |=  w=work:rank
+    ^-  tape
+    =/  qt  (link "" (limo "'" ti.w "'" ~))
+    (link " " (limo [qt "by" ar.w ~]))
+  --
 --

@@ -39,8 +39,10 @@
 :::: A Work is a [title, artist] tuple
 ::
 +$  work
-  $:  ti=tape
+  $:  id=urid
+      ti=tape
       ar=tape
+      ts=tstp
   ==
 ::
 :::: A Rank is an [Ordinal, Work] tuple.
