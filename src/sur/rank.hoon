@@ -36,20 +36,21 @@
       ts=tstp
   ==
 ::
-:::: A Work is a [title, artist] tuple
-::
-+$  work
+:::: A Subject (`subj`) is a [Title, Artist] tuple
+  :: It is what we are Ranking.
+  ::
++$  subj
   $:  id=urid
       ti=tape
       ar=tape
       ts=tstp
   ==
 ::
-:::: A Rank is an [Ordinal, Work] tuple.
+:::: A Rank is an [Ordinal, Subject] tuple.
   ::
 +$  rank
   $:  od=@ud
-      wr=work
+      su=subj
   ==
 ::
 :::: A Ranking is a an Ordered Set of Ranks for a Category.
@@ -73,6 +74,7 @@
       categories=(list cate)
       pals=(list @p)
       rankings=(list ranking)
+      subjects=(list subj)
   ==
 ::
 +$  versioned-state
@@ -87,6 +89,7 @@
     [%remove-category key=tape]
     :: :-  %remove-category
     ::   $=  key  tape
+    [%add-subject title=tape artist=tape]
 ::
 :::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
   ::

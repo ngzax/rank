@@ -1,13 +1,13 @@
 ::
-:::: a Door for working with Works
+:::: a Door for working with Subjects
   ::
-/-  rank
+/-  *rank
 /+  *rank-timestamp
 /+  *rank-urbid
 /+  *string
 ::
 |%
-++  work
+++  subject
 ::
 :::: Needs a bowl as its sample
   ::
@@ -15,38 +15,38 @@
 ::
 :::: new
   ::
-  :: Add a new Work to the state
+  :: Add a new Subject to the state
   ::
   ++  new
     |=  [title=tape artist=tape]
-    ^-  work:rank
+    ^-  subj
     =/  urid  ~(new urbid bowl)
     =/  tstp  ~(new timestamp bowl)
     [id=urid ti=title ar=artist ts=tstp]
   ::
-  :::: Answer the work's Artist
+  :::: Answer the Subject's Artist
     ::
   ++  get-artist
-    |=  w=work:rank
+    |=  sub=subj
     ^-  tape
-    ar.w
+    ar.sub
   ::
-  :::: Answer the work's Title
+  :::: Answer the Subject's Title
     ::
   ++  get-title
-    |=  w=work:rank
+    |=  sub=subj
     ^-  tape
-    ti.w
+    ti.sub
   ::
   :::: to-tape
     ::
-    :: Represent a Work as a tape.
+    :: Represent a Subject as a tape.
     ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
     ::
   ++  to-tape
-    |=  w=work:rank
+    |=  sub=subj
     ^-  tape
-    =/  qt  (link "" (limo "'" ti.w "'" ~))
-    (link " " (limo [qt "by" ar.w ~]))
+    =/  qt  (link "" (limo "'" ti.sub "'" ~))
+    (link " " (limo [qt "by" ar.sub ~]))
   --
 --
