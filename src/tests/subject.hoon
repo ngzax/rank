@@ -55,7 +55,7 @@
   %+  expect-eq
     !>  [sh=~zod uu="84a8v.p2opa"]
     !>
-      ^-  urid:rank
+      ^-  uid:rank
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
       ==

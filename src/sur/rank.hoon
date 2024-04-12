@@ -3,11 +3,11 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An UrbID (`urid`) is a [@p tape] tuple containing a Ship name and a unique string.
+:::: An UrbID (`uid`) is a [@p tape] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
   ::
-+$  urid
++$  uid
   $:  sh=@p
       uu=tape
   ==
@@ -28,7 +28,7 @@
   ::
 ::
 +$  cate
-  $:  id=urid
+  $:  id=uid
       li=@ud
       ad=tape
       su=tape
@@ -40,7 +40,7 @@
   :: It is what we are Ranking.
   ::
 +$  subj
-  $:  id=urid
+  $:  id=uid
       ti=tape
       ar=tape
       ts=tstp

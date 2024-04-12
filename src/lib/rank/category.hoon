@@ -20,9 +20,9 @@
   ++  new
     |=  [limit=@ud adjective=tape subject=tape period=tape]
     ^-  cate
-    =/  urid  ~(new urbid bowl)
+    =/  uid  ~(new urbid bowl)
     =/  tstp  ~(new timestamp bowl)
-    [id=urid li=limit ad=adjective su=subject pe=period ts=tstp]
+    [id=uid li=limit ad=adjective su=subject pe=period ts=tstp]
 ::
 :::: del
   ::
@@ -50,7 +50,7 @@
   ::
   ++  get-urbid
     |=  c=cate
-    ^-  urid:rank
+    ^-  uid:rank
     id.c
 ::
 :::: to-tape

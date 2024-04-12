@@ -18,9 +18,9 @@
   ++  new
     |=  [title=tape artist=tape]
     ^-  subj
-    =/  urid  ~(new urbid bowl)
+    =/  uid  ~(new urbid bowl)
     =/  tstp  ~(new timestamp bowl)
-    [id=urid ti=title ar=artist ts=tstp]
+    [id=uid ti=title ar=artist ts=tstp]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.
@@ -56,7 +56,7 @@
     ::
   ++  get-urbid
     |=  sub=subj
-    ^-  urid:rank
+    ^-  uid:rank
     id.sub
   ::
   :::: Represent a Subject as a tape.

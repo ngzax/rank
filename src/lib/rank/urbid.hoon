@@ -16,7 +16,7 @@
   :: Create a new unique UrbID
   ::
   ++  new
-    ^-  urid:rank
+    ^-  uid:rank
     =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
     :-  our.bowl  uuid
 ::
@@ -25,16 +25,16 @@
   :: Answer the unique key string of an UrbID
   ::
   ++  get-key
-    |=  urid=urid:rank
+    |=  uid=uid:rank
     ^-  tape
-    uu.urid
+    uu.uid
 ::
 :::: same
   ::
   :: Compare two UrbIDs to see if they are the same.
   ::
   ++  same
-    |=  [u1=urid:rank u2=urid:rank]
+    |=  [u1=uid:rank u2=uid:rank]
     ^-  @
     =(uu:u1 uu:u2)
 ::
@@ -44,8 +44,8 @@
   ::   e.g. "~zod:jbl03.q1tnj"
   ::
   ++  to-tape
-    |=  urid=urid:rank
+    |=  uid=uid:rank
     ^-  tape
-    (link "" (limo [(scow %p sh:urid) ":" uu:urid ~]))
+    (link "" (limo [(scow %p sh:uid) ":" uu:uid ~]))
   --
 --
