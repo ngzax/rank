@@ -19,7 +19,7 @@
   ::
   ++  new
     |=  [limit=@ud adjective=tape subject=tape period=tape]
-    ^-  cat:rank
+    ^-  ctg
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
     [id=uid li=limit ad=adjective su=subject pe=period ts=tsp]
@@ -30,8 +30,8 @@
   ::   We can't hard delete because someone might still be referencing it.
   ::
   ++  del
-    |=  c=cat:rank
-    ^-  cat:rank
+    |=  c=ctg
+    ^-  ctg
     =.  ts.c  (~(del timestamp bowl) ts.c)
     c
 ::
@@ -40,7 +40,7 @@
   :: Answers the Category's Timestamp structure.
   ::
   ++  get-timestamp
-    |=  c=cat:rank
+    |=  c=ctg
     ^-  tsp:rank
     ts.c
 ::
@@ -49,7 +49,7 @@
   :: Answers the Category's unique identifier
   ::
   ++  get-urbid
-    |=  c=cat:rank
+    |=  c=ctg
     ^-  uid:rank
     id.c
 ::
@@ -58,7 +58,7 @@
   :: Represent a Category as a tape.
   ::
   ++  to-tape
-    |=  c=cat:rank
+    |=  c=ctg
     ^-  tape
     (link " " (limo ["The" ~(rud at li.c) ad.c su.c "of" pe.c ~]))
   --

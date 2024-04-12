@@ -30,9 +30,9 @@ Install instructions:
 | ex1 | ~2024.3.29..17.25.38..6a05 | ~ | ~ |
 | ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.3.29..17.50.15..6adf] | [~ ~2024.3.29..17.50.15..6adf] |
 
-#### category, aka `cat` = [id=uid =li =ad =su =pe ts=tsp]
+#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
 
-#### categories (list cat)
+#### categories (list ctg)
 
 | Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
 | --- | --- | --- | --- | --- | --- | --- |

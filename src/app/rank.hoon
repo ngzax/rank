@@ -233,12 +233,12 @@
   |=  key=tape
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
-  =/  fil  |=(c=cat:rank =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  cat  (skim categories fil)
-  ?~  cat
+  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  ctg  (skim categories fil)
+  ?~  ctg
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head cat)] categories)
+  =/  idx  (find ~[(head ctg)] categories)
   =/  c  (snag (need idx) categories)
   =.  c  (~(del category bowl) c)
   =.  categories  (snap categories (need idx) c)
@@ -248,12 +248,12 @@
   |=  [key=tape]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
-  =/  fil  |=(c=cat:rank =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  cat  (skim categories fil)
-  ?~  cat
+  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  ctg  (skim categories fil)
+  ?~  ctg
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head cat)] categories)
+  =/  idx  (find ~[(head ctg)] categories)
   =.  categories  (oust [(need idx) 1] categories)
   [~ state]
 ::
@@ -281,6 +281,6 @@
 ::
   :: ~&  >  our.bowl
   :: ~&  >  key
-  :: ~&  >  cat
+  :: ~&  >  ctg
   :: ~&  >  idx
 --
