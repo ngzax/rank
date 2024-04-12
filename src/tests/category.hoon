@@ -14,7 +14,7 @@
   %+  expect-eq
     !>  [id=[sh=~zod uu="jbl03.q1tnj"] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
     !>
-      ^-  cate:rank
+      ^-  cat:rank
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v1c4.jbl03.q1tnj.d89mc.p5s54.v076j.anu8s.5a12n.nb165.ln285.a7o3u.r9pe3.mpufp.3l9h0.mpugk.ahg2p.olnmm.5spkq.rsoa2.vou6m.e0kvv
           now.fake-bowl  ~2024.4.1..20.31.25..2be3

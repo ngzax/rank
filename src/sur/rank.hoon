@@ -23,11 +23,11 @@
      de=(unit time)
   ==
 ::
-:::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
+:::: An Category (`cat`) is a tuple of [Limit Adjective Subject Period].
   :: The 10 Best Novels of The Twentieth Century
   ::
 ::
-+$  cate
++$  cat
   $:  id=uid
       li=@ud
       ad=tape
@@ -56,7 +56,7 @@
 :::: A Ranking is a an Ordered Set of Ranks for a Category.
   ::
 +$  ranking
-  $:  ca=cate
+  $:  ca=cat
       rk=(set rank)
   ==
 ::
@@ -71,7 +71,7 @@
 +$  state-0
   $:  %0
       display-state
-      categories=(list cate)
+      categories=(list cat)
       pals=(list @p)
       rankings=(list ranking)
       subjects=(list subj)

@@ -22,9 +22,17 @@ Install instructions:
 | face | sh  | uu |
 | ex1 | ~zod  | 62qg2.p57rt |
 
-#### category, aka `cate` = [id=uid =li =ad =su =pe =ts]
+#### timestamp, aka `tsp` = [cr=time up=unit(time) de=unit(time)]
 
-#### categories (list cate)
+| Meta | Created | Updated | Deleted |
+| --- | --- | --- | --- |
+| face | cr  | up | de |
+| ex1 | ~2024.3.29..17.25.38..6a05 | ~ | ~ |
+| ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.3.29..17.50.15..6adf] | [~ ~2024.3.29..17.50.15..6adf] |
+
+#### category, aka `cat` = [id=uid =li =ad =su =pe ts=tsp]
+
+#### categories (list cat)
 
 | Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
 | --- | --- | --- | --- | --- | --- | --- |
