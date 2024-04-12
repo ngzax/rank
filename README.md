@@ -41,9 +41,9 @@ Install instructions:
 | ex1 | [sh=~zod uu="4uc3.2llor."] | 5 | Best | Books | All-time | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
 | ex2 | [sh=~zod uu="okett.oca0t"] | 10 | Best | American Novels | 20th Century |[cr=~2024.4.1..21.11.16..055e up=~ de=[~ ~2024.4.1..22.08.03..c86e] |
 
-#### subject, aka `subj` = [=id =ti =ar =ts]
+#### subject, aka `sbj` = [=id =ti =ar =ts]
 
-#### subjects (list subj)
+#### subjects (list sbj)
 
 | Meta | Urbit Id | Title | Artist | Timestamp |
 | --- | --- | --- | --- | --- |

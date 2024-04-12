@@ -36,10 +36,10 @@
       ts=tsp
   ==
 ::
-:::: A Subject (`subj`) is a [Title, Artist] tuple
+:::: A Subject (`sbj`) is a [Title, Artist] tuple
   :: It is what we are Ranking.
   ::
-+$  subj
++$  sbj
   $:  id=uid
       ti=tape
       ar=tape
@@ -50,7 +50,7 @@
   ::
 +$  rank
   $:  od=@ud
-      su=subj
+      su=sbj
   ==
 ::
 :::: A Ranking is a an Ordered Set of Ranks for a Category.
@@ -74,7 +74,7 @@
       categories=(list ctg)
       pals=(list @p)
       rankings=(list ranking)
-      subjects=(list subj)
+      subjects=(list sbj)
   ==
 ::
 +$  versioned-state

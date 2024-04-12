@@ -268,7 +268,7 @@
   |=  key=tape
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
-  =/  fil  |=(s=subj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+  =/  fil  |=(s=sbj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
   =/  sub  (skim subjects fil)
   ?~  sub
     :: Category was not found, just return...
