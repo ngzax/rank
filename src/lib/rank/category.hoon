@@ -21,8 +21,8 @@
     |=  [limit=@ud adjective=tape subject=tape period=tape]
     ^-  cate
     =/  uid  ~(new urbid bowl)
-    =/  tstp  ~(new timestamp bowl)
-    [id=uid li=limit ad=adjective su=subject pe=period ts=tstp]
+    =/  tsp  ~(new timestamp bowl)
+    [id=uid li=limit ad=adjective su=subject pe=period ts=tsp]
 ::
 :::: del
   ::
@@ -41,7 +41,7 @@
   ::
   ++  get-timestamp
     |=  c=cate
-    ^-  tstp:rank
+    ^-  tsp:rank
     ts.c
 ::
 :::: get-uid

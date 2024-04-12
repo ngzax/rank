@@ -12,12 +12,12 @@
       uu=tape
   ==
 ::
-:::: A Timestamp (`tstp`) is a [@da @da @da] containing three times representing
+:::: A Timestamp (`tsp`) is a [@da @da @da] containing three times representing
   ::   the CReation, Last UPdate, and DEletion times for an Entity.
   ::
   ::   NOTE: this is not called `time` to avoid conflicting with the urbit stdlib.
   ::
-+$  tstp
++$  tsp
  $:  cr=time
      up=(unit time)
      de=(unit time)
@@ -33,7 +33,7 @@
       ad=tape
       su=tape
       pe=tape
-      ts=tstp
+      ts=tsp
   ==
 ::
 :::: A Subject (`subj`) is a [Title, Artist] tuple
@@ -43,7 +43,7 @@
   $:  id=uid
       ti=tape
       ar=tape
-      ts=tstp
+      ts=tsp
   ==
 ::
 :::: A Rank is an [Ordinal, Subject] tuple.

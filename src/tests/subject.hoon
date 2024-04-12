@@ -68,7 +68,7 @@
   %+  expect-eq
     !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=~]
     !>
-      ^-  tstp:rank
+      ^-  tsp:rank
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
           now.fake-bowl  ~2024.4.8..22.46.10..8a01
@@ -82,7 +82,7 @@
   %+  expect-eq
     !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=[~ ~2024.4.8..22.51.47..3127]]
     !>
-      ^-  tstp:rank
+      ^-  tsp:rank
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
           now.fake-bowl  ~2024.4.8..22.46.10..8a01

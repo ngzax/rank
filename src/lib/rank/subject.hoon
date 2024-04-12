@@ -19,8 +19,8 @@
     |=  [title=tape artist=tape]
     ^-  subj
     =/  uid  ~(new urbid bowl)
-    =/  tstp  ~(new timestamp bowl)
-    [id=uid ti=title ar=artist ts=tstp]
+    =/  tsp  ~(new timestamp bowl)
+    [id=uid ti=title ar=artist ts=tsp]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.
@@ -42,7 +42,7 @@
     ::
   ++  get-timestamp
     |=  sub=subj
-    ^-  tstp:rank
+    ^-  tsp:rank
     ts.sub
   ::
   :::: Answer the Subject's Title

@@ -29,7 +29,7 @@ Install instructions:
 | Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
 | --- | --- | --- | --- | --- | --- | --- |
 | face | id  | li | ad | su | pe | ts |
-| type | uid | @ud | tape | tape | tape | tstp |
+| type | uid | @ud | tape | tape | tape | tsp |
 | ex1 | [sh=~zod uu="4uc3.2llor."] | 5 | Best | Books | All-time | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
 | ex2 | [sh=~zod uu="okett.oca0t"] | 10 | Best | American Novels | 20th Century |[cr=~2024.4.1..21.11.16..055e up=~ de=[~ ~2024.4.1..22.08.03..c86e] |
 
@@ -40,7 +40,7 @@ Install instructions:
 | Meta | Urbit Id | Title | Artist | Timestamp |
 | --- | --- | --- | --- | --- |
 | face | id  | ti | ar | ts |
-| type | uid | tape | tape | tstp |
+| type | uid | tape | tape | tsp |
 | ex1 | [sh=~zod uu="84a8v.p2opa"] | "The Possessed" | "Fyodor Dostoyevsky" | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
 | ex2 | [sh=~zod uu="t7iin.4f2tj"] | "The Royal Scam" | "Steely Dan" | [cr=~2024.4.8..21.06.38..798a up=~ de=~] |
 

@@ -16,7 +16,7 @@
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=~]
     !>
-      ^-  tstp:rank
+      ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       ~(new timestamp fake-bowl)
   ==
@@ -26,7 +26,7 @@
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=[~ ~2024.3.29..17.50.15..6adf] de=~]
     !>
-      ^-  tstp:rank
+      ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       :: Initial creation...
       =/  t  ~(new timestamp fake-bowl)
@@ -40,7 +40,7 @@
   %+  expect-eq
     !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=[~ ~2024.3.29..17.50.15..6adf]]
     !>
-      ^-  tstp:rank
+      ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       :: Initial creation...
       =/  t  ~(new timestamp fake-bowl)
