@@ -233,7 +233,7 @@
   |=  key=tape
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
-  =/  fil  |=(c=cat =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  fil  |=(c=cat:rank =(key (~(get-key urbid bowl) (get-urbid:category c))))
   =/  cat  (skim categories fil)
   ?~  cat
     :: Category was not found, just return...
@@ -248,7 +248,7 @@
   |=  [key=tape]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
-  =/  fil  |=(c=cat =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  fil  |=(c=cat:rank =(key (~(get-key urbid bowl) (get-urbid:category c))))
   =/  cat  (skim categories fil)
   ?~  cat
     :: Category was not found, just return...
