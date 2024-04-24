@@ -1,12 +1,38 @@
 # rank
 create and share your faves with friends.
 
-Install instructions:
+#### Installtion Instructions
+...in dojo on your ship...
+```
+> |new-desk %rank
+> |mount %rank
+```
+... back on your host machine...
+```
+cd to root of source code...
+
+$ rm -r <path_to_pier>/rank/*`          // Optional: clean out old versions
+$ cp -RL dep/* <path_to_pier>/rank/
+$ cp -RL src/* <path_to_pier>/rank/
+```
+...back in the dojo on your (preferably) fake ship...
+```
+> |commit %rank
+> |install our %rank
+> :treaty|publish %rank
+> -test /=rank=/tests ~
+```
+
+#### First time developer setup instructions:
+...in dojo on your (preferably) fake ship...
 - `|new-desk %rank`
 - `|mount %rank`
-- `rm -r {dev-ship}/rank/*`
-- `cp -RL rank/dep/* {dev-ship}/rank/`
-- `cp -RL rank/src/* {dev-ship}/rank/`
+
+... back on your host machine...
+> cd to root of source...
+> ./_sync.sh <path_to_pier>
+
+...back in the dojo on your (preferably) fake ship...
 - `|commit %rank`
 - `|install our %rank`
 - `:treaty|publish %rank`
