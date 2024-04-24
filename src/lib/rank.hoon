@@ -18,9 +18,9 @@
 ::   ?-  -.act
 ::     ::
 ::       %new-category
-::     =/  =cat  (new:category [lim.act adj.act sum.act per.act])
+::     =/  =ctg  (new:category [lim.act adj.act sum.act per.act])
 ::     :_  %=  state
-::           categories  (~(put in categories) cat)
+::           categories  (~(put in categories) ctg)
 ::         ==
 ::     :: :~  (fact:io rank-update+!>(`upd`[%init gid club acl ppl]) ~[/local/all])
 ::     ==

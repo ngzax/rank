@@ -8,6 +8,7 @@
 ::
 /+  *rank
 /+  *rank-category
+/+  *rank-subject
 :: /~  libs  *  /lib/rank                            :: build all helper cores
 :: /~  mars  *  /mar
 ::
@@ -89,6 +90,9 @@
     ?-  -.action
       %add-category     %-  add-category:main     +.action
       %remove-category  %-  remove-category:main  +.action
+      ::
+      %add-subject     %-  add-subject:main     +.action
+      %remove-subject  %-  remove-subject:main  +.action
       :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
       %purge-category  %-  purge-category:main  +.action
     ==
@@ -229,12 +233,12 @@
   |=  key=tape
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
-  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  cat  (skim categories fil)
-  ?~  cat
+  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  ctg  (skim categories fil)
+  ?~  ctg
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head cat)] categories)
+  =/  idx  (find ~[(head ctg)] categories)
   =/  c  (snag (need idx) categories)
   =.  c  (~(del category bowl) c)
   =.  categories  (snap categories (need idx) c)
@@ -244,17 +248,39 @@
   |=  [key=tape]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
-  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  cat  (skim categories fil)
-  ?~  cat
+  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  ctg  (skim categories fil)
+  ?~  ctg
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head cat)] categories)
+  =/  idx  (find ~[(head ctg)] categories)
   =.  categories  (oust [(need idx) 1] categories)
+  [~ state]
+::
+++  add-subject
+  |=  [title=tape artist=tape]
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-subject"  !!
+  =.  subjects  (snoc subjects (~(new subject bowl) [title artist]))
+  [~ state]
+::
+++  remove-subject
+  |=  key=tape
+  ?.  =(src.bowl our.bowl)
+    ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
+  =/  fil  |=(s=sbj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+  =/  sub  (skim subjects fil)
+  ?~  sub
+    :: Category was not found, just return...
+    [~ state]
+  =/  idx  (find ~[(head sub)] subjects)
+  =/  s  (snag (need idx) subjects)
+  =.  s  (~(del subject bowl) s)
+  =.  subjects  (snap subjects (need idx) s)
   [~ state]
 ::
   :: ~&  >  our.bowl
   :: ~&  >  key
-  :: ~&  >  cat
+  :: ~&  >  ctg
   :: ~&  >  idx
 --

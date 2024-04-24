@@ -16,7 +16,7 @@
   :: Create a new Timestamp
   ::
   ++  new
-    ^-  tstp:rank
+    ^-  tsp:rank
     [cr=now.bowl up=~ de=~]
 ::
 :::: upd
@@ -24,16 +24,16 @@
   :: Update a Timestamp
   ::
   ++  upd
-    |=  t=tstp:rank
-    ^-  tstp:rank
+    |=  t=tsp:rank
+    ^-  tsp:rank
     [cr=cr.t up=[~ now.bowl] de=~]
 ::
 :::: del
   :: "Delete" a Timestamp
   ::
   ++  del
-    |=  t=tstp:rank
-    ^-  tstp:rank
+    |=  t=tsp:rank
+    ^-  tsp:rank
     [cr=cr.t up=up.t de=(some now.bowl)]
   --
 --

@@ -15,22 +15,44 @@ Install instructions:
 
 ### Data Model
 
-#### category = [=lim =adj =sub =per]
+#### urbitID, aka `uid` = [sh=@p uu=tape]
+
+| Meta | Ship | Unique ID |
+| --- | --- | --- |
+| face | sh  | uu |
+| ex1 | ~zod  | 62qg2.p57rt |
+
+#### timestamp, aka `tsp` = [cr=time up=unit(time) de=unit(time)]
+
+| Meta | Created | Updated | Deleted |
+| --- | --- | --- | --- |
+| face | cr  | up | de |
+| ex1 | ~2024.3.29..17.25.38..6a05 | ~ | ~ |
+| ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.3.29..17.50.15..6adf] | [~ ~2024.3.29..17.50.15..6adf] |
+
+#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
+
+#### categories (list ctg)
+
+| Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
+| --- | --- | --- | --- | --- | --- | --- |
+| face | id  | li | ad | su | pe | ts |
+| type | uid | @ud | tape | tape | tape | tsp |
+| ex1 | [sh=~zod uu="4uc3.2llor."] | 5 | Best | Books | All-time | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
+| ex2 | [sh=~zod uu="okett.oca0t"] | 10 | Best | American Novels | 20th Century |[cr=~2024.4.1..21.11.16..055e up=~ de=[~ ~2024.4.1..22.08.03..c86e] |
+
+#### subject, aka `sbj` = [=id =ti =ar =ts]
+
+#### subjects (list sbj)
+
+| Meta | Urbit Id | Title | Artist | Timestamp |
+| --- | --- | --- | --- | --- |
+| face | id  | ti | ar | ts |
+| type | uid | tape | tape | tsp |
+| ex1 | [sh=~zod uu="84a8v.p2opa"] | "The Possessed" | "Fyodor Dostoyevsky" | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
+| ex2 | [sh=~zod uu="t7iin.4f2tj"] | "The Royal Scam" | "Steely Dan" | [cr=~2024.4.8..21.06.38..798a up=~ de=~] |
 
 #### ranking = [=category ranks=(set [ord val art])
-
-##### categories
-| lim | adj | sub | per |
-| --- | --- | --- | --- |
-| @ud | tape | tape | tape |
-| 5 | Best | Books | All-time |
-| 10 | Best | American Novels | 20th Century |
-
-##### pals
-| pal |
-| --- |
-| @p |
-| ~hosneb-rosler |
 
 ##### rankings
 category = [5 "Best" "Books" "All-time"]
@@ -42,3 +64,9 @@ category = [5 "Best" "Books" "All-time"]
 | 3 | "The Possessed" | "Fyodor Dostoevsky" |
 | 4 | "War and Peace" | "Leo Tolstoy" |
 | 5 | "The Reivers" | "William Faulkner" |
+
+##### pals
+| pal |
+| --- |
+| @p |
+| ~hosneb-rosler |

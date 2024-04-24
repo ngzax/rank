@@ -3,57 +3,60 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An UrbID (`urid`) is a [@p tape] tuple containing a Ship name and a unique string.
+:::: An UrbID (`uid`) is a [@p tape] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
   ::
-+$  urid
++$  uid
   $:  sh=@p
       uu=tape
   ==
 ::
-:::: A Timestamp (`tstp`) is a [@da @da @da] containing three times representing
+:::: A Timestamp (`tsp`) is a [@da @da @da] containing three times representing
   ::   the CReation, Last UPdate, and DEletion times for an Entity.
   ::
   ::   NOTE: this is not called `time` to avoid conflicting with the urbit stdlib.
   ::
-+$  tstp
++$  tsp
  $:  cr=time
      up=(unit time)
      de=(unit time)
   ==
 ::
-:::: An Category (`cate`) is a tuple of [Limit Adjective Subject Period].
+:::: An Category (`ctg`) is a tuple of [Limit Adjective Subject Period].
   :: The 10 Best Novels of The Twentieth Century
   ::
 ::
-+$  cate
-  $:  id=urid
++$  ctg
+  $:  id=uid
       li=@ud
       ad=tape
       su=tape
       pe=tape
-      ts=tstp
+      ts=tsp
   ==
 ::
-:::: A Work is a [title, artist] tuple
-::
-+$  work
-  $:  ti=tape
+:::: A Subject (`sbj`) is a [Title, Artist] tuple
+  :: It is what we are Ranking.
+  ::
++$  sbj
+  $:  id=uid
+      ti=tape
       ar=tape
+      ts=tsp
   ==
 ::
-:::: A Rank is an [Ordinal, Work] tuple.
+:::: A Rank is an [Ordinal, Subject] tuple.
   ::
 +$  rank
   $:  od=@ud
-      wr=work
+      su=sbj
   ==
 ::
 :::: A Ranking is a an Ordered Set of Ranks for a Category.
   ::
 +$  ranking
-  $:  ca=cate
+  $:  ca=ctg
       rk=(set rank)
   ==
 ::
@@ -68,9 +71,10 @@
 +$  state-0
   $:  %0
       display-state
-      categories=(list cate)
+      categories=(list ctg)
       pals=(list @p)
       rankings=(list ranking)
+      subjects=(list sbj)
   ==
 ::
 +$  versioned-state
@@ -85,6 +89,8 @@
     [%remove-category key=tape]
     :: :-  %remove-category
     ::   $=  key  tape
+    [%add-subject title=tape artist=tape]
+    [%remove-subject key=tape]
 ::
 :::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
   ::
