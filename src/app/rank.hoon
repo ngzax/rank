@@ -65,7 +65,9 @@
   |=  saved-state=vase
   ^-  (quip card _this)
   `this(state !<(versioned-state saved-state))
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: Modifying Agent state. (pokes)
+  ::
 ++  on-poke
   |=  [=mark =vase]
   |^  ^-  (quip card _this)
@@ -201,7 +203,24 @@
       `this
   ==
 ++  on-leave  on-leave:def
-++  on-peek   on-peek:def
+::
+:::: Querying Agent state. (scry paths)
+  ::
+++  on-peek
+  |=  =path
+  ^-  (unit (unit cage))
+  ?+  path  (on-peek:def path)
+    ::
+    :::: Answers all the categories in Agent state
+      ::
+      [%x %categories ~]
+    ``noun+!>(categories)
+    ::
+    :::: Answers all the Subjects in Agent state
+      ::
+      [%x %subjects ~]
+    ``noun+!>(subjects)
+  ==
 ++  on-agent  on-agent:def
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 ++  on-arvo
