@@ -10,25 +10,23 @@
 |%
 ++  ranking
 ::
-  :::: Needs a bowl as its sample
-    ::
+:::: Needs a bowl as its sample
+  ::
   |_  bowl=bowl:gall
 ::
 :::: Answers a newly constructed Ranking with a Subject Xref and empty Rankings
   ::
   ++  new
-    |=  [c=ctg]
+    |=  c=ctg
     ^-  rkg
     :-  id.c  ~
 ::
-:::: get-key
+:::: Answers the UrbID Xref of the Ranking's Subject
   ::
-  :: Answer the unique key string of an UrbID
-  ::
-  :: ++  get-key
-  ::   |=  uid=uid:rank
-  ::   ^-  tape
-  ::   uu.uid
+  ++  get-subject-xref
+    |=  r=rkg
+    ^-  uid
+    cx.r
 ::
 :::: same
   ::
