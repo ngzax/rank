@@ -9,8 +9,6 @@
 /+  *rank
 /+  *rank-category
 /+  *rank-subject
-:: /~  libs  *  /lib/rank                            :: build all helper cores
-:: /~  mars  *  /mar
 ::
 /=  index       /app/rank/index
 /=  list        /app/rank/list
@@ -32,17 +30,19 @@
 =|  state-0
 =*  state  -
 ::
-=<  :: compose helper core into agent core
-::
-::  agent core
-::
+::  This is a %gall agent core
 ^-  agent:gall
+:: compose helper core into agent core
+::
+=<
+:: A Gall agent is a Door which has a Bowl as its sample
+::
 |_  =bowl:gall
 ::
 +*  this  .
-    def   ~(. (default-agent this %.n) bowl)
-    io    ~(. agentio bowl)
-    main  ~(. +> bowl)
+    def     ~(. (default-agent this %.n) bowl)
+    io      ~(. agentio bowl)
+    helper  ~(. +> bowl)
     :: a list of cells of url paths to gates (your sail components), are required for rig:mast.
     :: see the example sail component for more information.
     :: these define all of the different pages for your app.
@@ -90,13 +90,13 @@
     |=  =action
     ^-  (quip card _state)
     ?-  -.action
-      %add-category     %-  add-category:main     +.action
-      %remove-category  %-  remove-category:main  +.action
+      %add-category     %-  add-category:helper     +.action
+      %remove-category  %-  remove-category:helper  +.action
       ::
-      %add-subject     %-  add-subject:main     +.action
-      %remove-subject  %-  remove-subject:main  +.action
+      %add-subject     %-  add-subject:helper     +.action
+      %remove-subject  %-  remove-subject:helper  +.action
       :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
-      %purge-category  %-  purge-category:main  +.action
+      %purge-category  %-  purge-category:helper  +.action
     ==
 ::
   ++  handle-http-request
@@ -216,6 +216,13 @@
       [%x %categories ~]
     ``noun+!>(categories)
     ::
+    :::: Answers the Category with UrbId or [~ ~] if not found.
+      ::
+      [%x %category @ ~]
+    :: =/  who=@p  (slav %p i.t.t.path)
+    :: =/  uu=tape  (spud i.t.t.path)
+    ``noun+!>(`@t`i.t.t.path)
+    ::
     :::: Answers all the Subjects in Agent state
       ::
       [%x %subjects ~]
@@ -237,7 +244,7 @@
 ++  on-fail   on-fail:def
 --
 ::
-::  Helper door (main)
+::  Helper door
 ::
 |_  bowl=bowl:gall
 ::
