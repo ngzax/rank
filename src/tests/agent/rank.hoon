@@ -36,7 +36,7 @@
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu="jbl03.q1tnj"] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
     !>  (snag 0 categories.state)
   ==
 ::
@@ -48,7 +48,7 @@
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu="jbl03.q1tnj"] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
     !>  (snag 0 subjects.state)
   ==
 --

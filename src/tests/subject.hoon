@@ -12,7 +12,7 @@
 ++  test-subject-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu="84a8v.p2opa"] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.8..17.22.57..f365 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.8..17.22.57..f365 up=~ de=~]]
     !>
       ^-  sbj:rank
       =:  our.fake-bowl  ~zod
@@ -53,7 +53,7 @@
 ++  test-subject-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [sh=~zod uu="84a8v.p2opa"]
+    !>  [sh=~zod uu=~.84a8v.p2opa]
     !>
       ^-  uid:rank
       =:  our.fake-bowl  ~zod

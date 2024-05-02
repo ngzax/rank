@@ -12,7 +12,7 @@
 ++  test-category-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu="jbl03.q1tnj"] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
     !>
       ^-  ctg
       =:  our.fake-bowl  ~zod
@@ -25,7 +25,7 @@
 ++  test-category-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [sh=~zod uu="62qg2.p57rt"]
+    !>  [sh=~zod uu=~.62qg2.p57rt]
     !>
       ^-  uid:rank
       =:  our.fake-bowl  ~zod

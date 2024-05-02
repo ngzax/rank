@@ -14,7 +14,7 @@
 ++  test-ranking-creation
   ;:  weld
   %+  expect-eq
-    !>  [cx=[sh=~zod uu="84a8v.p2opa"] rk=~]
+    !>  [cx=[sh=~zod uu=~.84a8v.p2opa] rk=~]
     !>
       ^-  rkg:rank
       =:  our.fake-bowl  ~zod
@@ -29,7 +29,7 @@
 ++  test-ranking-get-category-xref
   ;:  weld
   %+  expect-eq
-    !>  [sh=~zod uu="84a8v.p2opa"]
+    !>  [sh=~zod uu=~.84a8v.p2opa]
     !>
       ^-  uid:rank
       =:  our.fake-bowl  ~zod

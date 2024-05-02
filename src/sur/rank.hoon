@@ -3,13 +3,14 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An UrbID (`uid`) is a [@p tape] tuple containing a Ship name and a unique string.
+:::: An UrbID (`uid`) is a [@p @ta] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
+  :: It needs to be a @ta not a tape because it will appear in scry paths.
   ::
 +$  uid
   $:  sh=@p
-      uu=tape
+      uu=@ta
   ==
 ::
 :::: A Timestamp (`tsp`) is a [@da @da @da] containing three times representing
