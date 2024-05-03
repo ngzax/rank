@@ -216,12 +216,20 @@
       [%x %categories ~]
     ``noun+!>(categories)
     ::
-    :::: Answers the Category with UrbId or [~ ~] if not found.
+    :::: Answers the Category with UrbId or ~ if not found. (unit ctg)
+      ::
+      ::  > .^((unit ctg:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
+      ::  [~ [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
       ::
       [%x %category @ ~]
-    :: =/  who=@p  (slav %p i.t.t.path)
-    :: =/  uu=tape  (spud i.t.t.path)
-    ``noun+!>(`@t`i.t.t.path)
+      =/  key=@ta  (slav %ta i.t.t.path)
+      =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+      =/  ctg  (skim categories fil)
+      ?~  ctg
+        ``noun+!>(~)
+      =/  idx  (find ~[(head ctg)] categories)
+      =/  c  (snag (need idx) categories)
+    ``noun+!>((some c))
     ::
     :::: Answers all the Subjects in Agent state
       ::
@@ -256,7 +264,7 @@
   [~ state]
 ::
 ++  remove-category
-  |=  key=tape
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
   =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
@@ -271,7 +279,7 @@
   [~ state]
 ::
 ++  purge-category
-  |=  [key=tape]
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
   =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
@@ -291,7 +299,7 @@
   [~ state]
 ::
 ++  remove-subject
-  |=  key=tape
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
   =/  fil  |=(s=sbj =(key (~(get-key urbid bowl) (get-urbid:subject s))))

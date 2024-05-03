@@ -74,4 +74,14 @@
       =/  ctg  (new:category [10 "Best" "Books" "All-time"])
       (to-tape:category ctg)
   ==
+::
+++  test-category-to-cord
+  ;:  weld
+  %+  expect-eq
+    !>  'The 10 Best Books of All-time'
+    !>
+      ^-  @t
+      =/  ctg  (new:category [10 "Best" "Books" "All-time"])
+      (to-cord:category ctg)
+  ==
 --

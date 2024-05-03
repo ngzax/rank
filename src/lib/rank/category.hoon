@@ -53,9 +53,14 @@
     ^-  uid:rank
     id.c
 ::
-:::: to-tape
+:::: Represent a Category as a cord.
   ::
-  :: Represent a Category as a tape.
+  ++  to-cord
+    |=  c=ctg
+    ^-  @t
+    (crip (to-tape c))
+::
+:::: Represent a Category as a tape.
   ::
   ++  to-tape
     |=  c=ctg
