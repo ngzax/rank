@@ -1,5 +1,5 @@
 ::
-:::: Unit test Core for Category
+:::: Unit test Door for Category
   ::
 /+  *test
 /+  rank
