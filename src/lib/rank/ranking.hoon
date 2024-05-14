@@ -19,14 +19,14 @@
   ++  new
     |=  c=ctg
     ^-  rkg
-    :-  id.c  ~
+    :-  c  ~
 ::
-:::: Answers the UrbID Xref of the Ranking's Subject
+:::: Answers the Ranking's Category
   ::
-  ++  get-subject-xref
+  ++  get-category
     |=  r=rkg
-    ^-  uid
-    cx.r
+    ^-  ctg
+    ca.r
 ::
 :::: same
   ::

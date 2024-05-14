@@ -50,18 +50,12 @@
       ts=tsp
   ==
 ::
-:::: A Rank ('rnk') is an [Ordinal, {Subject XRef (UrbID)}] tuple.
-  ::
-:: +$  rnk
-::   $:  od=@ud
-::       sx=uid
-::   ==
 ::
-:::: A Ranking ('rkg') is a an List (Ordered Set?) of {Subject XRefs (UrbID)} for a {Category XRef (UrbID)}.
+:::: A Ranking ('rkg') is a an List (Ordered Set?) of {Subject}s for a {Category}.
   ::
 +$  rkg
-  $:  cx=uid
-      rk=(list uid)
+  $:  ca=ctg
+      ra=(list sbj)
   ==
 ::
 :::: Display State (mast)
