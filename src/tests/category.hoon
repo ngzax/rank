@@ -12,7 +12,7 @@
 ++  test-category-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
     !>
       ^-  ctg
       =:  our.fake-bowl  ~zod
@@ -38,7 +38,7 @@
 ++  test-category-creation-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=~]
+    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod
@@ -52,7 +52,7 @@
 ++  test-category-deletion-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=[~ ~2024.4.1..21.13.47..b6a6]]
+    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=[~ ~2024.4.1..21.13.47..b6a6] ri=1]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod
