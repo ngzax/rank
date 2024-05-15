@@ -2,9 +2,6 @@
 :::: Core for working with Ranks
   ::
 /-  *rank
-:: /+  *rank-category
-:: /+  *rank-ranking
-:: /+  *rank-urbid
 /+  *string
 ::
 |%
@@ -23,10 +20,10 @@
 :::: Adds a Subjects to our Rankings
   ++  add-subject
     |=  [r=rkg s=sbj]
-    ^-  (list sbj)
-    :: =/  ra  (weld ra.r (limo [s ~]))
-    :: (get-subjects r)
-    (limo [s ~])
+    ^-  rkg
+    =:  ra.r  (weld ra.r (limo [s ~]))
+    ==
+    r
 ::
 :::: Answers the Ranking's Category
   ++  get-category

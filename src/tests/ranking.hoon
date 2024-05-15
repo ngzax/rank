@@ -57,18 +57,30 @@
 ::
 :::: A Ranking can add a Subjects to its List of rankings
   ::
-++  test-ranking-add-subject
+++  test-ranking-add-subject-answers-the-ranking
   ;:  weld
   %+  expect-eq
-    :: !>  [id=[sh=~zod uu=~.84a8v.p2opa] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-    !>  [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]
+    !>
+      :-  ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+          ra=[[id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ~]
     !>
       ^-  rkg:rank
       =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
       =/  r  (new:ranking c)
-      :: =/  s  (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"])
-      :: =/  rn  (add-subject:ranking [r s])
-      r
-      :: (get-subjects:ranking rn)
+      =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
+      (add-subject:ranking [r s])
   ==
+:: ++  test-ranking-add-subject-adds-subject
+::   ;:  weld
+::   %+  expect-eq
+::     !>  1
+::     !>
+::       ^-  @
+::       =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
+::       =/  r  (new:ranking c)
+::       =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
+::       =/  l  (add-subject:ranking [r s])
+::       (lent l)
+::       :: (ranking-count:ranking r)
+::   ==
 --
