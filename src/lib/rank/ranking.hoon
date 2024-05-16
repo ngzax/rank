@@ -21,8 +21,7 @@
   ++  add-subject
     |=  [r=rkg s=sbj]
     ^-  rkg
-    =:  ra.r  (weld ra.r (limo [s ~]))
-    ==
+    =.  ra.r  (weld ra.r (limo [s ~]))
     r
 ::
 :::: Answers the Ranking's Category

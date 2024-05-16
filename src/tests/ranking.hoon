@@ -11,6 +11,7 @@
   ::
 |_  fake-bowl=bowl:gall
 ::
+:::: Helper for Test SetUp
 ++  setup
   ^-  bowl:gall
   =:  our.fake-bowl  ~zod
@@ -70,17 +71,16 @@
       =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
       (add-subject:ranking [r s])
   ==
-:: ++  test-ranking-add-subject-adds-subject
-::   ;:  weld
-::   %+  expect-eq
-::     !>  1
-::     !>
-::       ^-  @
-::       =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-::       =/  r  (new:ranking c)
-::       =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
-::       =/  l  (add-subject:ranking [r s])
-::       (lent l)
-::       :: (ranking-count:ranking r)
-::   ==
+++  test-ranking-add-subject-adds-subject
+  ;:  weld
+  %+  expect-eq
+    !>  1
+    !>
+      ^-  @
+      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
+      =/  r  (new:ranking c)
+      =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
+      =/  l  (add-subject:ranking [r s])
+      (ranking-count:ranking l)
+  ==
 --
