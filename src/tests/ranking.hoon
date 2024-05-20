@@ -129,4 +129,16 @@
       =.  r   (push-subject:ranking [r s2])
       (snag 0 (get-subjects:ranking r))  :: Should be 1st in the list this time. (index 0)
   ==
+++  test-ranking-add-multiple-subjects
+  ;:  weld
+  %+  expect-eq
+    !>  2
+    !>
+      ^-  @
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =.  r   (add-subjects:ranking [r (limo [(need s.d) s2 ~])])
+      (ranking-count:ranking r)
+  ==
 --
