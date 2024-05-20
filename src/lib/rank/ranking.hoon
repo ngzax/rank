@@ -1,5 +1,5 @@
 ::
-:::: Core for working with Ranks
+:::: Door for working with Ranks
   ::
 /-  *rank
 /+  *string
@@ -17,7 +17,7 @@
     ^-  rkg
     :-  c  ~
 ::
-:::: Adds a Subjects to our Rankings
+:::: Adds (Appends) a Subjects to our Rankings
   ++  add-subject
     |=  [r=rkg s=sbj]
     ^-  rkg
@@ -35,6 +35,13 @@
     |=  r=rkg
     ^-  (list sbj)
     ra.r
+::
+:::: Adds (Pushes) a Subject to the top of our Rankings
+  ++  push-subject
+    |=  [r=rkg s=sbj]
+    ^-  rkg
+    =.  ra.r  (weld (limo [s ~]) ra.r)
+    r
 ::
 :::: Answers the Count of this Ranking's Subjects
   ++  ranking-count

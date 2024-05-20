@@ -58,6 +58,11 @@
       ra=(list sbj)
   ==
 ::
++$  test-data
+  $:  c=(unit ctg)
+      s=(unit sbj)
+  ==
+::
 :::: Display State (mast)
   ::
 +$  app            [color-one=tape color-two=tape letters=(list [l=@t id=@ud])]

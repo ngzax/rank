@@ -9,16 +9,24 @@
 ::
 :::: Provide a faked bowl for testing
   ::
-|_  fake-bowl=bowl:gall
+|_  bowl=bowl:gall
 ::
-:::: Helper for Test SetUp
-++  setup
+:::: Helpers for Test SetUp
+++  fake-bowl
   ^-  bowl:gall
-  =:  our.fake-bowl  ~zod
-      eny.fake-bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
-      now.fake-bowl  ~2024.4.1..20.31.25..2be3
+  =:  our.bowl  ~zod
+      eny.bowl  0v117.84a8v.p2opa.1es5t.egnt9.1gvo0.ic1tk.jd80v.tb1pk.c08h8.4fo90.5orrd.rkn3d.ec2q3.1rk9v.m2f1s.o0vpp.6domb.s4km2.s95oi.llh6m
+      now.bowl  ~2024.4.1..20.31.25..2be3
   ==
-  fake-bowl
+  bowl
+++  setup
+  |=  d=test-data:rank
+  ^-  test-data:rank
+  =.  d    [~ ~]
+  =:  c.d  (some (~(new category fake-bowl) [10 "Best" "Books" "All-time"]))
+      s.d  (some (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"]))
+  ==
+  d
 :: --
 ::
 :::: A Ranking will be initially creation with a Category (ca) and an empty list of Rankings (ra).
@@ -29,8 +37,8 @@
     !>  [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]
     !>
       ^-  rkg:rank
-      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-      (new:ranking c)
+      =/  d  (setup)
+      (new:ranking (need c.d))
   ==
 ++  test-ranking-creation-initially-empty
   ;:  weld
@@ -38,8 +46,8 @@
     !>  0
     !>
       ^-  @
-      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-      =/  r  (new:ranking c)
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
       (ranking-count:ranking r)
   ==
 ::
@@ -51,9 +59,23 @@
     !>  [id=[sh=~zod uu=~.84a8v.p2opa] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
     !>
       ^-  ctg:rank
-      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-      =/  r  (new:ranking c)
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
       (get-category:ranking r)
+  ==
+::
+:::: A Ranking can answer the List of Subjects it is Ranking.
+  ::
+++  test-ranking-get-subjects
+  ;:  weld
+  %+  expect-eq
+    !>  ~[[id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
+    !>
+      ^-  (list sbj:rank)
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      =/  l  (add-subject:ranking [r (need s.d)])
+      (get-subjects:ranking l)
   ==
 ::
 :::: A Ranking can add a Subjects to its List of rankings
@@ -66,10 +88,9 @@
           ra=[[id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ~]
     !>
       ^-  rkg:rank
-      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-      =/  r  (new:ranking c)
-      =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
-      (add-subject:ranking [r s])
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      (add-subject:ranking [r (need s.d)])
   ==
 ++  test-ranking-add-subject-adds-subject
   ;:  weld
@@ -77,10 +98,22 @@
     !>  1
     !>
       ^-  @
-      =/  c  (~(new category setup) [10 "Best" "Books" "All-time"])
-      =/  r  (new:ranking c)
-      =/  s  (~(new subject setup) ["The Possessed" "Fyodor Dostoyevsky"])
-      =/  l  (add-subject:ranking [r s])
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      =/  l  (add-subject:ranking [r (need s.d)])
       (ranking-count:ranking l)
+  ==
+++  test-ranking-add-subject-appends-new-subject
+  ;:  weld
+  %+  expect-eq
+    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarty" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>
+      ^-  sbj:rank
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =.  r   (add-subject:ranking [r (need s.d)])
+      =.  r   (add-subject:ranking [r s2])
+      (snag 1 (get-subjects:ranking r))
   ==
 --
