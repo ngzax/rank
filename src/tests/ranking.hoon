@@ -12,6 +12,7 @@
 |_  bowl=bowl:gall
 ::
 :::: Helpers for Test SetUp
+  ::
 ++  fake-bowl
   ^-  bowl:gall
   =:  our.bowl  ~zod
@@ -27,7 +28,6 @@
       s.d  (some (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"]))
   ==
   d
-:: --
 ::
 :::: A Ranking will be initially creation with a Category (ca) and an empty list of Rankings (ra).
   ::
@@ -114,6 +114,19 @@
       =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
       =.  r   (add-subject:ranking [r (need s.d)])
       =.  r   (add-subject:ranking [r s2])
-      (snag 1 (get-subjects:ranking r))
+      (snag 1 (get-subjects:ranking r))  :: Should be last in the list. (index 1)
+  ==
+++  test-ranking-push-subject-prepends-new-subject
+  ;:  weld
+  %+  expect-eq
+    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarty" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>
+      ^-  sbj:rank
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =.  r   (add-subject:ranking [r (need s.d)])
+      =.  r   (push-subject:ranking [r s2])
+      (snag 0 (get-subjects:ranking r))  :: Should be 1st in the list this time. (index 0)
   ==
 --
