@@ -35,6 +35,19 @@
       (get-urbid:category ctg)
   ==
 ::
+++  test-category-has-a-limit
+  ;:  weld
+  %+  expect-eq
+    !>  10
+    !>
+      ^-  @ud
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      (get-limit:category ctg)
+  ==
+::
 ++  test-category-creation-sets-timestamp
   ;:  weld
   %+  expect-eq

@@ -2,6 +2,7 @@
 :::: Door for working with Ranks
   ::
 /-  *rank
+/+  *rank-category
 /+  *string
 ::
 |%
@@ -40,6 +41,14 @@
     |=  r=rkg
     ^-  ctg
     ca.r
+  ::
+  :::: Answers the maximum number of Subjects that can be ranked
+    ::
+  ++  get-max-subjects
+    |=  r=rkg
+    ^-  @ud
+    :: =/  c  (get-category r)
+    (get-limit:category ca.r)
   ::
   :::: Answers the Ranking's List of Subjects
     ::

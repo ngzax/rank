@@ -8,37 +8,38 @@
 ::
 |%
 ++  category
-::
-:::: Needs a bowl as its sample
   ::
+  :::: Needs a bowl as its sample
+    ::
   |_  bowl=bowl:gall
-::
-:::: new
   ::
-  :: Add a new Category to the state
-  ::
+  :::: Answers a newly Constructed Category
+    ::
   ++  new
     |=  [limit=@ud adjective=tape subject=tape period=tape]
     ^-  ctg
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
     [id=uid li=limit ad=adjective su=subject pe=period ts=tsp]
-::
-:::: del
   ::
-  :: Logically (soft) delete a new Category from the state.
-  ::   We can't hard delete because someone might still be referencing it.
-  ::
+  :::: Logically (soft) delete a Category.
+    ::   We can't hard delete because someone might still be referencing it.
+    ::
   ++  del
     |=  c=ctg
     ^-  ctg
     =.  ts.c  (~(del timestamp bowl) ts.c)
     c
-::
-:::: get-timestamp
   ::
-  :: Answers the Category's Timestamp structure.
+  :::: Answers the Category's Limit.
+    ::
+  ++  get-limit
+    |=  c=ctg
+    ^-  @ud
+    li.c
   ::
+  :::: Answers the Category's Timestamp structure.
+    ::
   ++  get-timestamp
     |=  c=ctg
     ^-  tsp:rank

@@ -78,6 +78,19 @@
       (get-subjects:ranking l)
   ==
 ::
+:::: A Ranking knows the maximum number of Subjects it can rank.
+  ::
+++  test-ranking-get-max-subjects
+  ;:  weld
+  %+  expect-eq
+    !>  10
+    !>
+      ^-  @ud
+      =/  d  (setup)
+      =/  r  (new:ranking (need c.d))
+      (get-max-subjects:ranking r)
+  ==
+::
 :::: A Ranking can add a Subjects to its List of rankings
   ::
 ++  test-ranking-add-subject-answers-the-ranking
