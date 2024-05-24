@@ -59,8 +59,10 @@
   ==
 ::
 +$  test-data
-  $:  c=(unit ctg)
-      s=(unit sbj)
+  $:  ca=(unit ctg)
+      ra=(unit rkg)
+      su=(unit sbj)
+      sl=(unit (list sbj))
   ==
 ::
 :::: Display State (mast)
