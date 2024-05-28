@@ -3,6 +3,9 @@
   ::
 /+  *test
 /+  rank
+::
+:::: Helper Cores
+  ::
 /+  *rank-category
 /+  *rank-ranking
 /+  *rank-subject
@@ -31,11 +34,15 @@
 ++  expects
   |=  e=test-data:rank
   ^-  test-data:rank
-  =.  e    [~ ~ ~ ~]
+  =.  e  [~ ~ ~ ~]
   =:  ca.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
       ra.e  [~ [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]]
       su.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
-      sl.e  [~ ~[[id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]]
+      sl.e  :-  ~
+                :~  [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarthy" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="Gravity's Rainbow" ar="Thomas Pynchon" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+                ==
   ==
   e
 ::
@@ -85,7 +92,7 @@
   %+  expect-eq
     !>
       =/  e  (expects)
-      (need sl.e)
+      ~[(snag 0 (need sl.e))]
     !>
       ^-  (list sbj:rank)
       =/  d  (setup)
@@ -114,7 +121,7 @@
   %+  expect-eq
     !>
       =/  e  (expects)
-      [ca=(need ca.e) ra=(need sl.e)]
+      [ca=(need ca.e) ra=~[(need su.e)]]
     !>
       ^-  rkg:rank
       =/  d  (setup)
@@ -135,12 +142,14 @@
 ++  test-ranking-add-subject-appends-new-subject
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarty" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>
+      =/  e  (expects)
+      (snag 1 (need sl.e))
     !>
       ^-  sbj:rank
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
       =.  r   (add-subject:ranking [r (need su.d)])
       =.  r   (add-subject:ranking [r s2])
       (snag 1 (get-subjects:ranking r))  :: Should be last in the list. (index 1)
@@ -148,16 +157,21 @@
 ++  test-ranking-push-subject-prepends-new-subject
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarty" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>
+      =/  e  (expects)
+      (snag 1 (need sl.e))
     !>
       ^-  sbj:rank
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
       =.  r   (add-subject:ranking [r (need su.d)])
       =.  r   (push-subject:ranking [r s2])
       (snag 0 (get-subjects:ranking r))  :: Should be 1st in the list this time. (index 0)
   ==
+::
+:::: Can add multiple subjects at once to a Ranking,
+  ::
 ++  test-ranking-add-multiple-subjects
   ;:  weld
   %+  expect-eq
@@ -166,8 +180,55 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarty"])
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
+      (ranking-count:ranking r)
+  ==
+::
+:::: Prevents adding more Subjects than the Max Limit.
+  ::
+++  test-ranking-max-subjects-add
+  ;:  weld
+  %+  expect-eq
+    !>  2
+    !>
+      ^-  @
+      =/  d  (setup)
+      =/  r  (new:ranking (need ca.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
+      =.  r   (add-subject:ranking [r s3])
+      (ranking-count:ranking r)
+  ==
+++  test-ranking-max-subjects-push
+  ;:  weld
+  %+  expect-eq
+    !>  2
+    !>
+      ^-  @
+      =/  d  (setup)
+      =/  r  (new:ranking (need ca.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
+      =.  r   (push-subject:ranking [r s3])
+      (ranking-count:ranking r)
+  ==
+::
+:::: Trying to add more Subjects than possible at once Fails completely.
+  ::
+++  test-ranking-max-subjects-add-many
+  ;:  weld
+  %+  expect-eq
+    !>  0
+    !>
+      ^-  @
+      =/  d  (setup)
+      =/  r  (new:ranking (need ca.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 s3 ~])])
       (ranking-count:ranking r)
   ==
 --
