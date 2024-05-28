@@ -231,4 +231,18 @@
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 s3 ~])])
       (ranking-count:ranking r)
   ==
+++  test-ranking-max-subjects-push-many
+  ;:  weld
+  %+  expect-eq
+    !>  1
+    !>
+      ^-  @
+      =/  d  (setup)
+      =/  r  (new:ranking (need ca.d))
+      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =.  r   (push-subject:ranking [r (need su.d)])
+      =.  r   (push-subjects:ranking [r (limo [s2 s3 ~])])
+      (ranking-count:ranking r)
+  ==
 --

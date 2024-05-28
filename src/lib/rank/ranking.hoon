@@ -71,6 +71,16 @@
   =.  ra.r  (weld (limo [s ~]) ra.r)
   r
 ::
+:::: Adds (Pushes) multiple Subjects to the front (top) of our Rankings
+  ::
+++  push-subjects
+  |=  [r=rkg l=(list sbj)]
+  ^-  rkg
+  ?:  (gth (add (ranking-count r) (lent l)) (get-max-subjects r))
+    r
+  =.  ra.r  (weld l ra.r)
+  r
+::
 :::: Answers the Count of this Ranking's Subjects
   ::
 ++  ranking-count
