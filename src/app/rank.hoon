@@ -25,7 +25,7 @@
 %+  verb  |
 %-  agent:dbug
 ::
-::  state
+::  Application State
 ::
 =|  state-0
 =*  state  -
@@ -56,11 +56,17 @@
   :_  this
   :: binding the base url:
   [(~(arvo pass:io /bind) %e %connect `/'rank' %rank) ~]
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: On Save we wrap up our entire self in a vase.
+  ::
 ++  on-save
   ^-  vase
   !>  state
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: On Load we get passed a vase with our previous state
+  ::   we then return a card with an updated (if necessary) version
+  ::   of that state.
+  ::
 ++  on-load
   |=  saved-state=vase
   ^-  (quip card _this)
@@ -213,6 +219,13 @@
     ::
     :::: Answers all the categories in Agent state
       ::
+      ::  > .^((list ctg:rank) %gx /=rank=/categories/0/0/noun)
+      ::  ~[
+      ::    [id=[sh=~zod uu=~.t97f.1bkho.] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.37..3c8b up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.frked.56uql] li=10 ad="Best" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.30.47..8590 up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.klck.j10un.] li=10 ad="Worst" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.57..79c0 up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.9dr48.dgg5i] li=10 ad="Worst" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.31.08..948c up=~ de=~ ri=0]]
+      ::  ]
       [%x %categories ~]
     ``noun+!>(categories)
     ::

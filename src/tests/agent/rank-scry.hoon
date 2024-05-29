@@ -1,48 +1,14 @@
 ::  "Feature" testing on the %rank Gall agent.
 ::
 /-  *rank
-:: /-  spider
 
 /+  *test
-::
-:::: Thread Libraries
-  ::
-:: /+  strandio
-:: =,  strand=strand:spider
-:: =,  strand-fail=strand-fail:libstrand:spider
 ::
 /=  agent  /app/rank
 ::
 :: compose helper core with tests
 =>
 |%
-:: ++  process-lanes
-::   |=  [target=@p lanes=(list lane:ames)]
-::   =/  m  (strand ,~)
-::   ^-  form:m
-::   ?~  `(list lane:ames)`lanes
-::     %-  (slog leaf+"No route for {(scow %p target)}." ~)
-::     (pure:m ~)
-::   =/  lroute  (skip lanes |=(a=lane:ames -.a))
-::   ?~  lroute
-::     %-  (slog leaf+"No direct route for {(scow %p target)}." ~)
-::     (pure:m ~)
-::   =/  ip  +:(scow %if p.i.lroute)
-::   =/  port  (skip (scow %ud (cut 5 [1 1] p.i.lroute)) |=(a=@tD =(a '.')))
-::   %-  (slog leaf+"{ip}:{port}" ~)
-::   (pure:m ~)
-:: ++  run-scry
-::   |=  arg=vase
-::   ^-  thread:spider
-::   =/  m  (strand ,vase)
-::   ^-  form:m
-::   =/  utarget  !<  (unit @p)  arg
-::   ?~  utarget
-::     (strand-fail %no-arg ~)
-::   =/  target  u.utarget
-::   ;<  lanes=(list lane:ames)  bind:m  (scry:strandio (list lane:ames) /ax//peers/(scot %p target)/forward-lane)
-::   ;<  ~                       bind:m  (process-lanes target lanes)
-::   (pure:m !>(~))
 ::
 ::::  Build an example bowl manually.
   ::
@@ -69,15 +35,23 @@
 ::
 ::::  Test scrying out a Category.
   ::
-++  test-agent-scrying-a-subject
+++  test-agent-scrying-a-category-via-on-peek
   =|  run=@ud
-  =/  path  /category/~.gmne0.sigl9/noun
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+  =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  1
-    :: !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
-    !>  1
-    :: !>
-    ::   (run-scry)
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>
+      ^-  ctg
+      :: ^-  *
+      =/  path  ~['x' 'category' '~.jbl03.q1tnj']
+      =/  sr  (~(on-peek agent (bowl run)) path)
+      :: sr is a (unit (unit cage))...
+      =/  ca  (need (need sr))
+      :: the tail of the cage is a vase...
+      =/  va  +.ca
+      :: the tail of the tail of the vase is what we need...
+      ((lone ctg) +.+.va)
   ==
 --
