@@ -44,14 +44,23 @@
     !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
     !>
       ^-  ctg
-      :: ^-  *
       =/  path  ~['x' 'category' '~.jbl03.q1tnj']
       =/  sr  (~(on-peek agent (bowl run)) path)
-      :: sr is a (unit (unit cage))...
-      =/  ca  (need (need sr))
+      :: sr (scry result) is a (unit (unit cage))...
       :: the tail of the cage is a vase...
-      =/  va  +.ca
-      :: the tail of the tail of the vase is what we need...
-      ((lone ctg) +.+.va)
+      :: the tail of the tail of the vase is the category structure we need...
+      =/  va  (tail (need (need sr)))
+      ((lone ctg) (tail (tail va)))   :: Works!
+
+      :: !<(ctg va)                      :: CRASHED /tests/agent/rank-scry/test-agent-scrying-a-category-via-on-peek
+                                         :: -need.[sh=@p uu=@ta]
+                                         ::  -have.%~
+
+      :: !<(ctg (tail (tail va)))        :: clay: read-at-tako fail [desk=%rank care=%a case=[%da p=~2024.5.30..20.27.03..9b56] path=/tests/agent/rank-scry/hoon]
+                                         :: nest-fail
+                                         :: -have.*
+                                         :: -need.#t
+                                         :: /tests/agent/rank-scry/hoon::[57 7].[57 31]>
+      :: !<  [* ctg]  va
   ==
 --
