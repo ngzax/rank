@@ -96,3 +96,30 @@ category = [5 "Best" "Books" "All-time"]
 | --- |
 | @p |
 | ~hosneb-rosler |
+
+
+### PATH Model
+
+#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
+
+/=rank=/category/{%rift.id}/{%u.id}/{%life.ts}/noun)
+
+/=rank=/category/0/~.gmne0.sigl9/0/noun) => [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
+
+:: Schema changed to explicitly add rift and life, removed up.ts as everything is now immutable...agent will need to handle "upgrade"... see `categories` below for parallel evolution.
+/=rank=/category/1/~.gmne0.sigl9/1/noun) => [id=[sh=~zod uu=~.gmne0.sigl9 rift=1] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1]]]
+
+:: Schema changed to explicitly split metadata and data...
+/=rank=/category/2/~.gmne0.sigl9/2/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=2]] data=[li=10 ad="Best" su="Albums" pe="2023" ]]
+
+:: Instance edited to allow a bigger list (10 -> 20)...
+/=rank=/category/2/~.gmne0.sigl9/3/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023" ]]
+
+
+#### category-list = [id=uid ts=tsp li=(list ctg)]
+
+/=rank=/categories/{%rift.id}/{%u.id}/{%life.ts}/noun)
+
+/=rank=/categories/0/~.t97f.1bkho./0/noun) => [id=[sh=~zod uu=~.t97f.1bkho.] ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~] li=~[id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
+
+/=rank=/categories/1/~.t97f.1bkho./1/noun) => [id=[sh=~zod uu=~.t97f.1bkho. rift=1] li=~[id=[sh=~zod uu=~.gmne0.sigl9 rift=1] ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1]]]

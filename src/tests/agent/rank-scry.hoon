@@ -33,9 +33,31 @@
 --
 |%
 ::
-::::  Test scrying out a Category.
+::::  Test Category scrying.
   ::
-++  test-agent-scrying-a-category-via-on-peek
+++  test-agent-scrying-all-categories
+  =|  run=@ud
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+    =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "All-time"]))
+    =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Books" "All-time"]))
+  =+  !<(=state on-save:agent)
+  ;:  weld
+  %+  expect-eq
+    !>  3
+    :: !>  :~  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    ::         [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    ::     ==
+    !>
+      ^-  @
+      =/  path  ~['x' 'categories']
+      =/  sr    (~(on-peek agent (bowl run)) path)
+      =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
+      =/  vase  (tail cage)                        :: the tail of the cage is a vase...
+      =/  cats  (tail vase)                        :: the tail of the vase is our categories as a noun.
+      (lent ((lone (list ctg)) cats))
+      :: ((lone (list ctg)) cats)
+  ==
+++  test-agent-scrying-a-single-category
   =|  run=@ud
   =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
   =+  !<(=state on-save:agent)
@@ -46,16 +68,11 @@
       ^-  ctg
       =/  path  ~['x' 'category' '~.jbl03.q1tnj']
       =/  sr  (~(on-peek agent (bowl run)) path)
-      :: sr (scry result) is a (unit (unit cage))...
-      :: the tail of the cage is a vase...
-      :: the tail of the tail of the vase is the category structure we need...
       =/  va  (tail (need (need sr)))
-      ((lone ctg) (tail (tail va)))   :: Works!
-
+      ((lone ctg) (tail (tail va)))      :: Works!
       :: !<(ctg va)                      :: CRASHED /tests/agent/rank-scry/test-agent-scrying-a-category-via-on-peek
                                          :: -need.[sh=@p uu=@ta]
                                          ::  -have.%~
-
       :: !<(ctg (tail (tail va)))        :: clay: read-at-tako fail [desk=%rank care=%a case=[%da p=~2024.5.30..20.27.03..9b56] path=/tests/agent/rank-scry/hoon]
                                          :: nest-fail
                                          :: -have.*
