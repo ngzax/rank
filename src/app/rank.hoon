@@ -227,7 +227,7 @@
       ::    [id=[sh=~zod uu=~.9dr48.dgg5i] li=10 ad="Worst" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.31.08..948c up=~ de=~ ri=0]]
       ::  ]
       [%x %categories ~]
-    ``noun+!>(categories)
+      [~ ~ [%noun !>(categories)]]
     ::
     :::: Answers the Category with UrbId or ~ if not found. (unit ctg)
       ::
@@ -242,7 +242,7 @@
         ``noun+!>(~)
       =/  idx  (find ~[(head ctg)] categories)
       =/  c  (snag (need idx) categories)
-    ``noun+!>((some c))
+      [~ ~ [%noun !>(c)]]
     ::
     :::: Answers all the Subjects in Agent state
       ::

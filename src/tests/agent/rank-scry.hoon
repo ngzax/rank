@@ -44,18 +44,13 @@
   ;:  weld
   %+  expect-eq
     !>  3
-    :: !>  :~  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-    ::         [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-    ::     ==
     !>
       ^-  @
       =/  path  ~['x' 'categories']
       =/  sr    (~(on-peek agent (bowl run)) path)
       =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
       =/  vase  (tail cage)                        :: the tail of the cage is a vase...
-      =/  cats  (tail vase)                        :: the tail of the vase is our categories as a noun.
-      (lent ((lone (list ctg)) cats))
-      :: ((lone (list ctg)) cats)
+      (lent !<((list ctg) vase))
   ==
 ++  test-agent-scrying-a-single-category
   =|  run=@ud
@@ -67,9 +62,11 @@
     !>
       ^-  ctg
       =/  path  ~['x' 'category' '~.jbl03.q1tnj']
-      =/  sr  (~(on-peek agent (bowl run)) path)
-      =/  va  (tail (need (need sr)))
-      ((lone ctg) (tail (tail va)))      :: Works!
+      =/  sr    (~(on-peek agent (bowl run)) path)
+      =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
+      =/  vase  (tail cage)                        :: the tail of the cage is a vase...
+      !<(ctg vase)
+      :: ((lone ctg) (tail (tail va)))      :: Works!
       :: !<(ctg va)                      :: CRASHED /tests/agent/rank-scry/test-agent-scrying-a-category-via-on-peek
                                          :: -need.[sh=@p uu=@ta]
                                          ::  -have.%~
