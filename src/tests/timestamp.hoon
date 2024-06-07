@@ -14,7 +14,7 @@
 ++  test-timestamp-creation
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=~]
+    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=~ ri=0]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
@@ -24,7 +24,7 @@
 ++  test-timestamp-update
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=[~ ~2024.3.29..17.50.15..6adf] de=~]
+    !>  [cr=~2024.3.29..17.25.38..6a05 up=[~ ~2024.3.29..17.50.15..6adf] de=~ ri=1]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
@@ -38,7 +38,7 @@
 ++  test-timestamp-delete-no-update
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=[~ ~2024.3.29..17.50.15..6adf]]
+    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=[~ ~2024.3.29..17.50.15..6adf] ri=1]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05

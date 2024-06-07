@@ -9,8 +9,6 @@
 /+  *rank
 /+  *rank-category
 /+  *rank-subject
-:: /~  libs  *  /lib/rank                            :: build all helper cores
-:: /~  mars  *  /mar
 ::
 /=  index       /app/rank/index
 /=  list        /app/rank/list
@@ -27,22 +25,24 @@
 %+  verb  |
 %-  agent:dbug
 ::
-::  state
+::  Application State
 ::
 =|  state-0
 =*  state  -
 ::
-=<  :: compose helper core into agent core
-::
-::  agent core
-::
+::  This is a %gall agent core
 ^-  agent:gall
+:: compose helper core into agent core
+::
+=<
+:: A Gall agent is a Door which has a Bowl as its sample
+::
 |_  =bowl:gall
 ::
 +*  this  .
-    def   ~(. (default-agent this %.n) bowl)
-    io    ~(. agentio bowl)
-    main  ~(. +> bowl)
+    def     ~(. (default-agent this %.n) bowl)
+    io      ~(. agentio bowl)
+    helper  ~(. +> bowl)
     :: a list of cells of url paths to gates (your sail components), are required for rig:mast.
     :: see the example sail component for more information.
     :: these define all of the different pages for your app.
@@ -56,16 +56,24 @@
   :_  this
   :: binding the base url:
   [(~(arvo pass:io /bind) %e %connect `/'rank' %rank) ~]
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: On Save we wrap up our entire self in a vase.
+  ::
 ++  on-save
   ^-  vase
   !>  state
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: On Load we get passed a vase with our previous state
+  ::   we then return a card with an updated (if necessary) version
+  ::   of that state.
+  ::
 ++  on-load
   |=  saved-state=vase
   ^-  (quip card _this)
   `this(state !<(versioned-state saved-state))
-:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
+::
+:::: Modifying Agent state. (pokes)
+  ::
 ++  on-poke
   |=  [=mark =vase]
   |^  ^-  (quip card _this)
@@ -88,13 +96,13 @@
     |=  =action
     ^-  (quip card _state)
     ?-  -.action
-      %add-category     %-  add-category:main     +.action
-      %remove-category  %-  remove-category:main  +.action
+      %add-category     %-  add-category:helper     +.action
+      %remove-category  %-  remove-category:helper  +.action
       ::
-      %add-subject     %-  add-subject:main     +.action
-      %remove-subject  %-  remove-subject:main  +.action
+      %add-subject     %-  add-subject:helper     +.action
+      %remove-subject  %-  remove-subject:helper  +.action
       :: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
-      %purge-category  %-  purge-category:main  +.action
+      %purge-category  %-  purge-category:helper  +.action
     ==
 ::
   ++  handle-http-request
@@ -201,7 +209,47 @@
       `this
   ==
 ++  on-leave  on-leave:def
-++  on-peek   on-peek:def
+::
+:::: Querying Agent state. (scry paths)
+  ::
+++  on-peek
+  |=  =path
+  ^-  (unit (unit cage))
+  ?+  path  (on-peek:def path)
+    ::
+    :::: Answers all the categories in Agent state
+      ::
+      ::  > .^((list ctg:rank) %gx /=rank=/categories/0/0/noun)
+      ::  ~[
+      ::    [id=[sh=~zod uu=~.t97f.1bkho.] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.37..3c8b up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.frked.56uql] li=10 ad="Best" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.30.47..8590 up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.klck.j10un.] li=10 ad="Worst" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.57..79c0 up=~ de=~ ri=0]]
+      ::    [id=[sh=~zod uu=~.9dr48.dgg5i] li=10 ad="Worst" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.31.08..948c up=~ de=~ ri=0]]
+      ::  ]
+      [%x %categories ~]
+    [~ ~ [%noun !>(categories)]]
+    ::
+    :::: Answers the Category with UrbId or ~ if not found. (unit ctg)
+      ::
+      ::  > .^((unit ctg:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
+      ::  [~ [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
+      ::
+      [%x %category @ ~]
+      =/  key=@ta  (slav %ta i.t.t.path)
+      =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+      =/  cat  (skim categories fil)
+      ?~  cat
+        ``noun+!>(~)
+      =/  idx  (find ~[(head cat)] categories)
+      =/  c  (snag (need idx) categories)
+    [~ ~ [%noun !>(c)]]
+    ::
+    :::: Answers all the Subjects in Agent state
+      ::
+      [%x %subjects ~]
+    [~ ~ [%noun !>(subjects)]]
+    :: ``noun+!>(subjects)
+  ==
 ++  on-agent  on-agent:def
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
 ++  on-arvo
@@ -218,7 +266,7 @@
 ++  on-fail   on-fail:def
 --
 ::
-::  Helper door (main)
+::  Helper door
 ::
 |_  bowl=bowl:gall
 ::
@@ -230,7 +278,7 @@
   [~ state]
 ::
 ++  remove-category
-  |=  key=tape
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
   =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
@@ -245,7 +293,7 @@
   [~ state]
 ::
 ++  purge-category
-  |=  [key=tape]
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
   =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
@@ -265,7 +313,7 @@
   [~ state]
 ::
 ++  remove-subject
-  |=  key=tape
+  |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
   =/  fil  |=(s=sbj =(key (~(get-key urbid bowl) (get-urbid:subject s))))

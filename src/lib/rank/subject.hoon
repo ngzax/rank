@@ -13,7 +13,7 @@
     ::
   |_  bowl=bowl:gall
   ::
-  :::: Add a new Subject to the state
+  :::: Answers a newly constructed Subject
     ::
   ++  new
     |=  [title=tape artist=tape]

@@ -1,12 +1,38 @@
 # rank
 create and share your faves with friends.
 
-Install instructions:
+#### Installtion Instructions
+...in dojo on your ship...
+```
+> |new-desk %rank
+> |mount %rank
+```
+... back on your host machine...
+```
+cd to root of source code...
+
+$ rm -r <path_to_pier>/rank/*`          // Optional: clean out old versions
+$ cp -RL dep/* <path_to_pier>/rank/
+$ cp -RL src/* <path_to_pier>/rank/
+```
+...back in the dojo on your (preferably) fake ship...
+```
+> |commit %rank
+> |install our %rank
+> :treaty|publish %rank
+> -test /=rank=/tests ~
+```
+
+#### First time developer setup instructions:
+...in dojo on your (preferably) fake ship...
 - `|new-desk %rank`
 - `|mount %rank`
-- `rm -r {dev-ship}/rank/*`
-- `cp -RL rank/dep/* {dev-ship}/rank/`
-- `cp -RL rank/src/* {dev-ship}/rank/`
+
+... back on your host machine...
+> cd to root of source...
+> ./_sync.sh <path_to_pier>
+
+...back in the dojo on your (preferably) fake ship...
 - `|commit %rank`
 - `|install our %rank`
 - `:treaty|publish %rank`
@@ -70,3 +96,62 @@ category = [5 "Best" "Books" "All-time"]
 | --- |
 | @p |
 | ~hosneb-rosler |
+
+
+### PATH Model
+
+#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
+
+/=rank=/category/{%u.id}/{%rift.id}/{%life.ts}/noun)
+
+/=rank=/category/~.gmne0.sigl9/0/0/noun) => [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
+
+:: Schema changed to explicitly add rift and life, removed up.ts as everything is now immutable...agent will need to handle "upgrade"... see `categories` below for parallel evolution.
+/=rank=/category/~.gmne0.sigl9/1/1/noun) => [id=[sh=~zod uu=~.gmne0.sigl9 rift=1] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1]]]
+
+:: Schema changed to explicitly split metadata and data...
+/=rank=/category/~.gmne0.sigl9/2/2/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=2]] data=[li=10 ad="Best" su="Albums" pe="2023" ]]
+
+:: Instance edited to allow a bigger list (10 -> 20)...
+/=rank=/category/~.gmne0.sigl9/2/3/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023" ]]
+
+
+#### category-list = [id=uid ts=tsp li=(list ctg)]
+
+/=rank=/categories/{%u.id}/{%rift.id}/{%life.ts}/noun)
+
+/=rank=/categories/~.t97f.1bkho./0/0/noun) => [id=[sh=~zod uu=~.t97f.1bkho.]
+                                               ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]
+                                               li=~[
+                                                     [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]
+                                                   ]
+                                              ]
+
+/=rank=/categories/~.t97f.1bkho./1/1/noun) => [id=[sh=~zod uu=~.t97f.1bkho. rift=1]
+                                               ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1]
+                                               li=~[
+                                                     [id=[sh=~zod uu=~.gmne0.sigl9 rift=1] ts=[cr=~2024.6.3..19.46.29..4c8a de=~ life=1] li=10 ad="Best" su="Albums" pe="2023"]
+                                                   ]
+                                              ]
+
+/=rank=/categories/~.t97f.1bkho./2/2/noun) => [meta=[id=[sh=~zod uu=~.t97f.1bkho. rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=2]]
+                                               data=[
+                                                 li=~[
+                                                       [id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=2] li=10 ad="Best" su="Albums" pe="2023"]
+                                                     ]
+                                              ]]
+
+/=rank=/categories/~.t97f.1bkho./2/3/noun) => [meta=[id=[sh=~zod uu=~.t97f.1bkho. rift=2] ts=[cr=~2024.8.3..19.46.29..4c8a de=~ life=3]]
+                                               data=[
+                                                 li=~[
+                                                       [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.8.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023"]]
+                                                     ]
+                                              ]]
+
+/=rank=/categories/~.t97f.1bkho./2/4/noun) => [meta=[id=[sh=~zod uu=~.t97f.1bkho. rift=2] ts=[cr=~2024.9.3..19.46.29..4c8a de=~ life=4]]
+                                               data=[
+                                                 li=~[
+                                                       [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.8.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023"]]
+                                                       [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.8.3..19.46.29..4c8a de=~ life=0]] data=[li=20 ad="Best" su="Books" pe="2023"]]
+                                                     ]
+                                              ]]

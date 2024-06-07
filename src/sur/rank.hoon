@@ -3,24 +3,28 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: An UrbID (`uid`) is a [@p tape] tuple containing a Ship name and a unique string.
+:::: An UrbID (`uid`) is a [@p @ta] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
+  :: It needs to be a @ta not a tape because it will appear in scry paths.
   ::
 +$  uid
   $:  sh=@p
-      uu=tape
+      uu=@ta
   ==
 ::
-:::: A Timestamp (`tsp`) is a [@da @da @da] containing three times representing
-  ::   the CReation, Last UPdate, and DEletion times for an Entity.
+:::: A Timestamp (`tsp`) is a [time u(time) u(time) @u] containing three times representing
+  ::   the CReation, Last UPdate, and DEletion times and the RIft (or continuity number,
+  ::   it is a count of the number of times that a value has changed) for an Entity.
   ::
   ::   NOTE: this is not called `time` to avoid conflicting with the urbit stdlib.
+  ::   NOTE: An immutable will always have up=~ and ri=0.
   ::
 +$  tsp
  $:  cr=time
      up=(unit time)
      de=(unit time)
+     ri=@u
   ==
 ::
 :::: An Category (`ctg`) is a tuple of [Limit Adjective Subject Period].
@@ -46,18 +50,19 @@
       ts=tsp
   ==
 ::
-:::: A Rank is an [Ordinal, Subject] tuple.
+::
+:::: A Ranking ('rkg') is a an List (Ordered Set?) of {Subject}s for a {Category}.
   ::
-+$  rank
-  $:  od=@ud
-      su=sbj
++$  rkg
+  $:  ca=ctg
+      ra=(list sbj)
   ==
 ::
-:::: A Ranking is a an Ordered Set of Ranks for a Category.
-  ::
-+$  ranking
-  $:  ca=ctg
-      rk=(set rank)
++$  test-data
+  $:  ca=(unit ctg)
+      ra=(unit rkg)
+      su=(unit sbj)
+      sl=(unit (list sbj))
   ==
 ::
 :::: Display State (mast)
@@ -73,7 +78,7 @@
       display-state
       categories=(list ctg)
       pals=(list @p)
-      rankings=(list ranking)
+      rankings=(list rkg)
       subjects=(list sbj)
   ==
 ::
@@ -86,14 +91,14 @@
 +$  action
   $%
     [%add-category limit=@ud adjective=tape subject=tape period=tape]
-    [%remove-category key=tape]
+    [%remove-category key=@ta]
     :: :-  %remove-category
     ::   $=  key  tape
     [%add-subject title=tape artist=tape]
-    [%remove-subject key=tape]
+    [%remove-subject key=@ta]
 ::
 :::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.
   ::
-    [%purge-category key=tape]
+    [%purge-category key=@ta]
   ==
 --

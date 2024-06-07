@@ -17,7 +17,7 @@
   ::
   ++  new
     ^-  uid:rank
-    =/  uuid  (oust [0 6] (head (trim 17 (scow %uv eny.bowl))))
+    =/  uuid  (crip (oust [0 6] (head (trim 17 (scow %uv eny.bowl)))))
     :-  our.bowl  uuid
 ::
 :::: get-key
@@ -26,7 +26,7 @@
   ::
   ++  get-key
     |=  uid=uid:rank
-    ^-  tape
+    ^-  @ta
     uu.uid
 ::
 :::: same
@@ -46,6 +46,6 @@
   ++  to-tape
     |=  uid=uid:rank
     ^-  tape
-    (link "" (limo [(scow %p sh:uid) ":" uu:uid ~]))
+    (link "" (limo [(scow %p sh:uid) ":" (trip uu:uid) ~]))
   --
 --

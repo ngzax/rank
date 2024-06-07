@@ -1,5 +1,5 @@
 ::
-:::: Unit test Core for Category
+:::: Unit test Door for Category
   ::
 /+  *test
 /+  rank
@@ -12,7 +12,7 @@
 ++  test-category-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu="jbl03.q1tnj"] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
     !>
       ^-  ctg
       =:  our.fake-bowl  ~zod
@@ -25,7 +25,7 @@
 ++  test-category-has-a-unique-urbit-id
   ;:  weld
   %+  expect-eq
-    !>  [sh=~zod uu="62qg2.p57rt"]
+    !>  [sh=~zod uu=~.62qg2.p57rt]
     !>
       ^-  uid:rank
       =:  our.fake-bowl  ~zod
@@ -35,10 +35,23 @@
       (get-urbid:category ctg)
   ==
 ::
+++  test-category-has-a-limit
+  ;:  weld
+  %+  expect-eq
+    !>  10
+    !>
+      ^-  @ud
+      =:  our.fake-bowl  ~zod
+          eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
+      ==
+      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      (get-limit:category ctg)
+  ==
+::
 ++  test-category-creation-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=~]
+    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod
@@ -52,7 +65,7 @@
 ++  test-category-deletion-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=[~ ~2024.4.1..21.13.47..b6a6]]
+    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=[~ ~2024.4.1..21.13.47..b6a6] ri=1]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod
@@ -73,5 +86,15 @@
       ^-  tape
       =/  ctg  (new:category [10 "Best" "Books" "All-time"])
       (to-tape:category ctg)
+  ==
+::
+++  test-category-to-cord
+  ;:  weld
+  %+  expect-eq
+    !>  'The 10 Best Books of All-time'
+    !>
+      ^-  @t
+      =/  ctg  (new:category [10 "Best" "Books" "All-time"])
+      (to-cord:category ctg)
   ==
 --
