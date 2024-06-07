@@ -237,10 +237,10 @@
       [%x %category @ ~]
       =/  key=@ta  (slav %ta i.t.t.path)
       =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
-      =/  ctg  (skim categories fil)
-      ?~  ctg
+      =/  cat  (skim categories fil)
+      ?~  cat
         ``noun+!>(~)
-      =/  idx  (find ~[(head ctg)] categories)
+      =/  idx  (find ~[(head cat)] categories)
       =/  c  (snag (need idx) categories)
       [~ ~ [%noun !>(c)]]
     ::
