@@ -2,6 +2,7 @@
 :::: Unit test Door for Category
   ::
 /+  *test
+::
 /+  rank
 /+  *rank-category
 ::
@@ -14,7 +15,7 @@
   %+  expect-eq
     !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
     !>
-      ^-  ctg
+      ^-  cate
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v1c4.jbl03.q1tnj.d89mc.p5s54.v076j.anu8s.5a12n.nb165.ln285.a7o3u.r9pe3.mpufp.3l9h0.mpugk.ahg2p.olnmm.5spkq.rsoa2.vou6m.e0kvv
           now.fake-bowl  ~2024.4.1..20.31.25..2be3
@@ -31,8 +32,8 @@
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
       ==
-      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
-      (get-urbid:category ctg)
+      =/  cate  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      (get-urbid:category cate)
   ==
 ::
 ++  test-category-has-a-limit
@@ -44,8 +45,8 @@
       =:  our.fake-bowl  ~zod
           eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
       ==
-      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
-      (get-limit:category ctg)
+      =/  cate  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      (get-limit:category cate)
   ==
 ::
 ++  test-category-creation-sets-timestamp
@@ -58,8 +59,8 @@
           eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
           now.fake-bowl  ~2024.4.1..20.31.25..2be3
       ==
-      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
-      (get-timestamp:category ctg)
+      =/  cate  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      (get-timestamp:category cate)
   ==
 ::
 ++  test-category-deletion-sets-timestamp
@@ -72,10 +73,10 @@
           eny.fake-bowl  0v2g8.62qg2.p57rt.pkcj6.c2gsg.gohkh.8hjvu.sgg3c.l6r09.69n9h.namgk.j8lis.djb0o.ipqs7.p4sfr.eivfm.sa7k5.7hilk.5on6d.cgmng.02s4k
           now.fake-bowl  ~2024.4.1..20.31.25..2be3
       ==
-      =/  ctg  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
+      =/  cate  (~(new category fake-bowl) [10 "Best" "Books" "All-time"])
       =.  now.fake-bowl  ~2024.4.1..21.13.47..b6a6
-      =.  ctg  (~(del category fake-bowl) ctg)
-      (get-timestamp:category ctg)
+      =.  cate  (~(del category fake-bowl) cate)
+      (get-timestamp:category cate)
   ==
 ::
 ++  test-category-to-tape
@@ -84,8 +85,8 @@
     !>  "The 10 Best Books of All-time"
     !>
       ^-  tape
-      =/  ctg  (new:category [10 "Best" "Books" "All-time"])
-      (to-tape:category ctg)
+      =/  cate  (new:category [10 "Best" "Books" "All-time"])
+      (to-tape:category cate)
   ==
 ::
 ++  test-category-to-cord
@@ -94,7 +95,7 @@
     !>  'The 10 Best Books of All-time'
     !>
       ^-  @t
-      =/  ctg  (new:category [10 "Best" "Books" "All-time"])
-      (to-cord:category ctg)
+      =/  cate  (new:category [10 "Best" "Books" "All-time"])
+      (to-cord:category cate)
   ==
 --

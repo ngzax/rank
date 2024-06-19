@@ -1,6 +1,8 @@
 ::  "Feature" testing on the %rank Gall agent.
 ::
 /-  *rank
+/-  *rank-category
+::
 /+  *test
 /=  agent  /app/rank
 ::
@@ -21,7 +23,7 @@
 +$  state
   $:  %0
     display-state
-    categories=(list ctg)
+    categories=(list cate)
     pals=(list @p)
     rankings=(list rkg)
     subjects=(list sbj)

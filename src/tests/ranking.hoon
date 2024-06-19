@@ -3,6 +3,7 @@
   ::
 /+  *test
 /+  rank
+/+  *rank-category
 ::
 :::: Helper Cores
   ::
@@ -79,7 +80,7 @@
       =/  e  (expects)
       (need ca.e)
     !>
-      ^-  ctg:rank
+      ^-  cate
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       (get-category:ranking r)

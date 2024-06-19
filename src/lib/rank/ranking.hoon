@@ -15,7 +15,7 @@
 :::: Answers a newly constructed Ranking with a Subject Xref and empty Rankings
   ::
 ++  new
-  |=  c=ctg
+  |=  c=cate
   ^-  rkg
   :-  c  ~
 ::
@@ -43,7 +43,7 @@
   ::
 ++  get-category
   |=  r=rkg
-  ^-  ctg
+  ^-  cate
   ca.r
 ::
 :::: Answers the maximum number of Subjects that can be ranked

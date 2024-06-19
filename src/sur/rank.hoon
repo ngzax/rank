@@ -27,19 +27,6 @@
      ri=@u
   ==
 ::
-:::: An Category (`ctg`) is a tuple of [Limit Adjective Subject Period].
-  :: The 10 Best Novels of The Twentieth Century
-  ::
-::
-+$  ctg
-  $:  id=uid
-      li=@ud
-      ad=tape
-      su=tape
-      pe=tape
-      ts=tsp
-  ==
-::
 :::: A Subject (`sbj`) is a [Title, Artist] tuple
   :: It is what we are Ranking.
   ::

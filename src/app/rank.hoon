@@ -219,7 +219,7 @@
     ::
     :::: Answers all the categories in Agent state
       ::
-      ::  > .^((list ctg:rank) %gx /=rank=/categories/0/0/noun)
+      ::  > .^((list cate:rank) %gx /=rank=/categories/0/0/noun)
       ::  ~[
       ::    [id=[sh=~zod uu=~.t97f.1bkho.] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.37..3c8b up=~ de=~ ri=0]]
       ::    [id=[sh=~zod uu=~.frked.56uql] li=10 ad="Best" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.30.47..8590 up=~ de=~ ri=0]]
@@ -229,14 +229,14 @@
       [%x %categories ~]
     [~ ~ [%noun !>(categories)]]
     ::
-    :::: Answers the Category with UrbId or ~ if not found. (unit ctg)
+    :::: Answers the Category with UrbId or ~ if not found. (unit cate)
       ::
-      ::  > .^((unit ctg:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
+      ::  > .^((unit cate:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
       ::  [~ [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
       ::
       [%x %category @ ~]
       =/  key=@ta  (slav %ta i.t.t.path)
-      =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+      =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
       =/  cat  (skim categories fil)
       ?~  cat
         ``noun+!>(~)
@@ -281,12 +281,12 @@
   |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
-  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  ctg  (skim categories fil)
-  ?~  ctg
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  cate  (skim categories fil)
+  ?~  cate
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head ctg)] categories)
+  =/  idx  (find ~[(head cate)] categories)
   =/  c  (snag (need idx) categories)
   =.  c  (~(del category bowl) c)
   =.  categories  (snap categories (need idx) c)
@@ -296,12 +296,12 @@
   |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
-  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  ctg  (skim categories fil)
-  ?~  ctg
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  cate  (skim categories fil)
+  ?~  cate
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head ctg)] categories)
+  =/  idx  (find ~[(head cate)] categories)
   =.  categories  (oust [(need idx) 1] categories)
   [~ state]
 ::
@@ -329,6 +329,6 @@
 ::
   :: ~&  >  our.bowl
   :: ~&  >  key
-  :: ~&  >  ctg
+  :: ~&  >  cate
   :: ~&  >  idx
 --

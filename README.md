@@ -56,9 +56,9 @@ $ cp -RL src/* <path_to_pier>/rank/
 | ex1 | ~2024.3.29..17.25.38..6a05 | ~ | ~ |
 | ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.3.29..17.50.15..6adf] | [~ ~2024.3.29..17.50.15..6adf] |
 
-#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
+#### category, aka `cate` = [id=uid =li =ad =su =pe ts=tsp]
 
-#### categories (list ctg)
+#### categories (list cate)
 
 | Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -100,7 +100,7 @@ category = [5 "Best" "Books" "All-time"]
 
 ### PATH Model
 
-#### category, aka `ctg` = [id=uid =li =ad =su =pe ts=tsp]
+#### category, aka `cate` = [id=uid =li =ad =su =pe ts=tsp]
 
 /=rank=/category/{%u.id}/{%rift.id}/{%life.ts}/noun)
 
@@ -116,7 +116,7 @@ category = [5 "Best" "Books" "All-time"]
 /=rank=/category/~.gmne0.sigl9/2/3/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023" ]]
 
 
-#### category-list = [id=uid ts=tsp li=(list ctg)]
+#### category-list = [id=uid ts=tsp li=(list cate)]
 
 /=rank=/categories/{%u.id}/{%rift.id}/{%life.ts}/noun)
 
