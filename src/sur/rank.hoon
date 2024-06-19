@@ -27,44 +27,6 @@
      ri=@u
   ==
 ::
-:::: A Subject (`sbj`) is a [Title, Artist] tuple
-  :: It is what we are Ranking.
-  ::
-+$  sbj
-  $:  id=uid
-      ti=tape
-      ar=tape
-      ts=tsp
-  ==
-::
-+$  test-data
-  $:  ca=(unit cate)
-      ra=(unit rnkg)
-      su=(unit sbj)
-      sl=(unit (list sbj))
-  ==
-::
-:::: Display State (mast)
-  ::
-+$  app            [color-one=tape color-two=tape letters=(list [l=@t id=@ud])]
-+$  display        $~([[%html ~] [[%head ~] ~] [[%body ~] ~] ~] manx)
-+$  display-state  [=app =display current-url=path]
-::
-:::: Stored App State
-  ::
-+$  state-0
-  $:  %0
-      display-state
-      categories=(list cate)
-      pals=(list @p)
-      rankings=(list rnkg)
-      subjects=(list sbj)
-  ==
-::
-+$  versioned-state
-  $%  state-0
-  ==
-::
 :::: Application Mark Structures
   ::
 +$  action

@@ -3,6 +3,7 @@
 /-  *rank
 /-  *rank-category
 /-  *rank-ranking
+/-  *rank-state
 ::
 /+  *test
 ::
@@ -20,7 +21,7 @@
     categories=(list cate)
     pals=(list @p)
     rankings=(list rnkg)
-    subjects=(list sbj)
+    subjects=(list subj)
   ==
 ::
 ::::  Build an example bowl manually.
@@ -128,6 +129,6 @@
       =/  sr    (~(on-peek agent (bowl run)) path)
       =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
       =/  vase  (tail cage)                        :: the tail of the cage is a vase...
-      (lent !<((list sbj) vase))
+      (lent !<((list subj) vase))
   ==
 --

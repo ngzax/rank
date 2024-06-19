@@ -2,6 +2,9 @@
 :::: Door for working with Ranks
   ::
 /-  *rank
+/-  *rank-category
+/-  *rank-ranking
+::
 /+  *rank-category
 /+  *string
 ::
@@ -22,7 +25,7 @@
 :::: Adds (Appends) a Subject to the bottom our Rankings
   ::
 ++  add-subject
-  |=  [r=rnkg s=sbj]
+  |=  [r=rnkg s=subj]
   ^-  rnkg
   ?:  =((ranking-count r) (get-max-subjects r))
     r
@@ -32,7 +35,7 @@
 :::: Adds (Appends) multiple Subjects to the bottom our Rankings
   ::
 ++  add-subjects
-  |=  [r=rnkg s=(list sbj)]
+  |=  [r=rnkg s=(list subj)]
   ^-  rnkg
   ?:  (gth (add (ranking-count r) (lent s)) (get-max-subjects r))
     r
@@ -58,13 +61,13 @@
   ::
 ++  get-subjects
   |=  r=rnkg
-  ^-  (list sbj)
+  ^-  (list subj)
   ra.r
 ::
 :::: Adds (Pushes) a Subject to the top of our Rankings
   ::
 ++  push-subject
-  |=  [r=rnkg s=sbj]
+  |=  [r=rnkg s=subj]
   ^-  rnkg
   ?:  =((ranking-count r) (get-max-subjects r))
     r
@@ -74,7 +77,7 @@
 :::: Adds (Pushes) multiple Subjects to the front (top) of our Rankings
   ::
 ++  push-subjects
-  |=  [r=rnkg l=(list sbj)]
+  |=  [r=rnkg l=(list subj)]
   ^-  rnkg
   ?:  (gth (add (ranking-count r) (lent l)) (get-max-subjects r))
     r

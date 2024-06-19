@@ -1,4 +1,6 @@
 /-  *rank
+/-  *rank-subject
+::
 /+  *rank-timestamp
 /+  *rank-urbid
 /+  *string
@@ -17,7 +19,7 @@
     ::
   ++  new
     |=  [title=tape artist=tape]
-    ^-  sbj
+    ^-  subj
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
     [id=uid ti=title ar=artist ts=tsp]
@@ -26,36 +28,36 @@
     ::   We can't hard delete because someone might still be referencing it.
     ::
   ++  del
-    |=  sub=sbj
-    ^-  sbj
+    |=  sub=subj
+    ^-  subj
     =.  ts.sub  (~(del timestamp bowl) ts.sub)
     sub
   ::
   :::: Answer the Subject's Artist
     ::
   ++  get-artist
-    |=  sub=sbj
+    |=  sub=subj
     ^-  tape
     ar.sub
   ::
   :::: Answers the Subject's Timestamp structure.
     ::
   ++  get-timestamp
-    |=  sub=sbj
+    |=  sub=subj
     ^-  tsp:rank
     ts.sub
   ::
   :::: Answer the Subject's Title
     ::
   ++  get-title
-    |=  sub=sbj
+    |=  sub=subj
     ^-  tape
     ti.sub
   ::
   :::: Answers the Subject's unique identifier
     ::
   ++  get-urbid
-    |=  sub=sbj
+    |=  sub=subj
     ^-  uid:rank
     id.sub
   ::
@@ -63,7 +65,7 @@
     ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
     ::
   ++  to-tape
-    |=  sub=sbj
+    |=  sub=subj
     ^-  tape
     =/  qt  (link "" (limo "'" ti.sub "'" ~))
     (link " " (limo [qt "by" ar.sub ~]))

@@ -1,5 +1,6 @@
 /-  rank
 /-  *rank-category
+/-  *rank-subject
 ::
 |%
 ::
@@ -7,6 +8,6 @@
   ::
 +$  rnkg
   $:  ca=cate
-      ra=(list sbj:rank)
+      ra=(list subj)
   ==
 --

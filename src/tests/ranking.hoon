@@ -1,10 +1,12 @@
 ::
 :::: Unit test Door for Rankings
   ::
+/-  *rank-ranking
+/-  *rank-test
+::
 /+  *test
 /+  rank
 /+  *rank-category
-/-  *rank-ranking
 ::
 :::: Helper Cores
   ::
@@ -26,16 +28,16 @@
   ==
   bowl
 ++  setup
-  |=  d=test-data:rank
-  ^-  test-data:rank
+  |=  d=test-data
+  ^-  test-data
   =.  d    [~ ~ ~ ~]
   =:  ca.d  (some (~(new category fake-bowl) [2 "Best" "Books" "All-time"]))
       su.d  (some (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"]))
   ==
   d
 ++  expects
-  |=  e=test-data:rank
-  ^-  test-data:rank
+  |=  e=test-data
+  ^-  test-data
   =.  e  [~ ~ ~ ~]
   =:  ca.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
       ra.e  [~ [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]]
@@ -57,7 +59,7 @@
       =/  e  (expects)
       (need ra.e)
     !>
-      ^-  rnkg:rank
+      ^-  rnkg
       =/  d  (setup)
       (new:ranking (need ca.d))
   ==
@@ -96,7 +98,7 @@
       =/  e  (expects)
       ~[(snag 0 (need sl.e))]
     !>
-      ^-  (list sbj:rank)
+      ^-  (list subj)
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       =/  l  (add-subject:ranking [r (need su.d)])
@@ -125,7 +127,7 @@
       =/  e  (expects)
       [ca=(need ca.e) ra=~[(need su.e)]]
     !>
-      ^-  rnkg:rank
+      ^-  rnkg
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       (add-subject:ranking [r (need su.d)])
@@ -148,7 +150,7 @@
       =/  e  (expects)
       (snag 1 (need sl.e))
     !>
-      ^-  sbj:rank
+      ^-  subj
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
@@ -163,7 +165,7 @@
       =/  e  (expects)
       (snag 1 (need sl.e))
     !>
-      ^-  sbj:rank
+      ^-  subj
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
