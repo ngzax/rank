@@ -2,6 +2,7 @@
 ::
 /-  *rank
 /-  *rank-category
+/-  *rank-ranking
 ::
 /+  *test
 /=  agent  /app/rank
@@ -25,7 +26,7 @@
     display-state
     categories=(list cate)
     pals=(list @p)
-    rankings=(list rkg)
+    rankings=(list rnkg)
     subjects=(list sbj)
   ==
 --

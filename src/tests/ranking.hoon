@@ -4,6 +4,7 @@
 /+  *test
 /+  rank
 /+  *rank-category
+/-  *rank-ranking
 ::
 :::: Helper Cores
   ::
@@ -56,7 +57,7 @@
       =/  e  (expects)
       (need ra.e)
     !>
-      ^-  rkg:rank
+      ^-  rnkg:rank
       =/  d  (setup)
       (new:ranking (need ca.d))
   ==
@@ -124,7 +125,7 @@
       =/  e  (expects)
       [ca=(need ca.e) ra=~[(need su.e)]]
     !>
-      ^-  rkg:rank
+      ^-  rnkg:rank
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       (add-subject:ranking [r (need su.d)])

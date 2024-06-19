@@ -37,17 +37,9 @@
       ts=tsp
   ==
 ::
-::
-:::: A Ranking ('rkg') is a an List (Ordered Set?) of {Subject}s for a {Category}.
-  ::
-+$  rkg
-  $:  ca=ctg
-      ra=(list sbj)
-  ==
-::
 +$  test-data
-  $:  ca=(unit ctg)
-      ra=(unit rkg)
+  $:  ca=(unit cate)
+      ra=(unit rnkg)
       su=(unit sbj)
       sl=(unit (list sbj))
   ==
@@ -63,9 +55,9 @@
 +$  state-0
   $:  %0
       display-state
-      categories=(list ctg)
+      categories=(list cate)
       pals=(list @p)
-      rankings=(list rkg)
+      rankings=(list rnkg)
       subjects=(list sbj)
   ==
 ::
