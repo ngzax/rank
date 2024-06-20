@@ -2,7 +2,7 @@
 :::: Unit test Door for Subjects
   ::
 /+  *test
-/+  rank
+::
 /+  *rank-subject
 ::
 :::: Provide a faked bowl for testing

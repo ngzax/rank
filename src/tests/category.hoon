@@ -1,12 +1,9 @@
 ::
 :::: Unit test Door for Category
   ::
-/-  *rank
 /-  *rank-test
-
-/+  *test
 ::
-/+  rank
+/+  *test
 /+  *rank-category
 ::
 :::: Provide a faked bowl for testing
