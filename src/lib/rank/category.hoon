@@ -24,7 +24,7 @@
     ^-  cate
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [id=uid li=limit ad=adjective su=subject pe=period ts=tsp]
+    [id=uid ts=tsp li=limit ad=adjective su=subject pe=period]
   ::
   :::: Logically (soft) delete a Category.
     ::   We can't hard delete because someone might still be referencing it.

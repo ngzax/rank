@@ -78,7 +78,7 @@
 ++  test-agent-scrying-a-single-category
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] li=10 ad="Best" su="Albums" pe="2023"]
     !>
       ^-  cate
       ::

@@ -12,7 +12,7 @@
 ++  test-subject-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.8..17.22.57..f365 up=~ de=~ ri=0]]
+    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.8..17.22.57..f365 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]
     !>
       ^-  subj
       =:  our.fake-bowl  ~zod
@@ -66,7 +66,7 @@
 ++  test-subject-creation-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=~ ri=0]
+    !>  [cr=~2024.4.8..22.46.10..8a01 de=~ ri=0]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod
@@ -80,7 +80,7 @@
 ++  test-subject-deletion-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.8..22.46.10..8a01 up=~ de=[~ ~2024.4.8..22.51.47..3127] ri=1]
+    !>  [cr=~2024.4.8..22.46.10..8a01 de=[~ ~2024.4.8..22.51.47..3127] ri=1]
     !>
       ^-  tsp:rank
       =:  our.fake-bowl  ~zod

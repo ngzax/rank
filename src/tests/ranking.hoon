@@ -39,13 +39,13 @@
   |=  e=test-data
   ^-  test-data
   =.  e  [~ ~ ~ ~]
-  =:  ca.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
-      ra.e  [~ [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]]
-      su.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
+  =:  ca.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] li=2 ad="Best" su="Books" pe="All-time"]]
+      ra.e  [~ [ca=[id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] li=2 ad="Best" su="Books" pe="All-time"] ra=~]]
+      su.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]]
       sl.e  :-  ~
-                :~  [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarthy" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="Gravity's Rainbow" ar="Thomas Pynchon" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+                :~  [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]
+                    [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="All the Pretty Horses" ar="Cormac McCarthy"]
+                    [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="Gravity's Rainbow" ar="Thomas Pynchon"]
                 ==
   ==
   e

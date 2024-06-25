@@ -8,10 +8,10 @@
 ::
 +$  cate
   $:  id=uid:rank
+      ts=tsp:rank
       li=@ud
       ad=tape
       su=tape
       pe=tape
-      ts=tsp:rank
   ==
 --

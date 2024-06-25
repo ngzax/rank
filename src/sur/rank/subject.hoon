@@ -7,8 +7,8 @@
   ::
 +$  subj
   $:  id=uid:rank
+      ts=tsp:rank
       ti=tape
       ar=tape
-      ts=tsp:rank
   ==
 --

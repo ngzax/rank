@@ -22,7 +22,6 @@
   ::
 +$  tsp
  $:  cr=time
-     up=(unit time)
      de=(unit time)
      ri=@u
   ==

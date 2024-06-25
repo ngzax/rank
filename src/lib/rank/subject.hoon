@@ -22,7 +22,7 @@
     ^-  subj
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [id=uid ti=title ar=artist ts=tsp]
+    [id=uid ts=tsp ti=title ar=artist]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.

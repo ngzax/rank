@@ -38,8 +38,8 @@
   |=  e=test-data-1
   ^-  test-data-1
   =.  e  [~ ~]
-  =:  c0.e  [~ [id=[sh=~zod uu=~.jbl03.q1tnj] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
-      c1.e  [~ [id=[sh=~zod uu=~.62qg2.p57rt] li=10 ad="Best" su="Books" pe="2024" ts=[cr=~2024.4.2..22.22.22..2be3 up=~ de=~ ri=0]]]
+  =:  c0.e  [~ [id=[sh=~zod uu=~.jbl03.q1tnj] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] li=2 ad="Best" su="Books" pe="All-time"]]
+      c1.e  [~ [id=[sh=~zod uu=~.62qg2.p57rt] ts=[cr=~2024.4.2..22.22.22..2be3 de=~ ri=0] li=10 ad="Best" su="Books" pe="2024"]]
   ==
   e
 ::
@@ -78,7 +78,7 @@
 ++  test-category-creation-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]
+    !>  [cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]
     !>
       ^-  tsp:rank
       =/  d  (setup)
@@ -88,7 +88,7 @@
 ++  test-category-deletion-sets-timestamp
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.4.1..20.31.25..2be3 up=~ de=[~ ~2024.4.1..22.22.22..b6a6] ri=1]
+    !>  [cr=~2024.4.1..20.31.25..2be3 de=[~ ~2024.4.1..22.22.22..b6a6] ri=1]
     !>
       ^-  tsp:rank
       =/  d  (setup)
