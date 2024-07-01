@@ -3,6 +3,27 @@
 :::: Basic Application Data Structures
   ::
 ::
+:::: A Mote is the basic structure for holding durable, storable data.
+  :: It is comprised of 2 sub-structues, metadata and a data .
+  ::
+  :: It is currently hard-coded here but eventually should become a generated
+  :: type like list, set, &c.
+  ::
++$  mote
+  $:  me=meta
+      da=(list *)
+  ==
+::
+:::: A Meta is the basic structure for holding the data about the data.
+  :: Used for both a Mote and a Plex.
+  ::
++$  meta
+  $:  id=uid
+      li=@u
+      ri=@tas
+      ts=tsp
+  ==
+::
 :::: An UrbID (`uid`) is a [@p @ta] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they
   ::   can be properly sourced and synced.
