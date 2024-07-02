@@ -22,7 +22,7 @@
     ^-  subj
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [id=uid ts=tsp ti=title ar=artist]
+    [me=[id=uid lf=0 rf='0' ts=tsp] ti=title ar=artist]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.
@@ -30,7 +30,7 @@
   ++  del
     |=  sub=subj
     ^-  subj
-    =.  ts.sub  (~(del timestamp bowl) ts.sub)
+    =.  ts.me.sub  (~(del timestamp bowl) ts.me.sub)
     sub
   ::
   :::: Answer the Subject's Artist
@@ -45,7 +45,7 @@
   ++  get-timestamp
     |=  sub=subj
     ^-  tsp:rank
-    ts.sub
+    ts.me.sub
   ::
   :::: Answer the Subject's Title
     ::
@@ -59,7 +59,7 @@
   ++  get-urbid
     |=  sub=subj
     ^-  uid:rank
-    id.sub
+    id.me.sub
   ::
   :::: Represent a Subject as a tape.
     ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"

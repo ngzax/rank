@@ -12,7 +12,7 @@
 ++  test-subject-creation
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.8..17.22.57..f365 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]
+    !>  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.8..17.22.57..f365 de=~ ri=0]] ti="The Possessed" ar="Fyodor Dostoyevsky"]
     !>
       ^-  subj
       =:  our.fake-bowl  ~zod

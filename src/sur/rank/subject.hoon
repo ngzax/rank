@@ -6,8 +6,7 @@
   :: It is what we are Ranking.
   ::
 +$  subj
-  $:  id=uid:rank
-      ts=tsp:rank
+  $:  me=meta:rank
       ti=tape
       ar=tape
   ==

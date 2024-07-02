@@ -41,11 +41,11 @@
   =.  e  [~ ~ ~ ~]
   =:  ca.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] li=2 ad="Best" su="Books" pe="All-time"]]
       ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] li=2 ad="Best" su="Books" pe="All-time"] ra=~]]
-      su.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]]
+      su.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="The Possessed" ar="Fyodor Dostoyevsky"]]
       sl.e  :-  ~
-                :~  [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="The Possessed" ar="Fyodor Dostoyevsky"]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="All the Pretty Horses" ar="Cormac McCarthy"]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0] ti="Gravity's Rainbow" ar="Thomas Pynchon"]
+                :~  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="The Possessed" ar="Fyodor Dostoyevsky"]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="All the Pretty Horses" ar="Cormac McCarthy"]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="Gravity's Rainbow" ar="Thomas Pynchon"]
                 ==
   ==
   e
