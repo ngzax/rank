@@ -7,8 +7,7 @@
   ::
 ::
 +$  cate
-  $:  id=uid:rank
-      ts=tsp:rank
+  $:  me=meta:rank
       li=@ud
       ad=tape
       su=tape

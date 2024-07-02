@@ -17,10 +17,12 @@
 :::: A Meta is the basic structure for holding the data about the data.
   :: Used for both a Mote and a Plex.
   ::
+  :: It is a tuple of [UrbID Life Rift Timestamp].
+  ::
 +$  meta
   $:  id=uid
-      li=@u
-      ri=@tas
+      lf=@u
+      rf=@tas
       ts=tsp
   ==
 ::
