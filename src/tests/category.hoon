@@ -85,6 +85,26 @@
       (get-timestamp:category (need c0.d))
   ==
 ::
+++  test-category-creation-sets-life-to-zero
+  ;:  weld
+  %+  expect-eq
+    !>  0
+    !>
+      ^-  @u
+      =/  d  (setup)
+      (get-life:category (need c0.d))
+  ==
+::
+++  test-category-creation-sets-rift-to-0
+  ;:  weld
+  %+  expect-eq
+    !>  `@tas`'0'
+    !>
+      ^-  @tas
+      =/  d  (setup)
+      (get-rift:category (need c0.d))
+  ==
+::
 ++  test-category-deletion-sets-timestamp
   ;:  weld
   %+  expect-eq

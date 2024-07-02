@@ -35,12 +35,26 @@
     =.  ts.me.c  (~(del timestamp bowl) ts.me.c)
     c
   ::
+  :::: Answers the Category's Life, which is how many times it has been edited.
+    ::
+  ++  get-life
+    |=  c=cate
+    ^-  @u
+    lf.me.c
+  ::
   :::: Answers the Category's Limit.
     ::
   ++  get-limit
     |=  c=cate
     ^-  @ud
     li.c
+  ::
+  :::: Answers the Category's Rift, which is the current version of it's schema.
+    ::
+  ++  get-rift
+    |=  c=cate
+    ^-  @tas
+    rf.me.c
   ::
   :::: Answers the Category's Timestamp structure.
     ::

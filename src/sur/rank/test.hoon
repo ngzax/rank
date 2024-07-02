@@ -15,4 +15,8 @@
   $:  c0=(unit cate)
       c1=(unit cate)
   ==
++$  subject-test-data
+  $:  s0=(unit subj)
+      s1=(unit subj)
+  ==
 --

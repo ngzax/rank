@@ -40,6 +40,20 @@
     ^-  tape
     ar.sub
   ::
+  :::: Answers the Subject's Life, which is how many times it has been edited.
+    ::
+  ++  get-life
+    |=  sub=subj
+    ^-  @u
+    lf.me.sub
+  ::
+  :::: Answers the Subject's Rift, which is the current version of it's schema.
+    ::
+  ++  get-rift
+    |=  sub=subj
+    ^-  @tas
+    rf.me.sub
+  ::
   :::: Answers the Subject's Timestamp structure.
     ::
   ++  get-timestamp
