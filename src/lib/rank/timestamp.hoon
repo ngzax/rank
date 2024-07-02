@@ -17,7 +17,7 @@
   ::
   ++  new
     ^-  tsp:rank
-    [cr=now.bowl de=~ ri=0]
+    [cr=now.bowl de=~]
 ::
 :::: upd
   ::
@@ -26,7 +26,7 @@
   ++  upd
     |=  t=tsp:rank
     ^-  tsp:rank
-    [cr=cr.t de=~ ri=(add ri.t 1)]
+    [cr=cr.t de=~]
 ::
 :::: del
   :: "Delete" a Timestamp
@@ -34,6 +34,6 @@
   ++  del
     |=  t=tsp:rank
     ^-  tsp:rank
-    [cr=cr.t de=(some now.bowl) ri=(add ri.t 1)]
+    [cr=cr.t de=(some now.bowl)]
   --
 --

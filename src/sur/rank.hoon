@@ -36,17 +36,14 @@
       uu=@ta
   ==
 ::
-:::: A Timestamp (`tsp`) is a [time u(time) u(time) @u] containing three times representing
-  ::   the CReation, Last UPdate, and DEletion times and the RIft (or continuity number,
-  ::   it is a count of the number of times that a value has changed) for an Entity.
+:::: A Timestamp (`tsp`) is a [time u(time)] containing two times representing
+  ::   the CReation and DEletion times.
   ::
   ::   NOTE: this is not called `time` to avoid conflicting with the urbit stdlib.
-  ::   NOTE: An immutable will always have up=~ and ri=0.
   ::
 +$  tsp
  $:  cr=time
      de=(unit time)
-     ri=@u
   ==
 ::
 :::: Application Mark Structures
