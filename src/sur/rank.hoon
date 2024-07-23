@@ -54,7 +54,7 @@
     [%remove-category key=@ta]
     :: :-  %remove-category
     ::   $=  key  tape
-    [%add-subject title=tape artist=tape]
+    [%add-subject title=@t artist=@t]
     [%remove-subject key=@ta]
 ::
 :::: THE FOLLOWING ARE FOR TESTING/DEBUG ONLY.

@@ -7,7 +7,6 @@
   ::
 +$  subj
   $:  me=meta:rank
-      ti=tape
-      ar=tape
+      da=(map @tas @)
   ==
 --

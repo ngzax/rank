@@ -49,11 +49,11 @@
   ::
 ++  test-agent-adding-a-subject
   =|  run=@ud
-  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-subject "The Possessed" "Fyodor Dostoyevsky"]))
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'The Possessed' 'Fyodor Dostoyevsky']))
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] ti="The Possessed" ar="Fyodor Dostoyevsky"]
+    !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
     :: !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] li=0 ri='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="The Possessed" ar="Fyodor Dostoyevsky"]
     !>  (snag 0 subjects.state)
   ==

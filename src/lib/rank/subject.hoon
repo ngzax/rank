@@ -18,11 +18,11 @@
   :::: Answers a newly constructed Subject
     ::
   ++  new
-    |=  [title=tape artist=tape]
+    |=  [title=@t artist=@t]
     ^-  subj
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [me=[id=uid lf=0 rf='0' ts=tsp] ti=title ar=artist]
+    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[ti+title ar+artist]))]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.
@@ -37,8 +37,8 @@
     ::
   ++  get-artist
     |=  sub=subj
-    ^-  tape
-    ar.sub
+    ^-  @t
+    (~(got by da.sub) %ar)
   ::
   :::: Answers the Subject's Life, which is how many times it has been edited.
     ::
@@ -65,8 +65,8 @@
     ::
   ++  get-title
     |=  sub=subj
-    ^-  tape
-    ti.sub
+    ^-  @t
+    (~(got by da.sub) %ti)
   ::
   :::: Answers the Subject's unique identifier
     ::
@@ -81,7 +81,7 @@
   ++  to-tape
     |=  sub=subj
     ^-  tape
-    =/  qt  (link "" (limo "'" ti.sub "'" ~))
-    (link " " (limo [qt "by" ar.sub ~]))
+    =/  qt  (link "" (limo "'" (trip (get-title sub)) "'" ~))
+    (link " " (limo [qt "by" (trip (get-artist sub)) ~]))
   --
 --

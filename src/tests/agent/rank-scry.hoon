@@ -120,11 +120,11 @@
         ::
       =|  run=@ud
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject "The Possessed" "Fyodor Dostoyevsky"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'The Possessed' 'Fyodor Dostoyevsky']))
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject "All the Pretty Horses" "Cormac McCarthy"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'All the Pretty Horses' 'Cormac McCarthy']))
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject "Gravity's Rainbow" "Thomas Pynchon"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'Gravity\'s Rainbow' 'Thomas Pynchon']))
       =+  !<(=state on-save:agent)
       ::
       =/  path  ~['x' 'subjects']

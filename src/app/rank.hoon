@@ -307,7 +307,7 @@
   [~ state]
 ::
 ++  add-subject
-  |=  [title=tape artist=tape]
+  |=  [title=@t artist=@t]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-subject"  !!
   =.  subjects  (snoc subjects (~(new subject bowl) [title artist]))
