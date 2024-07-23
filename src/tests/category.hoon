@@ -38,8 +38,8 @@
   |=  e=test-data-1
   ^-  test-data-1
   =.  e  [~ ~]
-  =:  c0.e  [~ [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] li=2 ad="Best" su="Books" pe="All-time"]]
-      c1.e  [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf='0' ts=[cr=~2024.4.2..22.22.22..2be3 de=~]] li=10 ad="Best" su="Books" pe="2024"]]
+  =:  c0.e  [~ [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=[n=[p=%li q=2] l=~ r=[n=[p=%ad q=1.953.719.618] l=~ r=~]] ad="Best" su="Books" pe="All-time"]]
+      c1.e  [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf='0' ts=[cr=~2024.4.2..22.22.22..2be3 de=~]] da=[n=[p=%li q=10] l=~ r=~] ad="Best" su="Books" pe="2024"]]
   ==
   e
 ::
@@ -70,9 +70,19 @@
   %+  expect-eq
     !>  10
     !>
-      ^-  @ud
+      ^-  @u
       =/  d  (setup)
       (get-limit:category (need c1.d))
+  ==
+::
+++  test-category-has-a-adjective
+  ;:  weld
+  %+  expect-eq
+    !>  'Best'
+    !>
+      ^-  @t
+      =/  d  (setup)
+      (get-adjective:category (need c1.d))
   ==
 ::
 ++  test-category-creation-sets-timestamp

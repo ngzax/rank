@@ -39,8 +39,8 @@
   |=  e=test-data
   ^-  test-data
   =.  e  [~ ~ ~ ~]
-  =:  ca.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] li=2 ad="Best" su="Books" pe="All-time"]]
-      ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] li=2 ad="Best" su="Books" pe="All-time"] ra=~]]
+  =:  ca.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=[n=[p=%li q=2] l=~ r=[n=[p=%ad q=1.953.719.618] l=~ r=~]] ad="Best" su="Books" pe="All-time"]]
+      ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=[n=[p=%li q=2] l=~ r=[n=[p=%ad q=1.953.719.618] l=~ r=~]] ad="Best" su="Books" pe="All-time"] ra=~]]
       su.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] ti="The Possessed" ar="Fyodor Dostoyevsky"]]
       sl.e  :-  ~
                 :~  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] ti="The Possessed" ar="Fyodor Dostoyevsky"]

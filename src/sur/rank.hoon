@@ -11,7 +11,7 @@
   ::
 +$  mote
   $:  me=meta
-      da=(list *)
+      da=(map @tas @)
   ==
 ::
 :::: A Meta is the basic structure for holding the data about the data.

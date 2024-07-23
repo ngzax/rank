@@ -6,6 +6,7 @@
 /-  *rank-state
 ::
 /+  *test
+/+  *rank-category
 ::
 /=  agent  /app/rank
 ::
@@ -78,9 +79,9 @@
 ++  test-agent-scrying-a-single-category
   ;:  weld
   %+  expect-eq
-    !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] li=10 ad="Best" su="Albums" pe="2023"]
+    !>  'The 10 Best Albums of 2023'
     !>
-      ^-  cate
+      ^-  @t
       ::
       :::: Setup
         ::
@@ -92,8 +93,9 @@
       =/  sr    (~(on-peek agent (bowl run)) path)
       =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
       =/  vase  (tail cage)                        :: the tail of the cage is a vase...
-      !<(cate vase)
-      :: ((lone cate) (tail (tail va)))      :: Works!
+      :: !<(cate vase)
+      =/  cate  ((lone cate) (tail (tail vase)))   :: Works!
+      (to-cord:category cate)
       :: !<(cate va)                      :: CRASHED /tests/agent/rank-scry/test-agent-scrying-a-category-via-on-peek
                                          :: -need.[sh=@p uu=@ta]
                                          ::  -have.%~

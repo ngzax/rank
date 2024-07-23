@@ -243,7 +243,7 @@
         ``noun+!>(~)
       =/  idx  (find ~[(head cat)] categories)
       =/  c  (snag (need idx) categories)
-    [~ ~ [%noun !>(c)]]
+    ``noun+!>((some c))
     ::
     :::: Answers all the Subjects in Agent state
       ::

@@ -8,7 +8,7 @@
 ::
 +$  cate
   $:  me=meta:rank
-      li=@ud
+      da=(map @tas @)
       ad=tape
       su=tape
       pe=tape
