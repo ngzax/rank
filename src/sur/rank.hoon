@@ -50,7 +50,7 @@
   ::
 +$  action
   $%
-    [%add-category limit=@ud adjective=tape subject=tape period=tape]
+    [%add-category limit=@ud adjective=@t subject=@t period=@t]
     [%remove-category key=@ta]
     :: :-  %remove-category
     ::   $=  key  tape

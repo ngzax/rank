@@ -37,7 +37,7 @@
 ::
 ++  test-agent-adding-a-category
   =|  run=@ud
-  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Albums' '2023']))
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq

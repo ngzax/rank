@@ -62,11 +62,11 @@
         ::
       =|  run=@ud
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Albums' '2023']))
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "All-time"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Albums' 'All-time']))
       =^  move  agent
-        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Books" "All-time"]))
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Books' 'All-time']))
       =+  !<(=state on-save:agent)
       :: (setup)
       ::
@@ -86,7 +86,7 @@
       :::: Setup
         ::
       =|  run=@ud
-        =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+        =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Albums' '2023']))
       =+  !<(=state on-save:agent)
       ::
       =/  path  ~['x' 'category' '~.jbl03.q1tnj']

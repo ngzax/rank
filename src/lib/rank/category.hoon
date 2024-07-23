@@ -20,11 +20,11 @@
   :::: Answers a newly Constructed Category
     ::
   ++  new
-    |=  [limit=@ud adjective=tape subject=tape period=tape]
+    |=  [limit=@ud adjective=@t subject=@t period=@t]
     ^-  cate
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[li+limit ad+(crip adjective)])) ad=adjective su=subject pe=period]
+    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[li+limit ad+adjective su+subject pe+period]))]
   ::
   :::: Logically (soft) delete a Category.
     ::   We can't hard delete because someone might still be referencing it.
@@ -56,12 +56,26 @@
     ^-  @u
     (~(got by da.c) %li)
   ::
+  :::: Answers the Category's Period.
+    ::
+  ++  get-period
+    |=  c=cate
+    ^-  @t
+    (~(got by da.c) %pe)
+  ::
   :::: Answers the Category's Rift, which is the current version of it's schema.
     ::
   ++  get-rift
     |=  c=cate
     ^-  @tas
     rf.me.c
+  ::
+  :::: Answers the Category's Subject.
+    ::
+  ++  get-subject
+    |=  c=cate
+    ^-  @t
+    (~(got by da.c) %su)
   ::
   :::: Answers the Category's Timestamp structure.
     ::
@@ -91,6 +105,6 @@
   ++  to-tape
     |=  c=cate
     ^-  tape
-    (link " " (limo ["The" ~(rud at (get-limit c)) ad.c su.c "of" pe.c ~]))
+    (link " " (limo ["The" ~(rud at (get-limit c)) (trip (get-adjective c)) (trip (get-subject c)) "of" (trip (get-period c)) ~]))
   --
 --

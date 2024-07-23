@@ -9,8 +9,5 @@
 +$  cate
   $:  me=meta:rank
       da=(map @tas @)
-      ad=tape
-      su=tape
-      pe=tape
   ==
 --

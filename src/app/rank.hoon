@@ -272,7 +272,7 @@
 |_  bowl=bowl:gall
 ::
 ++  add-category
-  |=  [limit=@ud adjective=tape subject=tape period=tape]
+  |=  [limit=@ud adjective=@t subject=@t period=@t]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-category"  !!
   =.  categories  (snoc categories (~(new category bowl) [limit adjective subject period]))
