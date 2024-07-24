@@ -7,6 +7,7 @@
 ::
 /+  *test
 /+  *rank-category
+/+  *rank-subject
 ::
 /=  agent  /app/rank
 ::
@@ -51,7 +52,7 @@
 ::
 ::::  Test Category scrying.
   ::
-++  test-agent-scrying-all-categories
+++  test-scrying-all-categories
   ;:  weld
   %+  expect-eq
     !>  3
@@ -76,7 +77,7 @@
       =/  vase  (tail cage)                        :: the tail of the cage is a vase...
       (lent !<((list cate) vase))
   ==
-++  test-agent-scrying-a-single-category
+++  test-scrying-a-single-category
   ;:  weld
   %+  expect-eq
     !>  'The 10 Best Albums of 2023'
@@ -109,7 +110,7 @@
 ::
 ::::  Test Subject scrying.
   ::
-++  test-agent-scrying-all-subjects
+++  test-scrying-all-subjects
   ;:  weld
   %+  expect-eq
     !>  3
@@ -132,5 +133,26 @@
       =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
       =/  vase  (tail cage)                        :: the tail of the cage is a vase...
       (lent !<((list subj) vase))
+  ==
+++  test-scrying-a-single-subject
+  ;:  weld
+  %+  expect-eq
+    !>  "'The Possessed' by Fyodor Dostoyevsky"
+    !>
+      ^-  tape
+      ::
+      :::: Setup
+        ::
+      =|  run=@ud
+      =^  move  agent
+        (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'The Possessed' 'Fyodor Dostoyevsky']))
+      =+  !<(=state on-save:agent)
+      ::
+      =/  path  ~['x' 'subject' '~.jbl03.q1tnj']
+      =/  sr    (~(on-peek agent (bowl run)) path)
+      =/  cage  (need (need sr))                   :: sr (scry result) is a (unit (unit cage))...
+      =/  vase  (tail cage)                        :: the tail of the cage is a vase...
+      =/  subj  ((lone subj) (tail (tail vase)))   :: Works!
+      (to-tape:subject subj)
   ==
 --

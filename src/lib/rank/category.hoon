@@ -83,25 +83,23 @@
     |=  c=cate
     ^-  tsp:rank
     ts.me.c
-::
-:::: get-uid
   ::
-  :: Answers the Category's unique identifier
-  ::
+  :::: Answers the Category's unique identifier
+    ::
   ++  get-urbid
     |=  c=cate
     ^-  uid:rank
     id.me.c
-::
-:::: Represent a Category as a cord.
   ::
+  :::: Represent a Category as a cord.
+    ::
   ++  to-cord
     |=  c=cate
     ^-  @t
     (crip (to-tape c))
-::
-:::: Represent a Category as a tape.
   ::
+  :::: Represent a Category as a tape.
+    ::
   ++  to-tape
     |=  c=cate
     ^-  tape

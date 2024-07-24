@@ -75,6 +75,13 @@
     ^-  uid:rank
     id.me.sub
   ::
+  :::: Represent a Subject as a cord.
+    ::
+  ++  to-cord
+    |=  s=subj
+    ^-  @t
+    (crip (to-tape s))
+  ::
   :::: Represent a Subject as a tape.
     ::   e.g. "'The Possessed' by Fyodor Dostoyevsky"
     ::

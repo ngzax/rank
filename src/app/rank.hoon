@@ -220,20 +220,10 @@
     ::
     :::: Answers all the categories in Agent state
       ::
-      ::  > .^((list cate:rank) %gx /=rank=/categories/0/0/noun)
-      ::  ~[
-      ::    [id=[sh=~zod uu=~.t97f.1bkho.] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.37..3c8b up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.frked.56uql] li=10 ad="Best" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.30.47..8590 up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.klck.j10un.] li=10 ad="Worst" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.57..79c0 up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.9dr48.dgg5i] li=10 ad="Worst" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.31.08..948c up=~ de=~ ri=0]]
-      ::  ]
       [%x %categories ~]
     [~ ~ [%noun !>(categories)]]
     ::
     :::: Answers the Category with UrbId or ~ if not found. (unit cate)
-      ::
-      ::  > .^((unit cate:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
-      ::  [~ [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
       ::
       [%x %category @ ~]
       =/  key=@ta  (slav %ta i.t.t.path)
@@ -250,6 +240,18 @@
       [%x %subjects ~]
     [~ ~ [%noun !>(subjects)]]
     :: ``noun+!>(subjects)
+    ::
+    :::: Answers the Subject with UrbId key or ~ if not found. (unit subj)
+      ::
+      [%x %subject @ ~]
+      =/  key=@ta  (slav %ta i.t.t.path)
+      =/  fil  |=(s=subj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+      =/  sub  (skim subjects fil)
+      ?~  sub
+        ``noun+!>(~)
+      =/  idx  (find ~[(head sub)] subjects)
+      =/  s  (snag (need idx) subjects)
+    ``noun+!>((some s))
   ==
 ++  on-agent  on-agent:def
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
