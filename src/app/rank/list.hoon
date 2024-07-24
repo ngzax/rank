@@ -1,5 +1,7 @@
 /-  rank
-|=  app-state=app.display-state.rank
+/-  *rank-state
+::
+|=  app-state=app.display-state
 ^-  manx
 ;html
   ;head

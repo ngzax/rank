@@ -1,7 +1,12 @@
 ::  "Feature" testing on the %rank Gall agent.
 ::
 /-  *rank
+/-  *rank-category
+/-  *rank-ranking
+/-  *rank-state
+::
 /+  *test
+/+  *rank-category
 /=  agent  /app/rank
 ::
 :: compose helper core with tests
@@ -21,10 +26,10 @@
 +$  state
   $:  %0
     display-state
-    categories=(list ctg)
+    categories=(list cate)
     pals=(list @p)
-    rankings=(list rkg)
-    subjects=(list sbj)
+    rankings=(list rnkg)
+    subjects=(list subj)
   ==
 --
 |%
@@ -32,23 +37,24 @@
 ::
 ++  test-agent-adding-a-category
   =|  run=@ud
-  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 "Best" "Albums" "2023"]))
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-category 10 'Best' 'Albums' '2023']))
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-    !>  (snag 0 categories.state)
+    !>  "The 10 Best Albums of 2023"
+    !>  (to-tape:category (snag 0 categories.state))
   ==
 ::
 ::::  Test adding a Subject into the agent state.
   ::
 ++  test-agent-adding-a-subject
   =|  run=@ud
-  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-subject "The Possessed" "Fyodor Dostoyevsky"]))
+  =^  move  agent  (~(on-poke agent (bowl run)) %rank-action !>([%add-subject 'The Possessed' 'Fyodor Dostoyevsky']))
   =+  !<(=state on-save:agent)
   ;:  weld
   %+  expect-eq
-    !>  [id=[sh=~zod uu=~.jbl03.q1tnj] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+    !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
+    :: !>  [me=[id=[sh=~zod uu=~.jbl03.q1tnj] li=0 ri='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~ ri=0]] ti="The Possessed" ar="Fyodor Dostoyevsky"]
     !>  (snag 0 subjects.state)
   ==
 --

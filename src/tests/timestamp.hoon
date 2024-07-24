@@ -14,17 +14,20 @@
 ++  test-timestamp-creation
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=~ ri=0]
+    !>  [cr=~2024.3.29..17.25.38..6a05 de=~]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
       ~(new timestamp fake-bowl)
   ==
-
+::
+:::: When a timestamp updates, the rift increases
+  :: NOTE: This is temporary behavior that will be removed shortly when
+  ::   rift moves upward to the mote.
 ++  test-timestamp-update
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=[~ ~2024.3.29..17.50.15..6adf] de=~ ri=1]
+    !>  [cr=~2024.3.29..17.25.38..6a05 de=~]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05
@@ -38,7 +41,7 @@
 ++  test-timestamp-delete-no-update
   ;:  weld
   %+  expect-eq
-    !>  [cr=~2024.3.29..17.25.38..6a05 up=~ de=[~ ~2024.3.29..17.50.15..6adf] ri=1]
+    !>  [cr=~2024.3.29..17.25.38..6a05 de=[~ ~2024.3.29..17.50.15..6adf]]
     !>
       ^-  tsp:rank
       =.  now.fake-bowl  ~2024.3.29..17.25.38..6a05

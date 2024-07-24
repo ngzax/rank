@@ -2,6 +2,10 @@
 :::: a Door for working with Categories
   ::
 /-  *rank
+/-  *rank-category
+::
+:::: Lib Dependencies
+  ::
 /+  *rank-timestamp
 /+  *rank-urbid
 /+  *string
@@ -16,56 +20,89 @@
   :::: Answers a newly Constructed Category
     ::
   ++  new
-    |=  [limit=@ud adjective=tape subject=tape period=tape]
-    ^-  ctg
+    |=  [limit=@ud adjective=@t subject=@t period=@t]
+    ^-  cate
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [id=uid li=limit ad=adjective su=subject pe=period ts=tsp]
+    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[li+limit ad+adjective su+subject pe+period]))]
   ::
   :::: Logically (soft) delete a Category.
     ::   We can't hard delete because someone might still be referencing it.
     ::
   ++  del
-    |=  c=ctg
-    ^-  ctg
-    =.  ts.c  (~(del timestamp bowl) ts.c)
+    |=  c=cate
+    ^-  cate
+    =.  ts.me.c  (~(del timestamp bowl) ts.me.c)
     c
+  ::
+  :::: Answers the Category's Adjective.
+    ::
+  ++  get-adjective
+    |=  c=cate
+    ^-  @t
+    (~(got by da.c) %ad)
+  ::
+  :::: Answers the Category's Life, which is how many times it has been edited.
+    ::
+  ++  get-life
+    |=  c=cate
+    ^-  @u
+    lf.me.c
   ::
   :::: Answers the Category's Limit.
     ::
   ++  get-limit
-    |=  c=ctg
-    ^-  @ud
-    li.c
+    |=  c=cate
+    ^-  @u
+    (~(got by da.c) %li)
+  ::
+  :::: Answers the Category's Period.
+    ::
+  ++  get-period
+    |=  c=cate
+    ^-  @t
+    (~(got by da.c) %pe)
+  ::
+  :::: Answers the Category's Rift, which is the current version of it's schema.
+    ::
+  ++  get-rift
+    |=  c=cate
+    ^-  @tas
+    rf.me.c
+  ::
+  :::: Answers the Category's Subject.
+    ::
+  ++  get-subject
+    |=  c=cate
+    ^-  @t
+    (~(got by da.c) %su)
   ::
   :::: Answers the Category's Timestamp structure.
     ::
   ++  get-timestamp
-    |=  c=ctg
+    |=  c=cate
     ^-  tsp:rank
-    ts.c
-::
-:::: get-uid
+    ts.me.c
   ::
-  :: Answers the Category's unique identifier
-  ::
+  :::: Answers the Category's unique identifier
+    ::
   ++  get-urbid
-    |=  c=ctg
+    |=  c=cate
     ^-  uid:rank
-    id.c
-::
-:::: Represent a Category as a cord.
+    id.me.c
   ::
+  :::: Represent a Category as a cord.
+    ::
   ++  to-cord
-    |=  c=ctg
+    |=  c=cate
     ^-  @t
     (crip (to-tape c))
-::
-:::: Represent a Category as a tape.
   ::
+  :::: Represent a Category as a tape.
+    ::
   ++  to-tape
-    |=  c=ctg
+    |=  c=cate
     ^-  tape
-    (link " " (limo ["The" ~(rud at li.c) ad.c su.c "of" pe.c ~]))
+    (link " " (limo ["The" ~(rud at (get-limit c)) (trip (get-adjective c)) (trip (get-subject c)) "of" (trip (get-period c)) ~]))
   --
 --

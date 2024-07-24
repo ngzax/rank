@@ -2,6 +2,9 @@
 :::: Door for working with Ranks
   ::
 /-  *rank
+/-  *rank-category
+/-  *rank-ranking
+::
 /+  *rank-category
 /+  *string
 ::
@@ -15,15 +18,15 @@
 :::: Answers a newly constructed Ranking with a Subject Xref and empty Rankings
   ::
 ++  new
-  |=  c=ctg
-  ^-  rkg
+  |=  c=cate
+  ^-  rnkg
   :-  c  ~
 ::
 :::: Adds (Appends) a Subject to the bottom our Rankings
   ::
 ++  add-subject
-  |=  [r=rkg s=sbj]
-  ^-  rkg
+  |=  [r=rnkg s=subj]
+  ^-  rnkg
   ?:  =((ranking-count r) (get-max-subjects r))
     r
   =.  ra.r  (weld ra.r (limo [s ~]))
@@ -32,8 +35,8 @@
 :::: Adds (Appends) multiple Subjects to the bottom our Rankings
   ::
 ++  add-subjects
-  |=  [r=rkg s=(list sbj)]
-  ^-  rkg
+  |=  [r=rnkg s=(list subj)]
+  ^-  rnkg
   ?:  (gth (add (ranking-count r) (lent s)) (get-max-subjects r))
     r
   =.  ra.r  (weld ra.r s)
@@ -42,14 +45,14 @@
 :::: Answers the Ranking's Category
   ::
 ++  get-category
-  |=  r=rkg
-  ^-  ctg
+  |=  r=rnkg
+  ^-  cate
   ca.r
 ::
 :::: Answers the maximum number of Subjects that can be ranked
   ::
 ++  get-max-subjects
-  |=  r=rkg
+  |=  r=rnkg
   ^-  @ud
   :: =/  c  (get-category r)
   (get-limit:category ca.r)
@@ -57,15 +60,15 @@
 :::: Answers the Ranking's List of Subjects
   ::
 ++  get-subjects
-  |=  r=rkg
-  ^-  (list sbj)
+  |=  r=rnkg
+  ^-  (list subj)
   ra.r
 ::
 :::: Adds (Pushes) a Subject to the top of our Rankings
   ::
 ++  push-subject
-  |=  [r=rkg s=sbj]
-  ^-  rkg
+  |=  [r=rnkg s=subj]
+  ^-  rnkg
   ?:  =((ranking-count r) (get-max-subjects r))
     r
   =.  ra.r  (weld (limo [s ~]) ra.r)
@@ -74,8 +77,8 @@
 :::: Adds (Pushes) multiple Subjects to the front (top) of our Rankings
   ::
 ++  push-subjects
-  |=  [r=rkg l=(list sbj)]
-  ^-  rkg
+  |=  [r=rnkg l=(list subj)]
+  ^-  rnkg
   ?:  (gth (add (ranking-count r) (lent l)) (get-max-subjects r))
     r
   =.  ra.r  (weld l ra.r)
@@ -84,7 +87,7 @@
 :::: Answers the Count of this Ranking's Subjects
   ::
 ++  ranking-count
-  |=  r=rkg
+  |=  r=rnkg
   ^-  @
   (lent ra.r)
 --

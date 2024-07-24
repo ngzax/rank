@@ -1,8 +1,12 @@
 ::
 :::: Unit test Door for Rankings
   ::
+/-  *rank-ranking
+/-  *rank-test
+::
 /+  *test
 /+  rank
+/+  *rank-category
 ::
 :::: Helper Cores
   ::
@@ -24,24 +28,24 @@
   ==
   bowl
 ++  setup
-  |=  d=test-data:rank
-  ^-  test-data:rank
+  |=  d=test-data
+  ^-  test-data
   =.  d    [~ ~ ~ ~]
-  =:  ca.d  (some (~(new category fake-bowl) [2 "Best" "Books" "All-time"]))
-      su.d  (some (~(new subject fake-bowl) ["The Possessed" "Fyodor Dostoyevsky"]))
+  =:  ca.d  (some (~(new category fake-bowl) [2 'Best' 'Books' 'All-time']))
+      su.d  (some (~(new subject fake-bowl) ['The Possessed' 'Fyodor Dostoyevsky']))
   ==
   d
 ++  expects
-  |=  e=test-data:rank
-  ^-  test-data:rank
+  |=  e=test-data
+  ^-  test-data
   =.  e  [~ ~ ~ ~]
-  =:  ca.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
-      ra.e  [~ [ca=[id=[sh=~zod uu=~.84a8v.p2opa] li=2 ad="Best" su="Books" pe="All-time" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]] ra=~]]
-      su.e  [~ [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]]
+  =:  ca.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]]]
+      ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))] ra=~]]
+      su.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
       sl.e  :-  ~
-                :~  [id=[sh=~zod uu=~.84a8v.p2opa] ti="The Possessed" ar="Fyodor Dostoyevsky" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="All the Pretty Horses" ar="Cormac McCarthy" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
-                    [id=[sh=~zod uu=~.84a8v.p2opa] ti="Gravity's Rainbow" ar="Thomas Pynchon" ts=[cr=~2024.4.1..20.31.25..2be3 up=~ de=~ ri=0]]
+                :~  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'All the Pretty Horses' ar+'Cormac McCarthy']))]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'Gravity\'s Rainbow' ar+'Thomas Pynchon']))]
                 ==
   ==
   e
@@ -55,7 +59,7 @@
       =/  e  (expects)
       (need ra.e)
     !>
-      ^-  rkg:rank
+      ^-  rnkg
       =/  d  (setup)
       (new:ranking (need ca.d))
   ==
@@ -79,7 +83,7 @@
       =/  e  (expects)
       (need ca.e)
     !>
-      ^-  ctg:rank
+      ^-  cate
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       (get-category:ranking r)
@@ -94,7 +98,7 @@
       =/  e  (expects)
       ~[(snag 0 (need sl.e))]
     !>
-      ^-  (list sbj:rank)
+      ^-  (list subj)
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       =/  l  (add-subject:ranking [r (need su.d)])
@@ -123,7 +127,7 @@
       =/  e  (expects)
       [ca=(need ca.e) ra=~[(need su.e)]]
     !>
-      ^-  rkg:rank
+      ^-  rnkg
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
       (add-subject:ranking [r (need su.d)])
@@ -146,10 +150,10 @@
       =/  e  (expects)
       (snag 1 (need sl.e))
     !>
-      ^-  sbj:rank
+      ^-  subj
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
       =.  r   (add-subject:ranking [r (need su.d)])
       =.  r   (add-subject:ranking [r s2])
       (snag 1 (get-subjects:ranking r))  :: Should be last in the list. (index 1)
@@ -161,10 +165,10 @@
       =/  e  (expects)
       (snag 1 (need sl.e))
     !>
-      ^-  sbj:rank
+      ^-  subj
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
       =.  r   (add-subject:ranking [r (need su.d)])
       =.  r   (push-subject:ranking [r s2])
       (snag 0 (get-subjects:ranking r))  :: Should be 1st in the list this time. (index 0)
@@ -180,7 +184,7 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
       (ranking-count:ranking r)
   ==
@@ -195,8 +199,8 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
-      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
+      =/  s3  (~(new subject fake-bowl) ['Gravity\'s Rainbow' 'Thomas Pynchon'])
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
       =.  r   (add-subject:ranking [r s3])
       (ranking-count:ranking r)
@@ -209,8 +213,8 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
-      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
+      =/  s3  (~(new subject fake-bowl) ['Gravity\'s Rainbow' 'Thomas Pynchon'])
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 ~])])
       =.  r   (push-subject:ranking [r s3])
       (ranking-count:ranking r)
@@ -226,8 +230,8 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
-      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
+      =/  s3  (~(new subject fake-bowl) ['Gravity\'s Rainbow' 'Thomas Pynchon'])
       =.  r   (add-subjects:ranking [r (limo [(need su.d) s2 s3 ~])])
       (ranking-count:ranking r)
   ==
@@ -239,8 +243,8 @@
       ^-  @
       =/  d  (setup)
       =/  r  (new:ranking (need ca.d))
-      =/  s2  (~(new subject fake-bowl) ["All the Pretty Horses" "Cormac McCarthy"])
-      =/  s3  (~(new subject fake-bowl) ["Gravity's Rainbow" "Thomas Pynchon"])
+      =/  s2  (~(new subject fake-bowl) ['All the Pretty Horses' 'Cormac McCarthy'])
+      =/  s3  (~(new subject fake-bowl) ['Gravity\'s Rainbow' 'Thomas Pynchon'])
       =.  r   (push-subject:ranking [r (need su.d)])
       =.  r   (push-subjects:ranking [r (limo [s2 s3 ~])])
       (ranking-count:ranking r)

@@ -1,4 +1,5 @@
 /-  *rank
+/-  *rank-state
 ::
 :::: External Library dependencies
   ::
@@ -219,36 +220,38 @@
     ::
     :::: Answers all the categories in Agent state
       ::
-      ::  > .^((list ctg:rank) %gx /=rank=/categories/0/0/noun)
-      ::  ~[
-      ::    [id=[sh=~zod uu=~.t97f.1bkho.] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.37..3c8b up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.frked.56uql] li=10 ad="Best" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.30.47..8590 up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.klck.j10un.] li=10 ad="Worst" su="Albums" pe="2023" ts=[cr=~2024.5.14..21.30.57..79c0 up=~ de=~ ri=0]]
-      ::    [id=[sh=~zod uu=~.9dr48.dgg5i] li=10 ad="Worst" su="Albums" pe="All-time" ts=[cr=~2024.5.14..21.31.08..948c up=~ de=~ ri=0]]
-      ::  ]
       [%x %categories ~]
     [~ ~ [%noun !>(categories)]]
     ::
-    :::: Answers the Category with UrbId or ~ if not found. (unit ctg)
-      ::
-      ::  > .^((unit ctg:rank) %gx /=rank=/category/~.gmne0.sigl9/noun)
-      ::  [~ [id=[sh=~zod uu=~.gmne0.sigl9] li=10 ad="Best" su="Albums" pe="2023" ts=[cr=~2024.5.3..19.46.29..4c8a up=~ de=~]]]
+    :::: Answers the Category with UrbId or ~ if not found. (unit cate)
       ::
       [%x %category @ ~]
       =/  key=@ta  (slav %ta i.t.t.path)
-      =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
+      =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
       =/  cat  (skim categories fil)
       ?~  cat
         ``noun+!>(~)
       =/  idx  (find ~[(head cat)] categories)
       =/  c  (snag (need idx) categories)
-    [~ ~ [%noun !>(c)]]
+    ``noun+!>((some c))
     ::
     :::: Answers all the Subjects in Agent state
       ::
       [%x %subjects ~]
     [~ ~ [%noun !>(subjects)]]
     :: ``noun+!>(subjects)
+    ::
+    :::: Answers the Subject with UrbId key or ~ if not found. (unit subj)
+      ::
+      [%x %subject @ ~]
+      =/  key=@ta  (slav %ta i.t.t.path)
+      =/  fil  |=(s=subj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+      =/  sub  (skim subjects fil)
+      ?~  sub
+        ``noun+!>(~)
+      =/  idx  (find ~[(head sub)] subjects)
+      =/  s  (snag (need idx) subjects)
+    ``noun+!>((some s))
   ==
 ++  on-agent  on-agent:def
 :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: :: ::
@@ -271,7 +274,7 @@
 |_  bowl=bowl:gall
 ::
 ++  add-category
-  |=  [limit=@ud adjective=tape subject=tape period=tape]
+  |=  [limit=@ud adjective=@t subject=@t period=@t]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-category"  !!
   =.  categories  (snoc categories (~(new category bowl) [limit adjective subject period]))
@@ -281,12 +284,12 @@
   |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-category"  !!
-  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  ctg  (skim categories fil)
-  ?~  ctg
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  cate  (skim categories fil)
+  ?~  cate
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head ctg)] categories)
+  =/  idx  (find ~[(head cate)] categories)
   =/  c  (snag (need idx) categories)
   =.  c  (~(del category bowl) c)
   =.  categories  (snap categories (need idx) c)
@@ -296,17 +299,17 @@
   |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %purge-category"  !!
-  =/  fil  |=(c=ctg =(key (~(get-key urbid bowl) (get-urbid:category c))))
-  =/  ctg  (skim categories fil)
-  ?~  ctg
+  =/  fil  |=(c=cate =(key (~(get-key urbid bowl) (get-urbid:category c))))
+  =/  cate  (skim categories fil)
+  ?~  cate
     :: Category was not found, just return...
     [~ state]
-  =/  idx  (find ~[(head ctg)] categories)
+  =/  idx  (find ~[(head cate)] categories)
   =.  categories  (oust [(need idx) 1] categories)
   [~ state]
 ::
 ++  add-subject
-  |=  [title=tape artist=tape]
+  |=  [title=@t artist=@t]
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %add-subject"  !!
   =.  subjects  (snoc subjects (~(new subject bowl) [title artist]))
@@ -316,7 +319,7 @@
   |=  key=@ta
   ?.  =(src.bowl our.bowl)
     ~&  >>>  "Unauthorized poke from {<src.bowl>}: %remove-subject"  !!
-  =/  fil  |=(s=sbj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
+  =/  fil  |=(s=subj =(key (~(get-key urbid bowl) (get-urbid:subject s))))
   =/  sub  (skim subjects fil)
   ?~  sub
     :: Category was not found, just return...
@@ -329,6 +332,6 @@
 ::
   :: ~&  >  our.bowl
   :: ~&  >  key
-  :: ~&  >  ctg
+  :: ~&  >  cate
   :: ~&  >  idx
 --
