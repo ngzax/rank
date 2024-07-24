@@ -1,7 +1,12 @@
 # rank
 create and share your faves with friends.
 
-#### Installtion Instructions
+WARNING: I have published this repo before its time because I showed it at the Urbit Lake Summit '24.
+It is not ready for installation or collaboration yet. It is very experimental.
+I do welcome your questions and comments on network. DM ~winter-paches.
+
+
+#### Installation Instructions
 ...in dojo on your ship...
 ```
 > |new-desk %rank
