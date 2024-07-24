@@ -6,7 +6,6 @@
   :: It is what we are Ranking.
   ::
 +$  subj
-  $:  me=meta:rank
-      da=(map @tas @)
+  $:  mote:rank
   ==
 --

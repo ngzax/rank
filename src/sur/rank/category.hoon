@@ -7,7 +7,6 @@
   ::
 ::
 +$  cate
-  $:  me=meta:rank
-      da=(map @tas @)
+  $:  mote:rank
   ==
 --
