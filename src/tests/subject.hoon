@@ -38,8 +38,8 @@
   |=  e=subject-test-data
   ^-  subject-test-data
   =.  e  [~ ~]
-  =:  s0.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.8..22.46.10..8a01 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
-      s1.e  [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf='0' ts=[cr=~2024.4.8..17.22.57..f365 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
+  =:  s0.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.8..22.46.10..8a01 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
+      s1.e  [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf=0 ts=[cr=~2024.4.8..17.22.57..f365 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
   ==
   e
 ::
@@ -113,9 +113,9 @@
 ++  test-subject-creation-sets-rift-to-0
   ;:  weld
   %+  expect-eq
-    !>  `@tas`'0'
+    !>  0
     !>
-      ^-  @tas
+      ^-  @u
       =/  d  (setup)
       (get-rift:subject (need s0.d))
   ==

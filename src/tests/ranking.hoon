@@ -39,13 +39,13 @@
   |=  e=test-data
   ^-  test-data
   =.  e  [~ ~ ~ ~]
-  =:  ca.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]]]
-      ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))] ra=~]]
-      su.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
+  =:  ca.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]]]
+      ra.e  [~ [ca=[me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))] ra=~]]
+      su.e  [~ [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]]
       sl.e  :-  ~
-                :~  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
-                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'All the Pretty Horses' ar+'Cormac McCarthy']))]
-                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'Gravity\'s Rainbow' ar+'Thomas Pynchon']))]
+                :~  [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'All the Pretty Horses' ar+'Cormac McCarthy']))]
+                    [me=[id=[sh=~zod uu=~.84a8v.p2opa] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[ti+'Gravity\'s Rainbow' ar+'Thomas Pynchon']))]
                 ==
   ==
   e

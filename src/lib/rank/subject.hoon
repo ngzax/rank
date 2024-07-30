@@ -22,7 +22,7 @@
     ^-  subj
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[ti+title ar+artist]))]
+    [me=[id=uid lf=0 rf=0 ts=tsp] da=(malt (limo ~[ti+title ar+artist]))]
   ::
   :::: Logically (soft) delete a new Subject from the state.
     ::   We can't hard delete because someone might still be referencing it.
@@ -51,7 +51,7 @@
     ::
   ++  get-rift
     |=  sub=subj
-    ^-  @tas
+    ^-  @u
     rf.me.sub
   ::
   :::: Answers the Subject's Timestamp structure.

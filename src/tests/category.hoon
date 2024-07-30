@@ -38,8 +38,8 @@
   |=  e=test-data-1
   ^-  test-data-1
   =.  e  [~ ~ ~]
-  =:  c0.e   [~ [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf='0' ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]]
-      c1.e   [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf='0' ts=[cr=~2024.4.2..22.22.22..2be3 de=~]] da=[n=[p=%li q=10] l=~ r=~]]]
+  =:  c0.e   [~ [me=[id=[sh=~zod uu=~.jbl03.q1tnj] lf=0 rf=0 ts=[cr=~2024.4.1..20.31.25..2be3 de=~]] da=(malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]]
+      c1.e   [~ [me=[id=[sh=~zod uu=~.62qg2.p57rt] lf=0 rf=0 ts=[cr=~2024.4.2..22.22.22..2be3 de=~]] da=[n=[p=%li q=10] l=~ r=~]]]
       cc0.e  (some 'The 2 Best Books of All-time')
   ==
   e
@@ -119,9 +119,9 @@
 ++  test-category-creation-sets-rift-to-0
   ;:  weld
   %+  expect-eq
-    !>  `@tas`'0'
+    !>  0
     !>
-      ^-  @tas
+      ^-  @u
       =/  d  (setup)
       (get-rift:category (need c0.d))
   ==

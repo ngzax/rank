@@ -24,7 +24,7 @@
     ^-  cate
     =/  uid  ~(new urbid bowl)
     =/  tsp  ~(new timestamp bowl)
-    [me=[id=uid lf=0 rf='0' ts=tsp] da=(malt (limo ~[li+limit ad+adjective su+subject pe+period]))]
+    [me=[id=uid lf=0 rf=0 ts=tsp] da=(malt (limo ~[li+limit ad+adjective su+subject pe+period]))]
   ::
   :::: Logically (soft) delete a Category.
     ::   We can't hard delete because someone might still be referencing it.
@@ -67,7 +67,7 @@
     ::
   ++  get-rift
     |=  c=cate
-    ^-  @tas
+    ^-  @u
     rf.me.c
   ::
   :::: Answers the Category's Subject.
