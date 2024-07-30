@@ -303,43 +303,45 @@ ok=%.y
 ```
 
 ### Data Model
+#### urbitID, aka `uid` = [sh=@p uu=@ta]
 
-#### urbitID, aka `uid` = [sh=@p uu=tape]
-
-| Meta | Ship | Unique ID |
+| Ex | Ship | Unique ID |
 | --- | --- | --- |
-| face | sh  | uu |
+| | sh  | uu |
 | ex1 | ~zod  | 62qg2.p57rt |
 
-#### timestamp, aka `tsp` = [cr=time up=unit(time) de=unit(time)]
+#### timestamp, aka `tsp` = [cr=time de=unit(time)]
 
-| Meta | Created | Updated | Deleted |
+| Ex | Created | Deleted |
+| --- | --- | --- |
+| | cr  | de |
+| ex1 | ~2024.3.29..17.25.38..6a05 | ~ |
+| ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.4.29..17.50.15..6adf] |
+
+#### metaData, `meta` = [id=uid lf=@u rf=@tas ts=tsp]
+| UrbitID | Life | Rift | Timestamp |
 | --- | --- | --- | --- |
-| face | cr  | up | de |
-| ex1 | ~2024.3.29..17.25.38..6a05 | ~ | ~ |
-| ex2 | ~2024.3.29..17.25.38..6a05 | [~ ~2024.3.29..17.50.15..6adf] | [~ ~2024.3.29..17.50.15..6adf] |
+| [sh=~zod uu="4uc3.2llor."] | 0 | '0' | [cr=~2024.4.1..21.04.54..106a de=~] |
+| [sh=~zod uu="4uc3.2llor."] | 1 | '0' | [cr=~2024.4.1..21.04.56..106e de=[~ ~2024.4.1..22.08.03..c86e] |
 
-#### category, aka `cate` = [id=uid =li =ad =su =pe ts=tsp]
+#### mote, `mote` = [me=meta da=(map @tas @)]
+See below.
+
+#### category, aka `cate` = mote(%li=Limit %ad=Adjective %su=subject %pe=Period)
+| Metadata | Data |
+| --- | --- |
+| [id=[sh=~zod uu="4uc3.2llor."] lf=0 rf='0' ts=[cr=~2024.4.1..21.04.54..106a de=~] | (malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]
+| [id=[sh=~zod uu="4uc3.2llor."] lf=1 rf='0' ts=[cr=~2024.4.1..21.04.56..106e de=[~ ~2024.4.1..22.08.03..c86e] | (malt (limo ~[li+2 ad+'Best' su+'Books' pe+'All-time']))]
+
+#### subject, aka `subj` = mote (%ti=Title %ar=Artist)
+| Metadata | Data |
+| --- | --- |
+| [id=[sh=~zod uu="4uc3.2llor."] lf=0 rf='0' ts=[cr=~2024.4.1..21.04.54..106a de=~] | (malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
+| [id=[sh=~zod uu="4uc3.2llor."] lf=1 rf='0' ts=[cr=~2024.4.1..21.04.56..106e de=[~ ~2024.4.1..22.08.03..c86e] | (malt (limo ~[ti+'The Possessed' ar+'Fyodor Dostoyevsky']))]
 
 #### categories (list cate)
 
-| Meta | Urbit Id | Limit | Adjective | Subject | Period | Timestamp |
-| --- | --- | --- | --- | --- | --- | --- |
-| face | id  | li | ad | su | pe | ts |
-| type | uid | @ud | tape | tape | tape | tsp |
-| ex1 | [sh=~zod uu="4uc3.2llor."] | 5 | Best | Books | All-time | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
-| ex2 | [sh=~zod uu="okett.oca0t"] | 10 | Best | American Novels | 20th Century |[cr=~2024.4.1..21.11.16..055e up=~ de=[~ ~2024.4.1..22.08.03..c86e] |
-
-#### subject, aka `subj` = [=id =ti =ar =ts]
-
 #### subjects (list subj)
-
-| Meta | Urbit Id | Title | Artist | Timestamp |
-| --- | --- | --- | --- | --- |
-| face | id  | ti | ar | ts |
-| type | uid | tape | tape | tsp |
-| ex1 | [sh=~zod uu="84a8v.p2opa"] | "The Possessed" | "Fyodor Dostoyevsky" | [cr=~2024.4.1..21.04.54..106a up=~ de=~] |
-| ex2 | [sh=~zod uu="t7iin.4f2tj"] | "The Royal Scam" | "Steely Dan" | [cr=~2024.4.8..21.06.38..798a up=~ de=~] |
 
 #### ranking = [=category ranks=(set [ord val art])
 
@@ -362,7 +364,7 @@ category = [5 "Best" "Books" "All-time"]
 
 ### PATH Model
 
-#### category, aka `cate` = [id=uid =li =ad =su =pe ts=tsp]
+#### category, aka `cate` = mote
 
 /=rank=/category/{%u.id}/{%rift.id}/{%life.ts}/noun)
 
@@ -378,7 +380,7 @@ category = [5 "Best" "Books" "All-time"]
 /=rank=/category/~.gmne0.sigl9/2/3/noun) => [meta=[id=[sh=~zod uu=~.gmne0.sigl9 rift=2] ts=[cr=~2024.7.3..19.46.29..4c8a de=~ life=3]] data=[li=20 ad="Best" su="Albums" pe="2023" ]]
 
 
-#### category-list = [id=uid ts=tsp li=(list cate)]
+#### category-plex = [id=uid ts=tsp li=(list cate)]
 
 /=rank=/categories/{%u.id}/{%rift.id}/{%life.ts}/noun)
 
