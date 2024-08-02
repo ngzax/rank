@@ -5,17 +5,6 @@
 :::: Basic Application Data Structures
   ::
 ::
-:::: A Mote is the basic structure for holding a single piece of durable, storable data.
-  :: It is comprised of 2 sub-structues, metadata and a data .
-  ::
-  :: It is currently hard-coded here but eventually should become a generated
-  :: type like list, set, &c.
-  ::
-+$  mote
-  $:  me=meta
-      da=(map @tas @)
-  ==
-::
 :::: A Meta is the basic structure for holding the data about the data.
   :: Used for both a Mote and a Plex.
   ::
@@ -26,6 +15,17 @@
       lf=@u
       rf=@u
       ts=tsp
+  ==
+::
+:::: A Mote is the basic structure for holding a single piece of durable, storable data.
+  :: It is comprised of 2 sub-structues, metadata and a data .
+  ::
+  :: It is currently hard-coded here but eventually should become a generated
+  :: type like list, set, &c.
+  ::
++$  mote
+  $:  me=meta
+      da=(map @tas @)
   ==
 ::
 :::: A Plex is a structure for holding Motes. It is immutable so every mote "edit"
