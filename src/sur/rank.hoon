@@ -1,3 +1,5 @@
+::
+/+  *mip
 |%
 ::
 :::: Basic Application Data Structures
@@ -32,10 +34,10 @@
   :: It is currently hard-coded here but eventually should become a generated
   :: type like list, set, &c.
   ::
-:: +$  plex
-::   $:  me=meta
-::       da=(mip @tas @tas (list mote))
-::   ==
++$  plex
+  $:  me=meta
+      da=(mip @u @u (list mote))
+  ==
 ::
 :::: An UrbID (`uid`) is a [@p @ta] tuple containing a Ship name and a unique string.
   :: This is what we use to tag all our distributed structures so that they

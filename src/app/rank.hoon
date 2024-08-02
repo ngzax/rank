@@ -5,6 +5,7 @@
   ::
 /+  agentio, dbug, default-agent
 /+  mast
+/+  *mip
 /+  verb
 ::
 /+  *rank
